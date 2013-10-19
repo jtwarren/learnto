@@ -1,12 +1,9 @@
 Learnto::Application.routes.draw do
-<<<<<<< HEAD
+
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
-=======
   resources :skills
->>>>>>> f912cc3be439e9a235add3f97220b60d35d08170
   resources :users
-  get "registration/register", as: 'register'
   get "sessions/create"
   get "sessions/destroy"
   get 'auth/:provider/callback' => 'sessions#create'
