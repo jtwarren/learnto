@@ -1,2 +1,12 @@
-%h1 Registration#register
-%p Find me in app/views/registration/register.html.haml
+%h2 What would you like to learn?
+.learningForm
+	=form_for(@user) do |f|
+		=f.label "what would you like to learn"
+		=f.text_area :learning_request
+		%h2 What can you help us learn?
+		.teachingForm
+			=f.fields_for :skill do |skill|
+				=render 'skills_fields', :f => skill
+				
+
+
