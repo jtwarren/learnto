@@ -11,13 +11,13 @@ class SessionsController < ApplicationController
       if oauth.new_user
         redirect_to register_url
       else
-        redirect_to root_url
+        redirect_to skills_url
       end
     else
       user = RegularUser.find_by_email(params[:session][:email])
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
-        redirect_to root_url
+        redirect_to skills_url
       else
         flash.now[:error] = "Invalid login credentials."
         render action: 'new'

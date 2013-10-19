@@ -5,11 +5,28 @@
 $lightGray: #999;
 
 .skill {
-  border: 1px solid black;
   padding: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   height: 400px;
   overflow: scroll;
+
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.box {
+  background:#FFF;
+}
+
+
+/*==================================================
+ * Effect 1
+ * ===============================================*/
+.effect1{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
 }
 
 .profile-pic {
