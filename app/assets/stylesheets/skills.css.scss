@@ -1,0 +1,58 @@
+// Place all the styles related to the Skills controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$lightGray: #999;
+
+.skill {
+  padding: 10px;
+  margin-bottom: 30px;
+  height: 400px;
+  overflow: scroll;
+
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.box {
+  background:#FFF;
+}
+
+
+/*==================================================
+ * Effect 1
+ * ===============================================*/
+.effect1{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+     -moz-box-shadow: 0 10px 6px -6px #777;
+          box-shadow: 0 10px 6px -6px #777;
+}
+
+.profile-pic {
+  padding-right: 20px;
+  float: left;
+}
+
+.skill-title {
+  font-size: 2em;
+  line-height: 1.1em;
+}
+
+.teacher-name {
+  font-size: 1em;
+  color: $lightGray;
+}
+
+.skill-qualifications {
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+img {
+  height: 80px;
+  width: 80px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+}

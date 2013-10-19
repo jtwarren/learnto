@@ -12,6 +12,7 @@ gem 'haml-rails', '>= 0.3.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+# User bootstrap for css framework
 gem 'bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
