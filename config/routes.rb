@@ -1,6 +1,7 @@
 Learnto::Application.routes.draw do
-  get "registration/register", as: 'register'
+  resources :skills
   resources :users
+  get "registration/register", as: 'register'
   get "sessions/create"
   get "sessions/destroy"
   get 'auth/:provider/callback' => 'sessions#create'

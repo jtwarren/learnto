@@ -58,15 +58,13 @@ class OAuthUser
         :first_name => @policy.first_name,
         :last_name  => @policy.last_name,
         :email      => @policy.email,
-        # :picture    => image
+        :picture    => image
       )
       self.new_user = true
     end
 
     def image
-      # image = open(URI.parse(@policy.image_url), :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
-      # def image.original_filename; base_uri.path.split('/').last; end
-      # image
+      return @policy.image_url
     end
 
     def refresh_tokens
