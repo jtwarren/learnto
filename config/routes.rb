@@ -1,10 +1,11 @@
 Learnto::Application.routes.draw do
+  get "registration/register", as: 'register'
   resources :users
   get "sessions/create"
   get "sessions/destroy"
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
-  get 'signout' => 'sessions#destroy', as: 'signout'
+  get 'signout' => 'sessions#destroy', as: 'logout'
 
   get 'home' => 'static_pages#home'
 

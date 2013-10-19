@@ -7,16 +7,17 @@ class SessionsController < ApplicationController
     if request.env["omniauth.auth"].present?
       oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       oauth.login_or_create
-      puts '======================================================'
       session[:user_id] = oauth.user.id
-      puts oauth.user.id
-      puts @current_user
-      redirect_to root_path
+      if oauth.new_user
+        redirect_to register_url
+      else
+        redirect_to root_url
+      end
     else
       user = RegularUser.find_by_email(params[:session][:email])
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
-        redirect_to root_path
+        redirect_to root_url
       else
         flash.now[:error] = "Invalid login credentials."
         render action: 'new'

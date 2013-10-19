@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   # Associations
   has_many :accounts, :dependent => :destroy
+
+  attr_accessor :new_user
 
   # Instance Methods
   def has_facebook?
