@@ -1,12 +1,10 @@
 %h2 What would you like to learn?
 .learningForm
-	=form_for(@user) do |f|
+	=form_for @user, url: update_registration_path do |f|
 		=f.label "what would you like to learn"
-		=f.text_area :learning_request
+		=f.text_area :learning_request, :value=> "E.g. I would like to learn how to play basic chords on the guitar. I also want to learn how to cook Italian food!"
 		%h2 What can you help us learn?
 		.teachingForm
-			=f.fields_for :skill do |skill|
-				=render 'skills_fields', :f => skill
-				
-
-
+			=f.fields_for :skills do |skill_form|
+				=render 'skills_fields', :skill_form => skill_form
+		=f.submit :submit

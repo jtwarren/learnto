@@ -1,5 +1,6 @@
 Learnto::Application.routes.draw do
   get "registration/register", as: 'register'
+  patch "registration/update", as: 'update_registration'
   resources :users
   get "sessions/create"
   get "sessions/destroy"

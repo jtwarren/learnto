@@ -1,6 +1,6 @@
 .fields
-	=f.label "I can help others learn to: "
-	=f.text_field :title
-	=f.label "Qualifications"
-	=f.text_area :qualifications
-	= link_to_remove_fields "remove", f
+	=skill_form.label "I can help others learn to: " 
+	=skill_form.text_field :title, :value=> "Develop a basic website with Ruby on Rails"
+	=skill_form.label "Qualifications"
+	=skill_form.text_area :qualifications, :value => "I've developed Rails web sites for 5 years and have studied CS at MIT"
+	= link_to_remove_fields "remove", skill_form

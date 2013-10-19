@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = RegularUser.new(params[:regular_user])
+    @user.skills.build
     if @user.save
       session[:user_id] = @user.id
       redirect_to register_url
