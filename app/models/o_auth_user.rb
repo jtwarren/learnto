@@ -21,9 +21,6 @@ class OAuthUser
   private
 
     def login
-      print '------------------------------------------'
-      print @auth.slice("provider", "uid")
-      print '------------------------------------------'
       @account = Account.where(@auth.slice("provider", "uid")).first
       if @account.present?
         refresh_tokens
