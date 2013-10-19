@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   # Associations
   has_many :accounts, :dependent => :destroy
 
+  attr_accessor :new_user
+
   # Instance Methods
   def has_facebook?
     accounts.where(provider: 'facebook').any?

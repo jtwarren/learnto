@@ -1,12 +1,13 @@
 class OAuthUser
 
   attr_reader :provider, :user
+  attr_accessor :new_user
 
   def initialize creds, user = nil
-    @auth         = creds
-    @user         = user
-    @provider     = @auth.provider
-    @policy       = "#{@provider}_policy".classify.constantize.new(@auth)
+    @auth = creds
+    @user = user
+    @provider = @auth.provider
+    @policy = "#{@provider}_policy".classify.constantize.new(@auth)
   end
 
   def login_or_create
@@ -59,6 +60,7 @@ class OAuthUser
         :email      => @policy.email,
         # :picture    => image
       )
+      self.new_user = true
     end
 
     def image
