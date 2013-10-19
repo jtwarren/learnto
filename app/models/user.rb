@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  has_many :skills
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   # Associations
