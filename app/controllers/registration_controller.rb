@@ -1,4 +1,5 @@
 class RegistrationController < ApplicationController
   def register
-  end
+  	@user = current_user
+  	end
 end
