@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20131019175303) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture"
     t.text     "learning_request"
+    t.string   "picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

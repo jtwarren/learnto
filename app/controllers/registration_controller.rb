@@ -12,6 +12,6 @@ class RegistrationController < ApplicationController
   end
 
   def learning_params
-  	params.require(:user).permit(:learning_request, :skills_attributes => [:id, :title, :qualifications])
+  	params.require(:user).permit(:learning_request, :skills_attributes => [:id, :title, :qualifications],:new_skills => [:id, :title, :qualifications])
   end
 end

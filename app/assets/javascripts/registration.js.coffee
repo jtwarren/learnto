@@ -6,17 +6,16 @@ ready = ->
 		return false
 
 	$('.add_field').click ->
+		new_id = new Date().getTime()
+		regexp = new RegExp("new_"+association, "g")
 		link=$('.add_field')
-		association=$(this).data["association"]
-		content=$(this).data["fields"]
-		add_fields(link, association, content)
+		association=$(this).data("association")
+		content=$(this).data("fields").replace(regexp,new_id)
+		trueContent = $(content)
+		add_fields(link, trueContent)
 
+	add_fields =(link, content) ->
+		content.insertBefore(link)
+		return false
 $(document).ready(ready)
 $(document).on('page:load', ready)
-
-add_fields (link, association, content) ->
-	new_id = new Date().getTime()
-	regexp = new RegExp("new_"+association, "g")
-	$(link).prev().insert({
-		before: content.replace(regexp,new_id)
-	})

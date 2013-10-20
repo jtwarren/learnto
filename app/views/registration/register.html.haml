@@ -6,5 +6,6 @@
 		%h2 What can you help us learn?
 		.teachingForm
 			=f.fields_for :skills do |skill_form|
-				=render 'skills_fields', :skill_form => skill_form
+				=render 'skills_fields', :f=> skill_form
+			= link_to_add_fields "Add Skill", f, :skills
 		=f.submit :submit
