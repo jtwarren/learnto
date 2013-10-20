@@ -6,8 +6,7 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = RegularUser.new(params[:regular_user])
-    @user.skills.build
+    @user = RegularUser.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to register_url
@@ -23,4 +22,9 @@ class UsersController < ApplicationController
   def update
     @user = @current_user
   end
+
+  private
+    def user_params
+      params.require(:regular_user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
 end
