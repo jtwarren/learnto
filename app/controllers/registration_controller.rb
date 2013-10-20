@@ -6,12 +6,12 @@ class RegistrationController < ApplicationController
 
   def update
   	@user = current_user
-  	newParams=learning_params
-  	puts newParams
+  	puts "HERE ARE THE LEARNING PARAMS"
+  	puts learning_params
   	User.update(@user.id,learning_params)
   end
 
   def learning_params
-  	params.require(:user).permit(:learning_request, :skills_attributes => [:id, :title, :qualifications],:new_skills => [:id, :title, :qualifications])
+  	params.require(:user).permit!
   end
 end
