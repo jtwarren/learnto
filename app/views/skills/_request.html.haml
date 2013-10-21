@@ -1,12 +1,13 @@
-=content_tag :a, "Request", :href => "#requestbox", :class=> 'btn', :data=> {:toggle=>'modal'}
+%a{:href => "#requestbox", :class=> 'btn btn-primary', :'data-toggle'=>'modal'} Request
 #requestbox.modal.hide.fade
-.modal-content
-  .modal-header
-    %button{:type=>"button",:class=>"close", :'data-dismiss'=>"modal", :'aria-hidden'=>"true"}
-    %h4{:class=> "modal=title"} Request Lesson
-  .modal-body
-    =form_tag do
-      =text_area_tag :request
-    %button{:type=>"button", :class=>"btn btn-primary"}
-      =submit_tag
-  .modal-footer
+	.modal-content
+		.modal-header
+			%button{:type=>"button",:class=>"close", :'data-dismiss'=>"modal", :'aria-hidden'=>"true"}
+			%h4{:class=> "modal=title"} Request Lesson
+		.modal-body
+			%p Tell #{skill.user.first_name} what you want to learn, why you want to learn it, and why you would be fun to teach!
+			=form_tag do
+				=text_area_tag :request
+				=submit_tag 'Request', :class=>"btn btn-primary"
+		.modal-footer
+			%button{:type=>"button", :class=>"btn btn-default", :'data-dismiss'=>"modal"} Close
