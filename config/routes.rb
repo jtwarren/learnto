@@ -4,6 +4,7 @@ Learnto::Application.routes.draw do
   patch "registration/update", as: 'update_registration'
   get "messaging/inbox", as: 'inbox'
   post "messaging/reply", as: 'reply'
+  post "skills/send_request", as: 'send_request'
 
   resources :skills
   resources :users
