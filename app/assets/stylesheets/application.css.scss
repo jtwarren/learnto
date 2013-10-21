@@ -11,4 +11,6 @@
  *= require_self
  *= require_tree .
  *
+ * Do not include any static page css unless explicitly needed.
+ *= stub static_pages
  */
