@@ -1,14 +1,13 @@
-%form{:role=>"form", :class=>"form-inline"}
-	#SignupForm
-		=simple_form_for @user, url: update_registration_path do |f|
-			.form-group
-				%fieldset
-					=render 'learning_request', :f=>f
-			.form-group
-				%fieldset
-					%h4 What can you help us learn?
-					=f.fields_for :skills do |skill_form|
-						=render 'skills_fields', :f=> skill_form
-					= link_to_add_fields "Add Skill", f, :skills
-			#Submit
-				=f.submit :submit
+#SignupForm
+	=form_for @user, url: update_registration_path do |f|
+		.form-group
+			%fieldset
+				=render 'learning_request', :f=>f
+		.form-group
+			%fieldset
+				%h4 What can you help us learn?
+				=f.fields_for :skills do |skill_form|
+					=render 'skills_fields', :f=> skill_form
+				= link_to_add_fields "Add Skill", f, :skills
+		.Submit
+			=f.submit :submit
