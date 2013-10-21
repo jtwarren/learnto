@@ -11,3 +11,16 @@
       = skill.user.first_name
   .skill-qualifications
     = skill.qualifications
+  .request
+    =content_tag :a, "Request", :href => "#requestbox", :class=> 'btn', :data=> {:toggle=>'modal'}
+  #requestbox.modal.hide.fade
+    .modal-content
+      .modal-header
+        %button{:type=>"button",:class=>"close", :'data-dismiss'=>"modal", :'aria-hidden'=>"true"}
+        %h4{:class=> "modal=title"} Request Lesson
+      .modal-body
+        =form_tag do
+          =text_area_tag :request
+        %button{:type=>"button", :class=>"btn btn-primary"}
+          =submit_tag
+      .modal-footer
