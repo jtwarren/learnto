@@ -17,6 +17,7 @@ Learnto::Application.routes.draw do
 
   get "messaging/inbox", as: 'inbox'
   post "messaging/reply", as: 'reply'
+  get "messaging/conversation", as: 'conversation'
 
   post "skills/send_request", as: 'send_request'
 

@@ -5,6 +5,11 @@ class MessagingController < ApplicationController
 		@reply = Notification.new
 	end
 
+	def conversation
+		@conversation = Conversation.find(params[:conversation])
+		@user=current_user
+	end
+
 	def reply
 		@user=current_user
 		conversation = Conversation.find(params[:conversation_id])
