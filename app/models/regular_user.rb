@@ -9,4 +9,5 @@ class RegularUser < User
 
   def name
   	return first_name+last_name
+  end
 end
