@@ -8,6 +8,8 @@ gem 'pg'
 
 gem 'mailboxer'
 
+gem 'simple_form'
+
 # User HAML for view files
 gem 'haml-rails', '>= 0.3.4'
 

@@ -1,0 +1,4 @@
+= form_tag reply_path do
+	=text_area_tag :replytext
+	=hidden_field_tag :conversation_id, conversation.id
+	=submit_tag "Reply"

@@ -1,13 +1,11 @@
 %h1 Inbox
 -for conversation in @inbox
-	-for message in conversation.messages
-		%h4 subject
-		=message.subject
-		%h4 body
-		=message.body
-		%h4 reply
-		= form_tag reply_path do
-			=text_area_tag :replytext
-			=hidden_field_tag :conversation_id, conversation.id
-			=submit_tag "Reply"
-
+	-receipt=conversation.receipts_for(@user).first
+	.container.box
+		.profile-pic
+			=image_tag receipt.message.sender.picture
+		.subject
+			=link_to receipt.message.subject, conversation_path(:conversation=>conversation.id)
+		.date
+			=receipt.message.updated_at
+	/ =render 'conversation', :conversation=> conversation

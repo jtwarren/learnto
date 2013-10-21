@@ -3,7 +3,7 @@
 	.modal-content
 		.modal-header
 			%button{:type=>"button",:class=>"close", :'data-dismiss'=>"modal", :'aria-hidden'=>"true"}
-			%h4{:class=> "modal=title"} Request Lesson + #{skill.title}
+			%h4{:class=> "modal=title"} Request Lesson - #{skill.title}
 		.modal-body
 			%p Tell #{skill.user.first_name} what you want to learn, why you want to learn it, and why you would be fun to teach!
 			=form_tag send_request_path do
