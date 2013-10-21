@@ -2,6 +2,7 @@ Learnto::Application.routes.draw do
 
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
+  get "messaging/inbox", as: 'inbox'
   resources :skills
   resources :users
   get "sessions/create"
@@ -10,7 +11,7 @@ Learnto::Application.routes.draw do
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'logout'
 
-  get 'home' => 'static_pages#home'
+  get 'home' => 'static_pages#home', as: 'home'
 
   root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

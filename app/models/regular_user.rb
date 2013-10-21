@@ -7,4 +7,6 @@ class RegularUser < User
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
+  def name
+  	return first_name+last_name
 end

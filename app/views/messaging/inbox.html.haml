@@ -1,0 +1,7 @@
+%h1 Inbox
+-for conversation in @inbox
+	-for message in conversation.messages
+		%h4 subject
+		=message.subject
+		%h4 body
+		=message.body
