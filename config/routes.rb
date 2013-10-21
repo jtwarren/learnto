@@ -3,6 +3,8 @@ Learnto::Application.routes.draw do
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
   get "messaging/inbox", as: 'inbox'
+  post "messaging/reply", as: 'reply'
+
   resources :skills
   resources :users
   get "sessions/create"
