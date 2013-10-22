@@ -1,7 +1,1 @@
-= @skills.in_groups_of(2) do |skills|
-  .row-fluid
-    .span2
-    - skills.each do |skill|
-      - if skill
-        .span5
-          = render 'skill', :skill => skill
+= render partial: "skill_short", collection: @skills

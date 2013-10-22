@@ -1,0 +1,15 @@
+.skill-short
+  .profile-pic
+    = image_tag skill_short.user.picture
+  .skill-title
+    Learn to...
+    %span
+      = skill_short.title
+  .teacher-name
+    Taught by
+    %span
+      = skill_short.user.first_name
+  .skill-qualifications
+    = skill_short.qualifications
+  .show
+    = link_to 'More details', skill_path(skill_short)
