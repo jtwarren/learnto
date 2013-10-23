@@ -2,17 +2,19 @@
   .row
     .span7
       .profile-pic
-        =image_tag @skill.user.picture
+        = image_tag @skill.user.picture
+      .teacher-name
+        Taught by #{@skill.user.first_name}
+      .title
+        = @skill.title
       .description
         = @skill.description
       .qualifications
-        .qualification-title
-          Taught by #{@skill.user.first_name}
-        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
         .qualifications-heading
           %h4 Qualifications
         .qualification-text
           = @skill.qualifications
+      %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
     .span4
       .img
         = image_tag '/assets/federer.jpg'
