@@ -13,7 +13,6 @@ $lightGray: #999;
   }
   .title {
     margin-top: 20px;
-    font-size: 1.5em;
     margin-bottom: 1em;
   }
   .qualifications {
@@ -188,8 +187,6 @@ $lightGray: #999;
 
 .lesson-picture {
   padding: 10px;
-  position: relative;
-  top: 35px;
 }
 
 .instructor {
@@ -199,4 +196,13 @@ $lightGray: #999;
 
 .container {
   padding: 10px;
+}
+
+.div-line {
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+    width: 100%;
+    height: 0px;
+    display: inline-block;
+    vertical-align: middle;
 }

@@ -2,27 +2,28 @@
   .row
     .span7
       .box
-        %h3.title
+        %h2.title
           = @skill.title
         .container
           .profile-pic.left-column
             = image_tag @skill.user.picture
           %h4.instructor
             = @skill.user.name
-        %br
-        %h5 Description
+        %hr.div-line
+        %h4 Description
         .description
           = @skill.description
         .qualifications
           .qualifications-heading
-            %h5 Qualifications
+            %h4 Qualifications
           .qualification-text
             = @skill.qualifications
         %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
     .span4
-      .lesson-picture
-        .img
-          = image_tag '/assets/federer.jpg'
+      .box
+        .lesson-picture
+          .img
+            = image_tag '/assets/federer.jpg'
 
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
