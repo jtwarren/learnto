@@ -1,16 +1,22 @@
 .skill
-  .title
-    Learn to 
-    %span
-      = @skill.title
-  .description
-    = @skill.description
-  .qualifications
-    .qualification-title
-      About #{@skill.user.first_name}
-    = @skill.qualifications
+  .row
+    .span7
+      .profile-pic
+        =image_tag @skill.user.picture
+      .description
+        = @skill.description
+      .qualifications
+        .qualification-title
+          Taught by #{@skill.user.first_name}
+        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
+        .qualifications-heading
+          %h4 Qualifications
+        .qualification-text
+          = @skill.qualifications
+    .span4
+      .img
+        = image_tag '/assets/federer.jpg'
 
-%a.btn{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-header

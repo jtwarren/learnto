@@ -1,16 +1,20 @@
-.skill-short
-  .profile-pic
-    = image_tag skill_short.user.picture
-  .skill-title
-    Learn to
-    %span
-      = skill_short.title
-  .teacher-name
-    Taught by
-    %span
-      = skill_short.user.first_name
-  .more
-    .skill-qualifications
-      = skill_short.description
-    .more-details
-      = link_to 'More details', skill_path(skill_short)
+%a{:href=> skill_path(skill_short), :style=> "display:block"}
+  .pin
+    .image
+      = image_tag '/assets/federer.jpg'
+    .skill-short
+      .profile-pic.circle-overlay
+        = image_tag skill_short.user.picture
+      .skill-title
+        Learn to
+        %span
+          = skill_short.title
+      .teacher-name
+        Taught by
+        %span
+          = skill_short.user.first_name
+      .more
+        .skill-qualifications
+          = skill_short.description
+        .more-details
+          / = link_to 'More details', skill_path(skill_short)
