@@ -7,6 +7,8 @@ Learnto::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
+  post "inquire" => "users#inquire", :as => "user_inquire"
+
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
 
