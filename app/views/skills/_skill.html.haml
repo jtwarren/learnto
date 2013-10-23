@@ -1,7 +1,7 @@
 .skill
-  .row
-    .span7
-      .box
+  .box
+    .row
+      .span6
         %h3.title
           = @skill.title
         .container
@@ -19,10 +19,10 @@
           .qualification-text
             = @skill.qualifications
         %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
-    .span4
-      .lesson-picture
-        .img
-          = image_tag '/assets/federer.jpg'
+      .span4
+        .lesson-picture
+          .img
+            = image_tag '/assets/federer.jpg'
 
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
