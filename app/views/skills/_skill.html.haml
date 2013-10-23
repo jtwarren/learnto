@@ -1,39 +1,42 @@
-#columns-2
-  .skill
-    .title
-      Learn to 
-      %span
-        = @skill.title
-    .img
-      = image_tag '/assets/federer.jpg'
-    .description
-      = @skill.description
-    .qualifications
-      .qualification-title
-        About #{@skill.user.first_name}
-      = @skill.qualifications
+.skill
+  .row
+    .span7
+      .profile-pic
+        =image_tag @skill.user.picture
+      .description
+        = @skill.description
+      .qualifications
+        .qualification-title
+          Taught by #{@skill.user.first_name}
+        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
+        .qualifications-heading
+          %h4 Qualifications
+        .qualification-text
+          = @skill.qualifications
+    .span4
+      .img
+        = image_tag '/assets/federer.jpg'
 
-  %a.btn.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
 
-  #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3#myModalLabel Contact #{@skill.user.first_name} 
-    = form_tag(user_inquire_path, :html => { :class => "form-horizontal" } ) do |f|
-      = hidden_field_tag 'skill_id', @skill.id
-      .modal-body
-        %fieldset
-          .control-group
-            = label_tag :name, "Name", class: "control-label"
-            .controls
-              = text_field_tag :name
-          .control-group
-            = label_tag :email, "Email", class: "control-label"
-            .controls
-              = text_field_tag :email
-      .modal-footer
-        %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-        = submit_tag :submit, :class => 'btn btn-primary'
+#myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#myModalLabel Contact #{@skill.user.first_name} 
+  = form_tag(user_inquire_path, :html => { :class => "form-horizontal" } ) do |f|
+    = hidden_field_tag 'skill_id', @skill.id
+    .modal-body
+      %fieldset
+        .control-group
+          = label_tag :name, "Name", class: "control-label"
+          .controls
+            = text_field_tag :name
+        .control-group
+          = label_tag :email, "Email", class: "control-label"
+          .controls
+            = text_field_tag :email
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      = submit_tag :submit, :class => 'btn btn-primary'
 
 
 
