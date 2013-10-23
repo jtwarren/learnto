@@ -1,6 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @skills = Skill.all
+    @disable_nav = true
   end
 
   def show

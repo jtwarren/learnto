@@ -1,3 +1,9 @@
-#wrapper
-	#columns
-		= render partial: "skill_short", collection: @skills
+.landing-wrapper
+  .logo
+    LearnTo
+  %h3
+    Learn something new, share what you love, meet amazing people
+.stuff
+  #wrapper
+    #columns
+      = render partial: "skill_short", collection: @skills

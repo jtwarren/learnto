@@ -9,9 +9,9 @@
     = csrf_meta_tags
     = render 'layouts/shim'
   %body
-    = render 'layouts/header'
+    = render 'layouts/header' unless @disable_nav
     .container
-      .span11.stuff
+      .span11
         = render 'layouts/messages'
         = yield
       %footer
