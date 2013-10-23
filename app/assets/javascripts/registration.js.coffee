@@ -1,3 +1,4 @@
+###
 ready = ->
 	$('.remove_field').click ->
 		link=$('.remove_field')
@@ -67,3 +68,4 @@ createNextButton = (i, count) ->
 selectStep = (i) ->
 	$("#steps li").removeClass "current"
 	$("#stepDesc" + i).addClass "current"
+###
