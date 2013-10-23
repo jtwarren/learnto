@@ -9,10 +9,8 @@
     = csrf_meta_tags
     = render 'layouts/shim'
   %body
-    = render 'layouts/header'
-    .container
-      .span11.stuff
-        = render 'layouts/messages'
-        = yield
-      %footer
-        = render 'layouts/ga'
+    = render 'layouts/header' unless @disable_nav
+    = render 'layouts/messages'
+    = yield
+  %footer
+    = render 'layouts/ga'

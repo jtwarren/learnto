@@ -32,6 +32,7 @@ $lightGray: #999;
   padding: 10px;
   margin-top: 20px;
   border-bottom: solid 1px #ddd;
+  height: 100px;
 
   &:first-child {
     margin-top: 0px;
@@ -84,25 +85,25 @@ $lightGray: #999;
 }
 
 .pin {
-  display: inline-block;
   background: #FEFEFE;
-  border: 2px solid #fbf183;
+  border: 1px solid lightGray;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-  margin: 0 2px 15px;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
-  padding: 20px;
   padding-bottom: 5px;
   background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
   border-radius: 5px;
-}
+  margin-bottom: 20px;
+  height: 350px;
+  padding: 20px;
+  }
 
 .image {
-  width: 95%;
+  width: 100%;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
-  margin-bottom: 5px;
+  margin-bottom: -90px;
 }
 
 .small {
@@ -172,17 +173,14 @@ $lightGray: #999;
   border: solid #FEFEFE
 }
 
-.circle-overlay {
-  position:relative;
-  top: -90px;
-  margin-bottom: -90px;
-}
 
 .box {
   background: #FEFEFE;
   border: 2px solid #FAFAFA;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   padding: 20px;
+  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+  border-radius: 5px;
 }
 
 .lesson-picture {
@@ -205,4 +203,29 @@ $lightGray: #999;
     height: 0px;
     display: inline-block;
     vertical-align: middle;
+}
+
+.landing-wrapper {
+  height: 300px;
+  text-align: center;
+  color: #ddd;
+  background: url("/assets/bg.jpg");
+  margin-bottom: 50px;
+
+  .logo {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 6em;
+    font-weight: 400;
+    color: #fbf183;
+    margin: 1em auto 0em;
+  }
+    
+  h3 {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 2.2em;
+    line-height: 1.2;
+
+    width: 650px;
+    margin: 2em auto;
+  }
 }

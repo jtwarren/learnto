@@ -1,16 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
 
 body {
-  background: url("/assets/bg.jpg");
-}
-
-.stuff {
-  margin-top: 20px;
-  padding: 10px;
-  -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-  -box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-  background: white;
+  background-color: steelgray;
 }
 
  .logo {
@@ -28,7 +19,6 @@ body {
   a:link {
     text-decoration: none;
   }
-
 
 
  .navbar.navbar-static-top .navbar-inner {
