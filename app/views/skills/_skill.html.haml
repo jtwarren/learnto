@@ -16,12 +16,21 @@
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
     %h3#myModalLabel Contact #{@skill.user.first_name} 
-  = simple_form_for('user', :html => { :class => "form-horizontal" } ) do |f|
+  = form_tag(user_inquire_path, :html => { :class => "form-horizontal" } ) do |f|
+    = hidden_field_tag 'skill_id', @skill.id
     .modal-body
-      Please provide us your name and email address so that #{@skill.user.first_name} can reach out to schedule a time to meet!
       %fieldset
-        = f.input :name
-        = f.input :email
+        .control-group
+          = label_tag :name, "Name", class: "control-label"
+          .controls
+            = text_field_tag :name
+        .control-group
+          = label_tag :email, "Email", class: "control-label"
+          .controls
+            = text_field_tag :email
     .modal-footer
       %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-      = f.button :submit, :class => 'btn btn-primary'
+      = submit_tag :submit, :class => 'btn btn-primary'
+
+
+
