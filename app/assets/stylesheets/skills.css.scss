@@ -4,14 +4,44 @@
 
 $lightGray: #999;
 
+.skill {
+  font-size: 1.2em;
+  .title {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-bottom: 1em;
+  }
+  .qualifications {
+    .qualification-title {
+      font-weight: 600;
+      margin: 1em auto;
+    }
+  }
+}
+
+
+
+
 .skill-short {
   padding: 10px;
-  margin-bottom: 30px;
-  overflow: scroll;
+  margin-top: 20px;
+  border-bottom: solid 1px #ddd;
 
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
+  &:first-child {
+    margin-top: 0px;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .teacher-name {
+    font-size: 1em;
+    margin-top: 5px;
+    color: $lightGray;
+  }
+
+  
 }
 
 .profile-pic {
@@ -24,14 +54,17 @@ $lightGray: #999;
   line-height: 1.1em;
 }
 
-.teacher-name {
-  font-size: 1em;
-  color: $lightGray;
-}
 
-.skill-qualifications {
-  margin-top: 10px;
-  margin-left: 100px;
+.more {
+  .skill-qualifications {
+    margin-top: 10px;
+    margin-left: 100px;
+  }
+
+  .more-details {
+    margin-top: 10px;
+    margin-left: 100px;
+  }
 }
 
 img {

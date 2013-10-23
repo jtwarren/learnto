@@ -1,3 +1,27 @@
 .skill
   .title
-    = @skill.title
+    Learn to 
+    %span
+      = @skill.title
+  .description
+    = @skill.description
+  .qualifications
+    .qualification-title
+      About #{@skill.user.first_name}
+    = @skill.qualifications
+
+%a.btn{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
+
+#myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#myModalLabel Contact #{@skill.user.first_name} 
+  = simple_form_for('user', :html => { :class => "form-horizontal" } ) do |f|
+    .modal-body
+      Please provide us your name and email address so that #{@skill.user.first_name} can reach out to schedule a time to meet!
+      %fieldset
+        = f.input :name
+        = f.input :email
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      = f.button :submit, :class => 'btn btn-primary'

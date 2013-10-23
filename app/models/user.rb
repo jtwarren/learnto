@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  acts_as_messageable
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 
