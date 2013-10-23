@@ -2,6 +2,11 @@
 
 body {
   background: url("/assets/bg.jpg");
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
  .logo {
@@ -19,7 +24,6 @@ body {
   a:link {
     text-decoration: none;
   }
-
 
 
  .navbar.navbar-static-top .navbar-inner {

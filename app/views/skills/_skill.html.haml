@@ -1,25 +1,26 @@
 .skill
-  .box
-    .row
-      .span6
-        %h3.title
+  .row
+    .span7
+      .box
+        %h2.title
           = @skill.title
         .container
           .profile-pic.left-column
             = image_tag @skill.user.picture
           %h4.instructor
             = @skill.user.name
-        %br
-        %h5 Description
+        %hr.div-line
+        %h4 Description
         .description
           = @skill.description
         .qualifications
           .qualifications-heading
-            %h5 Qualifications
+            %h4 Qualifications
           .qualification-text
             = @skill.qualifications
         %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
-      .span4
+    .span4
+      .box
         .lesson-picture
           .img
             = image_tag '/assets/federer.jpg'

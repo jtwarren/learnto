@@ -13,7 +13,6 @@ $lightGray: #999;
   }
   .title {
     margin-top: 20px;
-    font-size: 1.5em;
     margin-bottom: 1em;
   }
   .qualifications {
@@ -86,25 +85,25 @@ $lightGray: #999;
 }
 
 .pin {
-  display: inline-block;
   background: #FEFEFE;
-  border: 2px solid #fbf183;
+  border: 1px solid lightGray;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
-  margin: 0 2px 15px;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
-  padding: 20px;
   padding-bottom: 5px;
   background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
   border-radius: 5px;
-}
+  margin-bottom: 20px;
+  height: 350px;
+  padding: 20px;
+  }
 
 .image {
-  width: 95%;
+  width: 100%;
   border-bottom: 1px solid #ccc;
   padding-bottom: 15px;
-  margin-bottom: 5px;
+  margin-bottom: -90px;
 }
 
 .small {
@@ -174,12 +173,10 @@ $lightGray: #999;
   border: solid 2px #FEFEFE
 }
 
-.circle-overlay {
-  position:relative;
-  top: -90px;
-  margin-bottom: -90px;
+.stuff {
+  padding: 50px;
+  background: white;
 }
-
 .box {
   background: #FEFEFE;
   border: 2px solid #FAFAFA;
@@ -190,7 +187,7 @@ $lightGray: #999;
 }
 
 .lesson-picture {
-
+  padding: 10px;
 }
 
 .instructor {
@@ -202,12 +199,21 @@ $lightGray: #999;
   padding: 10px;
 }
 
-.landing-wrapper {
+.div-line {
+    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
+    width: 100%;
+    height: 0px;
+    display: inline-block;
+    vertical-align: middle;
+}
 
+.landing-wrapper {
+  height: 100%;
+  width: 100%;
   text-align: center;
   color: #ddd;
-
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   .logo {
     font-family: 'Shadows Into Light Two', cursive;
@@ -222,7 +228,8 @@ $lightGray: #999;
     font-size: 2.2em;
     line-height: 1.2;
 
-    width: 650px;
+    padding: 150px;
+    width: 50%;
     margin: 2em auto;
   }
 }

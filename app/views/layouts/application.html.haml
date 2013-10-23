@@ -10,9 +10,7 @@
     = render 'layouts/shim'
   %body
     = render 'layouts/header' unless @disable_nav
-    .container
-      .span11
-        = render 'layouts/messages'
-        = yield
-      %footer
-        = render 'layouts/ga'
+    = render 'layouts/messages'
+    = yield
+  %footer
+    = render 'layouts/ga'
