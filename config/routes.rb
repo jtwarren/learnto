@@ -23,7 +23,7 @@ Learnto::Application.routes.draw do
 
   post "skills/send_request", as: 'send_request'
 
-  root 'static_pages#home'
+  root 'skills#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
