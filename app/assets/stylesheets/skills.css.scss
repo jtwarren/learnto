@@ -48,8 +48,8 @@ $lightGray: #999;
     color: $lightGray;
 
     position: relative;
-    top: -34px;
-    left: 91px;
+    top: -30px;
+    left: 85px;
     margin-bottom: -25px;
 
   }
@@ -170,7 +170,7 @@ $lightGray: #999;
   -moz-border-radius: 40px;
   border-radius: 40px;
   -webkit-border-radius: 40px;
-  border: solid #FEFEFE
+  border: solid 2px #FEFEFE
 }
 
 .stuff {
@@ -209,7 +209,8 @@ $lightGray: #999;
 }
 
 .landing-wrapper {
-  height: 90%;
+
+  height: 40%;
   width: 100%;
   text-align: center;
   color: #ddd;
@@ -228,8 +229,13 @@ $lightGray: #999;
     font-size: 2.7em;
     line-height: 1.2;
 
-    padding: 150px;
     width: 50%;
-    margin: 2em auto;
+    margin: 3em auto;
   }
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 40px;
 }
