@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       oauth.login_or_create
       session[:user_id] = oauth.user.id
       if oauth.new_user
-        redirect_to register_url
+        redirect_to skills_url
       else
         redirect_to skills_url
       end
