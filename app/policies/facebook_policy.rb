@@ -21,7 +21,7 @@ class FacebookPolicy
   end
 
   def image_url
-    "http://graph.facebook.com/#{@auth.info.nickname}/picture?type=square"
+    "http://graph.facebook.com/#{@auth.info.nickname}/picture?type=large"
   end
 
   def uid
