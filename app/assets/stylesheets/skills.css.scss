@@ -32,6 +32,7 @@ $lightGray: #999;
   padding: 10px;
   margin-top: 20px;
   border-bottom: solid 1px #ddd;
+  padding-bottom: 20px;
   height: 100px;
 
   &:first-child {
@@ -85,8 +86,9 @@ $lightGray: #999;
 }
 
 .pin {
+  display: inline-block;
   background: #FEFEFE;
-  border: 1px solid lightGray;
+  border: 2px solid #FAFAFA;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
@@ -95,8 +97,7 @@ $lightGray: #999;
   background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
   border-radius: 5px;
   margin-bottom: 20px;
-  height: 350px;
-  padding: 20px;
+  padding: 15px;
   }
 
 .image {
@@ -175,10 +176,11 @@ $lightGray: #999;
 
 .stuff {
   padding: 50px;
-  background: white;
+  background: #fbf183;
 }
 .box {
   background: #FEFEFE;
+  height: 100%;
   border: 2px solid #FAFAFA;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   padding: 20px;

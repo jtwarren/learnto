@@ -34,6 +34,8 @@ class OAuthUser
 
     def account_already_exists?
       @user.accounts.exists?(provider: @provider, uid: @policy.uid)
+      puts @provider
+      puts @policy.uid
     end
 
     def create_new_account
