@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   def index
-    @skills = Skill.all
+    @skills = Skill.all.order("RANDOM()")
     @disable_nav = true
   end
 
