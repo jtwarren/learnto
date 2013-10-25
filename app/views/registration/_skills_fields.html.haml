@@ -1,8 +1,8 @@
 .fields
     %h4 Skill
-    =f.input :title, :class=> "form-control",:label=>"I can help others learn to:", :placeholder=> "e.g. cook Italian Food"
+    =f.input :title, :class=> "field span6",:label=>"I can help others learn to:", :placeholder=> "e.g. cook Italian Food"
     =f.label 'Description'
     =f.text_area :description, :rows=> 5, :class=> "field span6 h3", :placeholder=> "e.g. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
     =f.label 'Qualifications'
     =f.text_area :qualifications, :rows=>5, :class=> "field span6 h3", :placeholder=> "e.g. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
-    =f.input :picture,:label=>'Link to Picture for skill', :placeholder=> 'http://www.travelvivi.com/wp-content/uploads/2010/04/italian-food.jpg'
+    =f.input :picture, :class=> "field span6",:label=>'Link to Picture for skill', :placeholder=> 'http://www.travelvivi.com/wp-content/uploads/2010/04/italian-food.jpg'

@@ -30,21 +30,20 @@
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
     %h3#myModalLabel Contact #{@skill.user.first_name} 
-  = form_tag(user_inquire_path, :html => { :class => "form-horizontal" } ) do |f|
+  = form_tag('../auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
     = hidden_field_tag 'skill_id', @skill.id
     .modal-body
       %fieldset
         .control-group
-          = label_tag :name, "Name", class: "control-label"
+          = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
           .controls
-            = text_field_tag :name
-        .control-group
-          = label_tag :email, "Email", class: "control-label"
-          .controls
-            = text_field_tag :email
+            = text_area_tag :request, nil, :class=> "request"
     .modal-footer
-      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-      = submit_tag :submit, :class => 'btn btn-primary'
+      .login-button
+        = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
+      %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
+      / %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      / = submit_tag :submit, :class => 'btn btn-primary'
 
 
 
