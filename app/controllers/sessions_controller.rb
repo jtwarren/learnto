@@ -8,10 +8,14 @@ class SessionsController < ApplicationController
       oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       oauth.login_or_create
       session[:user_id] = oauth.user.id
-      if oauth.new_user
-        redirect_to register_url
+      if env["omniauth.params"]["request"]==nil      
+        if oauth.new_user
+          redirect_to register_url
+        else
+          redirect_to skills_url
+        end
       else
-        redirect_to skills_url
+        redirect_to user_inquire_url(:request=> env["omniauth.params"]["request"], :skill_id=>env["omniauth.params"]["skill_id"])
       end
     else
       user = RegularUser.find_by_email(params[:session][:email])

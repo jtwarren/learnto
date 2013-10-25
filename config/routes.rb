@@ -1,15 +1,19 @@
 Learnto::Application.routes.draw do
 
   resources :users
-  resources :skills
+  resources :skills do
+    collection do
+      get "send_request"
+    end
+  end
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
-  post "inquire" => "users#inquire", :as => "user_inquire"
+  get "inquire" => "users#inquire", :as => "user_inquire"
 
-  get 'auth/:provider/callback' => 'sessions#create'
+  get 'auth/:provider/callback' => 'sessions#create', :as=> "social_sign_in"
   get 'auth/failure' => redirect('/')
 
   get 'home' => 'static_pages#home', as: 'home'
@@ -20,8 +24,6 @@ Learnto::Application.routes.draw do
   get "messaging/inbox", as: 'inbox'
   post "messaging/reply", as: 'reply'
   get "messaging/conversation", as: 'conversation'
-
-  post "skills/send_request", as: 'send_request'
 
   root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.

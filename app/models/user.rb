@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-
+  acts_as_messageable
   # Associations
   has_many :accounts, :dependent => :destroy
   has_many :skills, :dependent => :destroy
+  has_and_belongs_to_many :lessons
 
   accepts_nested_attributes_for :skills
 

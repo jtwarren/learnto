@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def inquire
-    lesson = Skill.find(params[:skill_id]).lessons.new(:name => params[:name], :email => params[:email])
+    lesson = Skill.find(params[:skill_id]).lessons.new(:learning_request=>params[:request])
+    current_user.lessons << lesson
     if lesson.save
       redirect_to skills_url, notice: 'Successfully updated saved your information.'
     else
