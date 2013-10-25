@@ -30,7 +30,7 @@
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
     %h3#myModalLabel Contact #{@skill.user.first_name} 
-  = form_tag('../auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
+  = form_tag('/auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
     = hidden_field_tag 'skill_id', @skill.id
     .modal-body
       %fieldset

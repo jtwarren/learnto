@@ -1,4 +1,3 @@
-###
 ready = ->
 	$('.remove_field').click ->
 		link=$('.remove_field')
@@ -53,7 +52,7 @@ createPrevButton = (i) ->
 		$("#step" + (i - 1)).show()
 		selectStep (i - 1)
 		return false
-
+###
 createNextButton = (i, count) ->
 	stepName = "step" + i
 	$("#" + stepName + "commands").append "<a href='#' id='" + stepName + "Next' class='next'>Next ></a>"
@@ -64,8 +63,7 @@ createNextButton = (i, count) ->
 		$("#step" + (i + 1)).show()
 		selectStep (i + 1)
 		return false
-
+###
 selectStep = (i) ->
 	$("#steps li").removeClass "current"
 	$("#stepDesc" + i).addClass "current"
-###
