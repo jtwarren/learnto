@@ -9,5 +9,24 @@
   #wrapper
     #columns
       = render partial: "skill_short", collection: @skills
+    %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
+    %br
     For questions or to sign up to be a teacher, email 
     = mail_to "learn2@mit.edu", "LearnTo", subject: "LearnTo information"
+
+
+#requestModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#myModalLabel Request a lesson 
+  = form_tag('/auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
+    .modal-body
+      %fieldset
+        .control-group
+          = label_tag :request, "What would you like to learn?", class: "control-label"
+          .controls
+            = text_area_tag :request, nil, :class=> "request"
+    .modal-footer
+      .login-button
+        = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
+
