@@ -5,7 +5,9 @@
     Learn and share knowledge with amazing people around you, for free
 .stuff
   .heading
-    Top Lessons
+    Top Lessons in Boston/Cambridge
   #wrapper
     #columns
       = render partial: "skill_short", collection: @skills
+    For questions or to sign up to be a teacher, email 
+    = mail_to "learn2@mit.edu", "LearnTo", subject: "LearnTo information"
