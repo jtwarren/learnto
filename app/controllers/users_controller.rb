@@ -19,6 +19,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def sign_in
+  end
+
   def update
     @user = @current_user
   end

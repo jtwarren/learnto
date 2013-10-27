@@ -1,6 +1,10 @@
 Learnto::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    collection do
+      get "sign_in"
+    end
+  end
   resources :skills do
     collection do
       get "send_request"
@@ -13,6 +17,7 @@ Learnto::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
 
   get "inquire" => "users#inquire", :as => "user_inquire"
+  post "inquire" => "users#inquire", :as => "user_inquire_post"
 
   get 'auth/:provider/callback' => 'sessions#create', :as=> "social_sign_in"
   get 'auth/failure' => redirect('/')
