@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
     current_user.lessons << lesson
     if lesson.save
-      redirect_to skills_url, notice: 'Successfully saved your information.'
+      redirect_to skills_url, notice: 'Your request has been submitted! Thanks for using LearnTo!'
     else
       redirect_to skills_url, error: 'There was an error processing your request.'
     end

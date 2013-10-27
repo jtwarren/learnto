@@ -1,3 +1,16 @@
-// Place all the styles related to the about controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.about{
+
+}
+
+.profile-image{
+	height: 150px;
+  width: 150px;
+  -moz-border-radius: 80px;
+  border-radius: 80px;
+  -webkit-border-radius: 80px;
+  border: solid 2px #FEFEFE
+}
+
+.profile{
+	text-align: center;
+}

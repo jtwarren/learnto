@@ -11,8 +11,13 @@
       = render partial: "skill_short", collection: @skills
     %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
     %br
-    For questions or to sign up to be a teacher, email 
-    = mail_to "learn2@mit.edu", "LearnTo", subject: "LearnTo information"
+    .row
+      .span1
+        = link_to 'About', about_path
+      .span5
+        For questions or to sign up to be a teacher, email 
+        = mail_to "learn2@mit.edu", "LearnTo", subject: "LearnTo information"
+
 
 
 #requestModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
