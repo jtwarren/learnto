@@ -1,7 +1,13 @@
 = form_for @user, :url => (@user.new_record? ? users_path : user_path(@user)) do |f|
+  = f.label 'First Name'
   = f.text_field :first_name
+  =f.label 'Last Name'
   = f.text_field :last_name
+  = f.label 'Email'
   = f.text_field :email
+  = f.label 'Password'
   = f.text_field :password
+  = f.label 'Password Confirmation'
   = f.text_field :password_confirmation
-  = f.button :submit
+  %br
+  = f.button :submit, :class=> "btn btn-primary"
