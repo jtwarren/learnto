@@ -7,10 +7,10 @@ class SkillsController < ApplicationController
   def show
     @skill = Skill.find(params[:id])
     @path = nil
-    if current_user!=nil
-      @path = user_inquire_post_path
+    if current_user != nil
+      @path = user_inquire_post_url
     else
-      @path = 'auth/facebook'
+      @path = '/auth/facebook'
     end
   end
 
