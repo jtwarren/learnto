@@ -12,6 +12,6 @@
     = render 'layouts/header'  unless @disable_nav
     = render 'layouts/messages'
     = yield
-    = render 'layouts/footer'
+    = render 'layouts/footer' unless @disable_footer
     = render 'layouts/ga'
     
