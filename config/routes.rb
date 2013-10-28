@@ -11,7 +11,8 @@ Learnto::Application.routes.draw do
     end
   end
 
-  get "about" => 'about#index', :as => "about"
+  resources :sessions, only: [:new, :create, :destroy]
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
@@ -19,10 +20,11 @@ Learnto::Application.routes.draw do
   get "inquire" => "users#inquire", :as => "user_inquire"
   post "inquire" => "users#inquire", :as => "user_inquire_post"
 
-  get 'auth/:provider/callback' => 'sessions#create', :as=> "social_sign_in"
+  get 'auth/:provider/callback' => 'sessions#create', :as => "social_sign_in"
   get 'auth/failure' => redirect('/')
 
   get 'home' => 'static_pages#home', as: 'home'
+  get "about" => 'static_pages#about', :as => "about"
   
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'

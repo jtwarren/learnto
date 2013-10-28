@@ -1,0 +1,10 @@
+- provide(:title, "Sign in")
+.stuff
+  = form_for(:session, url: sessions_path) do |f|
+    .fields
+      = f.label :email
+      = f.text_field :email
+    .fields
+      = f.label :password
+      = f.password_field :password
+    = f.submit "Sign in", class: "btn btn-large btn-primary"
