@@ -5,6 +5,5 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @disable_footer = true
   end
 end
