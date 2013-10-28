@@ -42,7 +42,7 @@
         - if current_user != nil
           =submit_tag 'Submit', :class=> "btn btn-primary"
         -else
-          = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
+          = submit_tag 'Submit with facebook', :class=>"btn-auth btn-facebook"
           %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
       / %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
       / = submit_tag :submit, :class => 'btn btn-primary'
