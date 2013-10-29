@@ -1,7 +1,10 @@
 class RegistrationController < ApplicationController
   def register
-  	@user = current_user
-  	@user.skills.build
+    if @user
+      @user = current_user
+  	  @user.skills.build
+    else
+      redirect_to home_url
   end
 
   def update

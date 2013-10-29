@@ -11,6 +11,9 @@
           %h4.instructor
             = @lesson.users.first.name
         %hr.div-line
+        %h4 Email
+        .email
+          =@lesson.users.first.email
         %h4 Description
         .description
           = @lesson.learning_request
