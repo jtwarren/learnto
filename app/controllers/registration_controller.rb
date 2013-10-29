@@ -2,7 +2,6 @@ class RegistrationController < ApplicationController
   def register
     @user = current_user
   	@user.skills.build
-    end
   end
 
   def update
