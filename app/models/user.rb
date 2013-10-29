@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :skills, :dependent => :destroy
   has_and_belongs_to_many :lessons
 
-  accepts_nested_attributes_for :skills
+  accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 
   attr_accessor :new_user
 
