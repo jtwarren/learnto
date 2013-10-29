@@ -1,15 +1,14 @@
 Learnto::Application.routes.draw do
 
-  resources :users do
-    collection do
-      get "sign_in"
-    end
-  end
+  resources :users
+
   resources :skills do
     collection do
       get "send_request"
     end
   end
+
+  resources :lessons
 
   resources :sessions, only: [:new, :create, :destroy]
 
