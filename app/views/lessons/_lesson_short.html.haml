@@ -12,4 +12,5 @@
           = lesson_short.users.first.first_name
       .skill-title
         %span
-          = lesson_short.skill.title
+          -if lesson_short.skill
+            = lesson_short.skill.title
