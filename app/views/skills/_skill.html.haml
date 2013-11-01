@@ -20,9 +20,10 @@
             = @skill.qualifications
         %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
       %br
-      .box
-        %h4 References
-        = render partial: "review_short", collection: @skill.reviews
+      - if @skill.reviews.size>0
+        .box
+          %h4 References
+          = render partial: "review_short", collection: @skill.reviews
 
     .span4
       .box
