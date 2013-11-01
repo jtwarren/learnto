@@ -1,0 +1,25 @@
+.lesson
+  .row
+    .span7
+      .box
+        %h2.title
+          -if @lesson.skill
+            = @lesson.skill.title
+        .container
+          .profile-pic.left-column
+            = image_tag @lesson.users.first.picture
+          %h4.instructor
+            = @lesson.users.first.name
+        %hr.div-line
+        %h4 Email
+        .email
+          =@lesson.users.first.email
+        %h4 Description
+        .description
+          = @lesson.learning_request
+    .span4
+      .box
+        .lesson-picture
+          .img
+            -if @lesson.skill
+              = image_tag @lesson.skill.picture

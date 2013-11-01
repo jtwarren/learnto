@@ -32,3 +32,17 @@
 /       .login-button
 /         = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
 
+-if (@confirmation)
+  .modalconfirmation
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3#myModalLabel Your request has been sent!
+    .modal-body
+      %fieldset
+        .invite
+          Learning is more fun when your friends are there with you! 
+    .modal-footer
+      %a.btn.btn-primary{:href=>"#",:class=>"share"}
+        Invite your friends to learn with you!
+
+

@@ -1,15 +1,25 @@
 class SkillsController < ApplicationController
   def index
     @skills = Skill.all.order("RANDOM()")
+    @disable_nav = true
+    respond_to do |format|
+      format.html
+      format.json {render json: @skills}
+    end
   end
 
   def show
     @skill = Skill.find(params[:id])
     @path = nil
+    @confirm = params[:confirm]
     if current_user != nil
       @path = user_inquire_post_url
     else
       @path = '/auth/facebook'
+    end
+    respond_to do |format|
+      format.html
+      format.json {render json: @skill}
     end
   end
 

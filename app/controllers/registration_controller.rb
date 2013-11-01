@@ -1,7 +1,11 @@
 class RegistrationController < ApplicationController
   def register
-  	@user = current_user
-  	@user.skills.build
+    if current_user
+      @user = current_user
+    	@user.skills.build
+    else
+      redirect_to '/auth/facebook', :action=>"skill update"
+    end
   end
 
   def update

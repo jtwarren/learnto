@@ -1,0 +1,12 @@
+.review
+  .container
+    .row
+      .span1
+        .image.profile-pic
+          =image_tag review_short.user.picture
+        .name
+          = review_short.user.first_name
+      .span6
+        .message
+          .text
+            =review_short.message

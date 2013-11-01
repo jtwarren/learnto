@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :accounts, :dependent => :destroy
   has_many :skills, :dependent => :destroy
   has_and_belongs_to_many :lessons
+  has_many :reviews
 
   accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 

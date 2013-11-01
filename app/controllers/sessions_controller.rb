@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       oauth.login_or_create
       session[:user_id] = oauth.user.id
       if env["omniauth.params"]["request"] == nil      
-        if oauth.new_user
+        if oauth.new_user or (env["omniauth.params"]["action"] =="update skills")
           redirect_to register_url
         else
           redirect_to skills_url
