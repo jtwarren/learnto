@@ -2,6 +2,10 @@ class SkillsController < ApplicationController
   def index
     @skills = Skill.all.order("RANDOM()")
     @disable_nav = true
+    respond_to do |format|
+      format.html
+      format.json {render json: @skills}
+    end
   end
 
   def show
@@ -11,6 +15,10 @@ class SkillsController < ApplicationController
       @path = user_inquire_post_url
     else
       @path = '/auth/facebook'
+    end
+    respond_to do |format|
+      format.html
+      format.json {render json: @skill}
     end
   end
 
