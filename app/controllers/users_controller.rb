@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
     current_user.lessons << lesson
     if lesson.save
-      if params[:skill_id] && current_user.admin
+      if params[:skill_id]
         redirect_to skill_url(params[:skill_id], :confirm=>true)
       else
         redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"

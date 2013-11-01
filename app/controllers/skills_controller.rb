@@ -12,8 +12,6 @@ class SkillsController < ApplicationController
     @skill = Skill.find(params[:id])
     @path = nil
     @confirm = params[:confirm]
-    puts "LOOK HERE"
-    puts params[:confirm]
     if current_user != nil
       @path = user_inquire_post_url
     else
