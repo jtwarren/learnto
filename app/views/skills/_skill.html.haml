@@ -37,26 +37,35 @@
           = render partial: "lesson_short", collection: @skill.lessons
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-    %h3#myModalLabel Sign up for the lesson! 
-  = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
-    = hidden_field_tag 'skill_id', @skill.id
+  .modalrequest
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3#myModalLabel Sign up for the lesson! 
+    = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
+      = hidden_field_tag 'skill_id', @skill.id
+      .modal-body
+        %fieldset
+          .control-group
+            = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
+            .controls
+              = text_area_tag :request, nil, :class=> "request"
+      .modal-footer
+        .login-button
+          - if current_user != nil
+            =submit_tag 'Submit', :class=> "submit btn btn-primary"
+          -else
+            = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
+            %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
+
+#confirmModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modalconfirmation
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+      %h3#myModalLabel Your request has been sent!
     .modal-body
       %fieldset
-        .control-group
-          = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
-          .controls
-            = text_area_tag :request, nil, :class=> "request"
+        .invite
+          Learning is more fun when your friends are there with you! 
     .modal-footer
-      .login-button
-        - if current_user != nil
-          =submit_tag 'Submit', :class=> "btn btn-primary"
-        -else
-          = submit_tag 'Submit with facebook', :class=>"btn-auth btn-facebook"
-          %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
-      / %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-      / = submit_tag :submit, :class => 'btn btn-primary'
-
-
-
+      %a.btn.btn-primary{:href=>"#",:class=>"share"}
+        Invite your friends to learn with you!
