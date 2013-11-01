@@ -18,7 +18,7 @@
             %h4 Qualifications
           .qualification-text
             = @skill.qualifications
-        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name}
+        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Sign up for the lesson!
       %br
       - if @skill.reviews.size>0
         .box
@@ -30,11 +30,15 @@
         .lesson-picture
           .img
             = image_tag @skill.picture
+      %br
+      .box
+        %h4 People who have learned with #{@skill.user.first_name}
+        = render partial: "lesson_short", collection: @skill.lessons
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-    %h3#myModalLabel Contact #{@skill.user.first_name} 
+    %h3#myModalLabel Sign up for the lesson! 
   = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
     = hidden_field_tag 'skill_id', @skill.id
     .modal-body
