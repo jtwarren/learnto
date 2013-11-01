@@ -31,9 +31,10 @@
           .img
             = image_tag @skill.picture
       %br
-      .box
-        %h4 People who have learned with #{@skill.user.first_name}
-        = render partial: "lesson_short", collection: @skill.lessons
+      -if @skill.lessons.size>0
+        .box
+          %h4 People who have learned with #{@skill.user.first_name}
+          = render partial: "lesson_short", collection: @skill.lessons
 
 #myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-header
