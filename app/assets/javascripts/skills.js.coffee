@@ -7,13 +7,13 @@ get = (name) ->
       return decodeURIComponent(name[1])
 
 base = () ->
-	return location.href.split("?")[0]
+	return location.href.split('?')[0]
 
 ready = ->
 	if (get('confirm'))
 		$('#confirmModal').modal('show')
 	$('.share').click ->
-    	window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(base), 'facebook-share-dialog','width=626,height=436') 
+    	window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(base()), 'facebook-share-dialog','width=626,height=436') 
     	return false
 
 $(document).ready(ready)
