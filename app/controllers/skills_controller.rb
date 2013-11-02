@@ -1,7 +1,6 @@
 class SkillsController < ApplicationController
   def index
     @skills = Skill.all.order("RANDOM()")
-    @disable_nav = true
     respond_to do |format|
       format.html
       format.json {render json: @skills}

@@ -1,18 +1,12 @@
-/ .landing-wrapper
-/   .logo
-/     LearnTo
-/   %h3
-/     Learn and share knowledge with amazing people around you, for free
-/ .stuff
-/   .heading
-/     Top Lessons in Boston/Cambridge
+.heading
+  Top Lessons in Boston/Cambridge
 
-.grid.stuff
+.grid
   = @skills.each_slice(3) do |slice|
     .row
       - slice.each do |skill|
-        .col-md-4
-          = render partial: "skill_short", collection: @skills
+        .col-xs-12.col-sm-6.col-md-4
+          = render partial: "skill_short", locals: {skill_short: skill}
 
 
 %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
