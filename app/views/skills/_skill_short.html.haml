@@ -1,10 +1,10 @@
 %a{:href=> skill_path(skill_short), :style=> "display:block"}
   .pin
-    .image
+    .skill-image
       = image_tag skill_short.picture
+    .profile-pic.circle-overlay
+      = image_tag skill_short.user.picture
     .skill-short
-      .profile-pic.circle-overlay
-        = image_tag skill_short.user.picture
       .teacher-name
         Taught by
         %span

@@ -22,6 +22,10 @@ class SkillsController < ApplicationController
     end
   end
 
+  def new
+    @skill = current_user.skills.new
+  end
+
   def send_request
   	request = params[:request]
   	skill = Skill.find(params[:skill_id])

@@ -12,18 +12,26 @@ $grayLighter: #eee;
 $white: #fff;
 
 html, body{
-  // height: 100%;
+  background-image: url('/assets/mooning.png');
 }
 
-.logo {
-    font-family: 'Shadows Into Light Two', cursive;
-    font-size: 3em;
-    font-weight: 400;
-    color: #fbf183;
-    margin: 1em auto 0em;
+/* Navbar */
+
+nav {
+  margin-top: 10px;
+  .nav-pills {
+    margin-top: 15px;
   }
+}
 
 
+.logo {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 3em;
+  font-weight: 400;
+  color: #fbf183;
+  margin: 1em auto 0em;
+}
 
 /* footer */
 

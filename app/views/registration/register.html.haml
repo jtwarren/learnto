@@ -1,14 +1,14 @@
 #SignupForm.stuff
-	= simple_form_for @user, html: {class: 'form-vertical' }, url: update_registration_path do |f|
-		/ .form-group
-		/ 	%fieldset
-		/ 		= render 'learning_request', :f => f
-		.form-group
-			%fieldset
-				%h3 What can you help us learn?
-				%br
-				= f.fields_for :skills do |skill_form|
-					= render 'skills_fields', :f => skill_form
-				= link_to_add_fields "Add Another Skill", f, :skills
-		.Submit
-			= f.submit :submit
+  = simple_form_for @user, html: {class: 'form-vertical' }, url: update_registration_path do |f|
+    / .form-group
+    /   %fieldset
+    /     = render 'learning_request', :f => f
+    .form-group
+      %fieldset
+        %h3 What can you help us learn?
+        %br
+        = f.fields_for :skills do |skill_form|
+          = render 'skills_fields', :f => skill_form
+        = link_to_add_fields "Add Another Skill", f, :skills
+    .Submit
+      = f.submit :submit

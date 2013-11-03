@@ -1,0 +1,16 @@
+.approved-lessons
+  %h3 Your Lessons
+  .grid
+    = @approved_skills.each_slice(3) do |slice|
+      .row
+        - slice.each do |skill|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "skills/skill_short", locals: {skill_short: skill}
+.pending-lessons
+  %h3 Pending Approval
+  .grid
+    = @pending_skills.each_slice(3) do |slice|
+      .row
+        - slice.each do |skill|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "skills/skill_short", locals: {skill_short: skill}

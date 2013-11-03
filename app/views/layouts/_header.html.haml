@@ -1,9 +1,9 @@
 %nav.top-bar
   .navbar-header
     = link_to (image_tag 'logo_trans.gif', :class => 'nav-logo'), root_path
-  %ul.nav.navbar-nav.navbar-right
+  %ul.nav.nav-pills.navbar-right
     - if current_user
       %li
-        = link_to 'Teach', '#'
+        = link_to 'Teach', new_skill_path
       %li
-        = link_to 'Jeffrey Warren', root_path
+        = link_to 'Jeffrey Warren', user_path(current_user)

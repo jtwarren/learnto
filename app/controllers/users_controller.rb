@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @user = RegularUser.new
   end
 
-
   def create
     @user = RegularUser.new(user_params)
     if @user.save
@@ -13,6 +12,11 @@ class UsersController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def show
+    @approved_skills = User.find(params[:id]).skills
+    @pending_skills = User.find(params[:id]).skills.pending
   end
 
   def edit
