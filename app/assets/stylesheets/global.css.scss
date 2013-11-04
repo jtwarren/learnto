@@ -16,14 +16,15 @@ html, body{
 }
 
 /* Navbar */
-
-nav {
-  margin-top: 10px;
-  .nav-pills {
+#header {
+  margin-bottom: 20px;
+  nav {
     margin-top: 15px;
+    .nav-pills {
+      margin-top: 15px;
+    }
   }
 }
-
 
 .logo {
   font-family: 'Shadows Into Light Two', cursive;
