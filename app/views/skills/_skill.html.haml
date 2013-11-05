@@ -1,4 +1,7 @@
 .skill
+  %meta{content: "http://samples.ogp.me/136756249803614", property: "og:url"}
+  %meta{content: "Chocolate Pecan Pie", property: "og:title"}
+  %meta{content: "https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg", property: "og:image"}
   .row
     .span7
       .box
@@ -9,6 +12,7 @@
             = image_tag @skill.user.picture
           %h4.instructor
             = @skill.user.name
+        %a.fb{href:"#", class:"btn-auth btn-facebook"} Share
         %hr.div-line
         %h4 Description
         .description

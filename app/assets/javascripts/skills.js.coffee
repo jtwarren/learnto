@@ -15,6 +15,8 @@ ready = ->
 	$('.share').click ->
     	window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(base()), 'facebook-share-dialog','width=626,height=436') 
     	return false
-
+  $('.fb').click ->
+      window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436')
+      return false
 $(document).ready(ready)
 $(document).on('page:load', ready)
