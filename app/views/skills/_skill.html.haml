@@ -22,7 +22,13 @@
             %h4 Qualifications
           .qualification-text
             = @skill.qualifications
-        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Sign up for the lesson!
+        %h4 Where
+        .where
+          ="To be decided. Contact #{@skill.user.first_name} to choose a place!"
+        %h4 When
+        .when
+          = "To be decided. Contact #{@skill.user.first_name} to choose a time!"
+        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name} to choose a time and place!
       %br
       - if @skill.reviews.size>0
         .box
@@ -44,13 +50,13 @@
   .modalrequest
     .modal-header
       %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3#myModalLabel Sign up for the lesson! 
+      %h3#myModalLabel Contact #{@skill.user.first_name} to choose a time and place! 
     = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
       = hidden_field_tag 'skill_id', @skill.id
       .modal-body
         %fieldset
           .control-group
-            = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
+            = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach! Also include when and where you could potentially meet up.", class: "control-label"
             .controls
               = text_area_tag :request, nil, :class=> "request"
       .modal-footer
