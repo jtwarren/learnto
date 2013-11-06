@@ -93,7 +93,7 @@ $lightGray: #999;
 
 .pin {
   background: #FEFEFE;
-  border: 2px solid #FAFAFA;
+  // border: 2px solid #FAFAFA;
   box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
@@ -102,7 +102,7 @@ $lightGray: #999;
   background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
   border-radius: 5px;
   margin-bottom: 20px;
-  padding: 15px;
+  // padding: 15px;
   height: 350px;
 }
 
@@ -122,8 +122,8 @@ $lightGray: #999;
 
 .profile-pic {
   position: absolute;
-  top: 180px;
-  left: 40px;
+  top: 160px;
+  left: 20px;
 }
 
 .circle-overlay {
