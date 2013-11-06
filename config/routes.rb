@@ -22,7 +22,7 @@ Learnto::Application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#create', :as => "social_sign_in"
   get 'auth/failure' => redirect('/')
 
-  get 'home' => 'static_pages#home', as: 'home'
+  # get 'home' => 'static_pages#home', as: 'home'
   get "about" => 'static_pages#about', :as => "about"
   
   get "registration/register", as: 'register'

@@ -1,11 +1,11 @@
 %a{:href=> lesson_path(lesson_short), :style=> "display:block"}
   .pin
-    .image
+    .skill-image
       - if lesson_short.skill
         = image_tag lesson_short.skill.picture
+    .profile-pic.circle-overlay
+      = image_tag lesson_short.users.first.picture
     .skill-short
-      .profile-pic.circle-overlay
-        = image_tag lesson_short.users.first.picture
       .teacher-name
         Request by
         %span

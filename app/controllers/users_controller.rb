@@ -36,16 +36,16 @@ class UsersController < ApplicationController
   def inquire
     if params[:skill_id]
       lesson = Skill.find(params[:skill_id]).lessons.new(:learning_request=>params[:request])
-      mail = Notifier.lesson_request(current_user, current_user, lesson)
+      # mail = Notifier.lesson_request(current_user, current_user, lesson)
     else
-      lesson=Lesson.new(:learning_request=>params[:request])
+      lesson = Lesson.new(:learning_request=>params[:request])
     end
     current_user.lessons << lesson
     if lesson.save
       if params[:skill_id]
-        if mail
-          mail.deliver
-        end
+        # if mail
+        #   mail.deliver
+        # end
         redirect_to skill_url(params[:skill_id], :confirm => true)
       else
         redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"
