@@ -22,7 +22,7 @@
           .qualification-text
             = @skill.qualifications
         - if @skill.approved
-          %button.btn.btn-primary.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+          %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
       / - if @skill.reviews.size>0
       /   .box
       /     %h4 References
@@ -54,7 +54,7 @@
         .modal-footer
           .login-button
             - if current_user != nil
-              = submit_tag 'Submit', :class=> "submit btn btn-primary"
+              = submit_tag 'Submit', :class=> "submit btn btn-custom"
             -else
               = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
               %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
@@ -70,5 +70,5 @@
       .modal-body
         Learning is more fun when your friends are there with you! 
       .modal-footer
-        %a.btn.btn-primary{:href=>"#",:class=>"share"}
+        %a.btn.btn-custom{:href=>"#",:class=>"share"}
           Invite your friends to learn with you!
