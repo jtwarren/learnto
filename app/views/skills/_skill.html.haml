@@ -1,18 +1,17 @@
 .skill
-  %meta{content: "http://samples.ogp.me/136756249803614", property: "og:url"}
-  %meta{content: "Chocolate Pecan Pie", property: "og:title"}
-  %meta{content: "https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg", property: "og:image"}
   .row
-    .span7
+    .col-md-7.floatright
       .box
+        - if @skill.approved == false
+          .pending-approval
+            Pending approval
         %h2.title
           = @skill.title
         .container
-          .profile-pic.left-column
+          .circle-overlay
             = image_tag @skill.user.picture
           %h4.instructor
             = @skill.user.name
-        %a.fb{href:"#", class:"btn-auth btn-facebook"} Share
         %hr.div-line
         %h4 Description
         .description
@@ -22,60 +21,54 @@
             %h4 Qualifications
           .qualification-text
             = @skill.qualifications
-        %h4 Where
-        .where
-          ="To be decided. Contact #{@skill.user.first_name} to choose a place!"
-        %h4 When
-        .when
-          = "To be decided. Contact #{@skill.user.first_name} to choose a time!"
-        %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#myModal", role: "button"} Contact #{@skill.user.first_name} to choose a time and place!
-      %br
-      - if @skill.reviews.size>0
-        .box
-          %h4 References
-          = render partial: "review_short", collection: @skill.reviews
+        - if @skill.approved
+          %button.btn.btn-primary.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+      / - if @skill.reviews.size>0
+      /   .box
+      /     %h4 References
+      /     = render partial: "review_short", collection: @skill.reviews
 
-    .span4
+    .col-md-5
       .box
-        .lesson-picture
-          .img
-            = image_tag @skill.picture
-      %br
+        .skill-image-full
+          = image_tag @skill.picture
       -if @skill.lessons.size>0
         .box
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @skill.lessons
 
-#myModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modalrequest
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3#myModalLabel Contact #{@skill.user.first_name} to choose a time and place! 
-    = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
-      = hidden_field_tag 'skill_id', @skill.id
-      .modal-body
-        %fieldset
-          .control-group
-            = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach! Also include when and where you could potentially meet up.", class: "control-label"
-            .controls
-              = text_area_tag :request, nil, :class=> "request"
-      .modal-footer
-        .login-button
-          - if current_user != nil
-            =submit_tag 'Submit', :class=> "submit btn btn-primary"
-          -else
-            = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
-            %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Sign up for the lesson! 
+      = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
+        = hidden_field_tag 'skill_id', @skill.id
+        .modal-body
+          %fieldset
+            .control-group
+              = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
+              .controls
+                = text_area_tag :request, nil, :class=> "request"
+        .modal-footer
+          .login-button
+            - if current_user != nil
+              = submit_tag 'Submit', :class=> "submit btn btn-primary"
+            -else
+              = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
+              %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
 
-#confirmModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modalconfirmation
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3#myModalLabel Your request has been sent!
-    .modal-body
-      %fieldset
-        .invite
-          Learning is more fun when your friends are there with you! 
-    .modal-footer
-      %a.btn.btn-primary{:href=>"#",:class=>"share"}
-        Invite your friends to learn with you!
+
+
+#confirmModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h3#myModalLabel Your request has been sent!
+      .modal-body
+        Learning is more fun when your friends are there with you! 
+      .modal-footer
+        %a.btn.btn-primary{:href=>"#",:class=>"share"}
+          Invite your friends to learn with you!

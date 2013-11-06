@@ -6,14 +6,20 @@ $lightGray: #999;
 
 .skill {
   font-size: 1.2em;
-  .teacher-name {
-    font-size: 0.8em;
-    margin-top: 5px;
-    color: $lightGray;
+  .pending-approval {
+    color: red;
+    font-size: .9em;
+    font-weight: bold;
   }
   .title {
     margin-top: 20px;
     margin-bottom: 1em;
+  }
+  .circle-overlay {
+    float: left;
+  }
+  .instructor {
+    margin: 30px 0 0 90px;
   }
   .qualifications {
     .qualification-title {
@@ -41,17 +47,8 @@ $lightGray: #999;
 .skill-short {
   padding: 10px;
   margin-top: 20px;
-  border-bottom: solid 1px #ddd;
   padding-bottom: 20px;
   height: 100px;
-
-  &:first-child {
-    margin-top: 0px;
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   .teacher-name {
     font-size: 1em;
@@ -62,7 +59,6 @@ $lightGray: #999;
     top: -30px;
     left: 85px;
     margin-bottom: -25px;
-
   }
 
   
@@ -108,86 +104,45 @@ $lightGray: #999;
   margin-bottom: 20px;
   padding: 15px;
   height: 350px;
+}
+
+.skill-image {
+  height: 200px;
+  overflow: hidden;
+  img {
+    width:100%;
   }
-
-.image {
-  width: 100%;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 15px;
-  margin-bottom: -90px;
 }
 
-.small {
-  width: 45%;
-  height: 45%;
-  padding: 15 px;
+.skill-image-full {
+  img {
+    width:100%;
+  }
 }
 
-#wrapper {
-  width: 100%;
-  max-width: 1100px;
-  min-width: 800px;
-  margin: 20px auto;
+.profile-pic {
+  position: absolute;
+  top: 180px;
+  left: 40px;
+}
+
+.circle-overlay {
+  img {
+    height: 80px;
+    width: 80px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    border: solid 2px #FEFEFE
+  }
 }
 
 .contact {
-  width: 95%;
+  width: 100%;
   margin: 25px auto;
 }
 
-.pin p {
-  font: 12px/18px Arial, sans-serif;
-  color: #333;
-  margin: 0;
-}
 
-@media (min-width: 1100px) {
-  #columns {
-    -webkit-column-count: 5;
-    -moz-column-count: 5;
-    column-count: 5;
-  }
-}
-
-@media (min-width: 960px) {
-  #columns {
-    -webkit-column-count: 4;
-    -moz-column-count: 4;
-    column-count: 4;
-  }
-}
-
-
-#columns {
-  -webkit-column-count: 3;
-  -webkit-column-gap: 10px;
-  -webkit-column-fill: auto;
-  -moz-column-count: 3;
-  -moz-column-gap: 10px;
-  -moz-column-fill: auto;
-  column-count: 3;
-  column-gap: 10px;
-  column-fill: auto;
-}
-
-.left-column {
-  float: left;
-  margin-left: -10px;
-  }
-
-.profile-pic img {
-  height: 80px;
-  width: 80px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
-  -webkit-border-radius: 40px;
-  border: solid 2px #FEFEFE
-}
-
-.stuff {
-  padding: 50px;
-  background: #ffffc2;
-}
 .box {
   background: #FEFEFE;
   height: 100%;
@@ -196,58 +151,32 @@ $lightGray: #999;
   padding: 20px;
   background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
-.lesson-picture {
-  padding: 10px;
+.learner {
+  height: 70px;
+  .image {
+    float:left;
+    padding-right: 10px;
+  }
+  .name {
+    padding-top: 30px;
+  }
 }
 
-.instructor {
-  position: relative;
-  top: 20px;
-}
-
-.container {
-  padding: 10px;
-}
 
 .div-line {
-    border-bottom: 1px solid #f0f0f0;
-    border-top: 1px solid #f0f0f0;
-    width: 100%;
-    height: 0px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.landing-wrapper {
-
-  height: 35%;
+  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
   width: 100%;
-  text-align: center;
-  color: #ddd;
-  margin-bottom: 50px;
-
-  .logo {
-    font-family: 'Shadows Into Light Two', cursive;
-    font-size: 6em;
-    font-weight: 400;
-    color: #fbf183;
-    margin: 1em auto 0em;
-  }
-    
-  h3 {
-    font-family: 'Shadows Into Light Two', cursive;
-    font-size: 2.7em;
-    line-height: 1.2;
-
-    width: 50%;
-    margin: 3em auto;
-  }
+  height: 0px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .heading {
+  color: #eee;
   text-align: center;
-  font-size: 2.2em;
   margin-bottom: 40px;
 }

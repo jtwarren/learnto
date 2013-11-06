@@ -1,2 +1,14 @@
-.stuff
-	= render 'form'
+- provide(:title, "Register")
+.sign-in
+  .row
+    .col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+      .box
+        .social-login
+          %h5 Sign up with facebook
+          .login-button
+            %a.btn-auth.large{class: "btn-facebook", href: "/auth/facebook"}
+              Sign up with
+              %b Facebook
+        .registered-login
+        %h5 Create a new account
+        = render 'form'

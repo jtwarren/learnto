@@ -1,3 +1,21 @@
-// Place all the styles related to the Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sign-in {
+  h5 {
+    color: #777;
+  }
+  .social-login {
+    margin-bottom: 40px;
+    .login-button {
+      margin: 30px 0;
+      text-align: center;
+    }
+  }
+  .no-account {
+    margin: 20px 0;
+    font-size: .9em;
+    color: #777;
+  }
+  .register {
+    color: black;
+    font-weight: bold;
+  }
+}

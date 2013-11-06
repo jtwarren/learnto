@@ -11,70 +11,21 @@ $grayLight: #999;
 $grayLighter: #eee;
 $white: #fff;
 
-
-
-body {
-  background: url("/assets/bg.jpg");
-  height: 100%;
+html, body{
+  background-image: url('/assets/tweed.png');
 }
-
-html {
-  height: 100%;
-}
-
- .logo {
-    font-family: 'Shadows Into Light Two', cursive;
-    font-size: 3em;
-    font-weight: 400;
-    color: #fbf183;
-    margin: 1em auto 0em;
-    margin-bottom: 20px;
-    &:hover, &:visited, &:link, &:active {
-      text-decoration: none !important;
-    }
-  }
-
-  .nav-item {
-  font-family: 'Shadows Into Light Two', cursive;
-    font-size: 3em;
-    font-weight: 400;
-    color: white;
-    margin: 1em auto 0em;
-    margin-bottom: 20px;
-    &:hover, &:visited, &:link, &:active {
-      text-decoration: none !important;
-    }
-    text-align: center;
-  }
-
-
-  a:link {
-    text-decoration: none;
-  }
-
-
- .navbar.navbar-static-top .navbar-inner {
-    border-width: 0px;
-    -webkit-box-shadow: 0px 0px;
-    box-shadow: 0px 0px;
-    background-color: rgba(0,0,0,0.0);
-    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-}
-
 
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 25px;
   padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
+  border-top: 1px solid $grayLight;
   color: $grayLight;
   a {
-    color: $gray;
+    color: $grayLighter;
     &:hover {
-      color: $grayDarker;
+      color: $grayLight;
     }
   }
   small {

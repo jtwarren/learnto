@@ -1,44 +1,28 @@
-.landing-wrapper
-  .logo
-    LearnTo
-  %h3
-    Learn and share knowledge with amazing people around you, for free
-.stuff
-  .heading
-    Top Lessons in Boston/Cambridge
-  #wrapper
-    #columns
-      = render partial: "skill_short", collection: @skills
-    %a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
+%h2.heading
+  Top Lessons in Boston/Cambridge
 
+.grid
+  = @skills.each_slice(3) do |slice|
+    - slice.each do |skill|
+      .col-xs-12.col-sm-6.col-md-4
+        = render partial: "skill_short", locals: {skill_short: skill}
 
+%a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
 
-#requestModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-    %h3#myModalLabel Request a lesson 
-  = form_tag('/auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
-    .modal-body
-      %fieldset
-        .control-group
-          = label_tag :request, "What would you like to learn?", class: "control-label"
-          .controls
-            = text_area_tag :request, nil, :class=> "request"
-    .modal-footer
-      .login-button
-        = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
-
--if (@confirmation)
-  .modalconfirmation
-    .modal-header
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-      %h3#myModalLabel Your request has been sent!
-    .modal-body
-      %fieldset
-        .invite
-          Learning is more fun when your friends are there with you! 
-    .modal-footer
-      %a.btn.btn-primary{:href=>"#",:class=>"share"}
-        Invite your friends to learn with you!
-
+#requestModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Request a lesson
+      = form_tag('/auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
+        .modal-body
+          %fieldset
+            .control-group
+              = label_tag :request, "What would you like to learn?", class: "control-label"
+              .controls
+                = text_area_tag :request, nil, :class=> "request"
+        .modal-footer
+          .login-button
+            = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
 
