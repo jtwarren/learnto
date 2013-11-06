@@ -36,6 +36,7 @@ class SkillsController < ApplicationController
 
   def new
     if not current_user
+      session[:return_to] = request.fullpath
       redirect_to login_url
       return
     end

@@ -8,7 +8,10 @@ class UsersController < ApplicationController
     @user = RegularUser.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to skills_url
+      url = session[:return_to] || skills_url
+      session[:return_to] = nil
+      url = skills_url if url.eql?('/logout')
+      redirect_to url
     else
       render action: 'new'
     end
