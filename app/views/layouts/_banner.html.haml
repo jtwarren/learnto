@@ -1,4 +1,10 @@
 .banner
-  = image_tag "bos.jpg", class: "banner-image"
-  .container
-    %h2 Learn something amazing,<br/>with real people,<br/>in 30 minutes
+  .left
+    = image_tag "banner-group.jpg", class: "banner-image"
+  .right
+    .name
+      %span.name LearnTo
+    .desc
+      is a place to learn something new, and meet amazing people
+    .start
+      = link_to "Start Learning", login_path, :class => "btn btn-lg btn-custom"

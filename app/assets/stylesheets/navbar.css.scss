@@ -15,22 +15,47 @@
     margin-top: 15px;
     >li {
       >a {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
         border-radius:4px;
         color:#03498D;
       }
     }
   }
-  .banner-image {
-    position: relative; 
-    margin-top: -20px;
+  .banner {
     width: 100%;
-    height: 400px;
-    overflow: hidden;
-    display: inline-block;
-    border-bottom: 1px solid #aaa;
-  }
-  h2 { 
-    position: absolute; 
-    top: 100px;
+    .left {
+      float: left;
+      // width: 800px;
+        .banner-image {
+          // position: relative; 
+          margin-top: -20px;
+          height: 470px;
+        }
+    }
+    .right {
+      margin-top: -30px;
+      height: 450px;
+      margin-left: 1040px;
+      background-color: #222;
+      .name {
+        font-family: 'Arvo', serif;
+        padding: 20px 20px;
+        color: #fff;
+        font-size: 40px;
+      }
+      .desc {
+        margin-left: 40px;
+        color: #fff;
+        font-size: 30px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300; 
+      }
+      .start {
+        margin-top: 60px;
+        text-align: center;
+      }
+    }
   }
 }
