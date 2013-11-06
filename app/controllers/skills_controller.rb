@@ -35,6 +35,10 @@ class SkillsController < ApplicationController
   end
 
   def new
+    if not current_user
+      redirect_to login_url
+      return
+    end
     @skill = current_user.skills.new
   end
 
