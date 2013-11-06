@@ -1,6 +1,8 @@
 class Skill < ActiveRecord::Base
-  default_scope where approved: true
-  scope :pending, where(approved: false)
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :qualifications, presence: true
+  validates :picture, presence: true
 
   belongs_to :user
   has_many :lessons

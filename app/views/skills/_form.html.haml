@@ -1,11 +1,16 @@
 = form_for(@skill, {role: "form"}) do |f|
   .form-group
     = f.label :title
-    = f.text_field :title, :class=> "form-control", :placeholder => "e.g. cook Italian Food"
+    = f.text_field :title, class: "form-control", placeholder: "e.g. Cook Italian Food"
   .form-group
     = f.label :description
-    = f.text_area :description, :rows=> 5, :class=> "form-control", :placeholder => "e.g. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
+    = f.text_area :description, rows: 5, class: "form-control", placeholder: "e.g. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
   .form-group
     = f.label :qualifications
-    = f.text_area :qualifications, :rows=> 5, :class=> "form-control", :placeholder => "e.g. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
-  %button.btn.btn-default{type: "submit"} Submit
+    = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "e.g. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
+  .form-group
+    = f.label :picture, "Image URL"
+    = f.text_field :picture, class: "form-control", placeholder: "http://www.thenewstribe.com/wp-content/uploads/2012/10/Anonymous-hackers.jpg"
+    %p.help-block
+      A URL pointing to an image that describes your skill.
+  = f.submit "Submit", class: "btn btn-default"

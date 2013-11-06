@@ -1,7 +1,10 @@
 .skill
   .row
-    .col-md-7
+    .col-md-7.floatright
       .box
+        - if @skill.approved == false
+          .pending-approval
+            Pending approval
         %h2.title
           = @skill.title
         .container
@@ -19,10 +22,10 @@
           .qualification-text
             = @skill.qualifications
         %button.btn.btn-primary.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Sign up for the lesson!
-      - if @skill.reviews.size>0
-        .box
-          %h4 References
-          = render partial: "review_short", collection: @skill.reviews
+      / - if @skill.reviews.size>0
+      /   .box
+      /     %h4 References
+      /     = render partial: "review_short", collection: @skill.reviews
 
     .col-md-5
       .box

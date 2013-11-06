@@ -1,6 +1,6 @@
 class SkillsController < ApplicationController
   def index
-    @skills = Skill.all.order("RANDOM()")
+    @skills = Skill.where(approved: true).order("RANDOM()")
     respond_to do |format|
       format.html
       format.json {render json: @skills}
@@ -22,15 +22,37 @@ class SkillsController < ApplicationController
     end
   end
 
+  def create
+    @skill = current_user.skills.new(skill_params)
+
+    if @skill.save
+      Notifier.skill_added(@skill).deliver
+      redirect_to @skill, notice: 'Skill was successfully created.' 
+    else
+      render action: 'new'
+    end
+
+  end
+
   def new
     @skill = current_user.skills.new
   end
 
-  def send_request
-  	request = params[:request]
-  	skill = Skill.find(params[:skill_id])
-  	@user = current_user
-  	@user.send_message(skill.user, request ,"Request to learn to" + skill.title)
-    redirect_to skills_path
+  def edit
+    @skill = current_user.skills.find(params[:id])
   end
+
+  def update
+    @skill = current_user.skills.find(params[:id])
+    if @skill.update(skill_params)
+      redirect_to @skill, notice: 'Skill was successfully updated.'
+    else
+      render action: 'edit'
+    end
+  end
+
+  private
+    def skill_params
+      params.require(:skill).permit(:title, :description, :qualifications, :picture)
+    end
 end

@@ -14,7 +14,7 @@
     = csrf_meta_tags
     = render 'layouts/shim'
   %body
-    #header.container
+    #header
       = render 'layouts/header' unless @disable_nav
     #body.container
       = yield

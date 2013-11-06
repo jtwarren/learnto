@@ -1,0 +1,52 @@
+Listing of scheduled lessons, up to teacher
+  - later priority.
+
+Demand for students and teachers .. divide and concour the student/teachers
+  - both, but primary focus on student converting to teachers
+
+Share via facebook
+  - add share buttons, etc.
+
+Usability test -- "That was fucking cool"
+  - both
+  Content/design/layout/simplicity
+  Content is 50%, beauty and simplicity is other
+  Button to contact instructor
+    "Contact instuctor to find a time and place"
+
+Can buy users, .05 to 1.0 
+  - ads (facebook)
+  For every user you buy, need to get them to bring another users
+    Share with friends, separate dialog
+
+paulenglish.com/usability.html
+  We want you to use the sign, ask questions, look for delays, DO NOT ANSWER questions until the end ..
+  Answer questions when abandon or book a lesson
+  Keep it fucking simple
+  Where did they pause, facebook login, 
+
+Competitions for lessons .. which one can make more compelling descriptions, etc
+  focus on clickthrough rate
+
+Revenue
+  Ad supported
+  CPM on ads, decent
+  Free mini lessons, sponsored courses
+  Charge amount for intro
+  Charge teachers
+  LinkedIn model --> charge outside networks
+
+"Learn somethign amazing in 30 minutes"
+When: ____, Where: ____
+
+Personal stories, coffee shops promoting, etc
+Coffee shop thing
+  - Edan to help
+
+Grid/list view
+  - low priority
+
+Curation is very important .. as an experiment, try a single vertical??
+  - beef up without noise? 
+
+Narrowing --> 10%, how to crush the 10% and how could you use that to better the product

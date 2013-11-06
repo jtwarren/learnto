@@ -1,9 +1,19 @@
-%nav
-  .navbar-header
-    = link_to (image_tag 'logo_trans.gif', :class => 'nav-logo'), root_path
-  %ul.nav.nav-pills.navbar-right
-    - if current_user
-      %li
-        = link_to 'Teach', new_skill_path
-      %li
-        = link_to 'Jeffrey Warren', user_path(current_user)
+%nav.navbar.navbar-default.navbar-static-top{role: "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#collapse_links", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to (image_tag 'logo_trans.gif', :class => 'nav-logo'), root_path
+    #collapse_links.collapse.navbar-collapse.right-links
+      %ul.nav.nav-pills.navbar-right
+        - if current_user
+          %li
+            = link_to 'Teach', new_skill_path
+          %li
+            = link_to current_user.name, user_path(current_user)
+        - else
+          %li
+            = link_to "Login", login_path

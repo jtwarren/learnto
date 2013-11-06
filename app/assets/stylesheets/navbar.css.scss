@@ -1,7 +1,13 @@
-img.nav-logo {
-  height: 80px;
-}
+#header {
+  .navbar {
+    background-color: white;
+  }
 
-.navbar-nav > li {
-  padding-top: 15px;
+  img.nav-logo {
+    height: 80px;
+  }
+
+  .right-links {
+    padding-top: 10px;
+  }
 }

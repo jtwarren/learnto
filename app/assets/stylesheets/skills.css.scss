@@ -6,14 +6,20 @@ $lightGray: #999;
 
 .skill {
   font-size: 1.2em;
-  .teacher-name {
-    font-size: 0.8em;
-    margin-top: 5px;
-    color: $lightGray;
+  .pending-approval {
+    color: red;
+    font-size: .9em;
+    font-weight: bold;
   }
   .title {
     margin-top: 20px;
     margin-bottom: 1em;
+  }
+  .circle-overlay {
+    float: left;
+  }
+  .instructor {
+    margin: 30px 0 0 90px;
   }
   .qualifications {
     .qualification-title {
@@ -160,12 +166,6 @@ $lightGray: #999;
 }
 
 
-.instructor {
-  position: relative;
-  top: 20px;
-}
-
-
 .div-line {
   border-bottom: 1px solid #f0f0f0;
   border-top: 1px solid #f0f0f0;
@@ -176,6 +176,7 @@ $lightGray: #999;
 }
 
 .heading {
+  color: #eee;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
