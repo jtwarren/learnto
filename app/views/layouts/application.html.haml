@@ -16,6 +16,7 @@
   %body
     #header
       = render 'layouts/header' unless @disable_nav
+      = render 'layouts/banner' if @show_banner
     #body.container
       = yield
     #footer.container

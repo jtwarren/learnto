@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   def index
+    @show_banner = true
     @skills = Skill.where(approved: true).order("RANDOM()")
     respond_to do |format|
       format.html
