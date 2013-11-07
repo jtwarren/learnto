@@ -4,6 +4,7 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "LearnTo"
     %meta{content: content_for?(:description) ? yield(:description) : "LearnTo", name: "description"}/
+    = favicon_link_tag
     = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => false
 
