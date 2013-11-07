@@ -36,7 +36,7 @@
         %h4 LearnTo
         We're building an awesome community of talented people that allows people to share what they're good at, learn things they've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
         .teach-button
-          = link_to "Teach a lesson", login_path, :class => "btn btn-md btn-custom"
+          = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
 - if not @skills.empty?
   .approved-lessons
     %h2.heading 
