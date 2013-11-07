@@ -12,4 +12,28 @@ def show
 	@lesson = Lesson.find(params[:id])
 end
 
+def approve
+  @lesson = Lesson.find(params[:id])
+  if current_user = @lesson.skill.user
+    @lesson.approve
+  end
+  redirect_to user_path(current_user)
+end
+
+def ignore
+  @lesson = Lesson.find(params[:id])
+  if current_user = @lesson.skill.user
+    @lesson.ignore
+  end
+  redirect_to user_path(current_user)
+end
+
+def complete
+  @lesson = Lesson.find(params[:id])
+  if current_user = @lesson.skill.user
+    @lesson.complete
+  end
+  redirect_to user_path(current_user)
+end
+
 end

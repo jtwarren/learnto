@@ -1,12 +1,12 @@
 .lesson
   .row
-    .span7
+    .col-md-7.floatright
       .box
         %h2.title
           -if @lesson.skill
             = @lesson.skill.title
         .container
-          .profile-pic.left-column
+          .circle-overlay
             = image_tag @lesson.users.first.picture
           %h4.instructor
             = @lesson.users.first.name
@@ -14,12 +14,15 @@
         %h4 Email
         .email
           =@lesson.users.first.email
-        %h4 Description
+        %h4 Message
         .description
-          = @lesson.learning_request
-    .span4
+        -if !@lesson.approved
+          = link_to "Accept", approve_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+          = link_to "Ignore", ignore_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+        -elsif !@lesson.completed
+          = link_to "Completed", complete_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+    .col-md-5
       .box
-        .lesson-picture
-          .img
-            -if @lesson.skill
-              = image_tag @lesson.skill.picture
+        .skill-picture-full
+          -if @lesson.skill
+            = image_tag @lesson.skill.picture

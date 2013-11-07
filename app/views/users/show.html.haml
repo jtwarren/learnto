@@ -1,3 +1,34 @@
+- @skills.each do |skill|
+  - @requested_lessons = skill.lessons.where("ignored=?  AND approved=?", false, false)
+  .requested-lessons
+    %h2.heading
+      = "Pending Requests"
+    .grid
+      = @requested_lessons.each_slice(3) do |slice|
+        .row
+          - slice.each do |lesson|
+            .col-xs-12.col-sm-6.col-md-4
+              = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}
+
+  - @scheduled_lessons = skill.lessons.where("ignored=? AND approved=? AND completed=?", false, true, false)
+  - if not @scheduled_lessons.empty?
+    .scheduled-lessons
+      %h2.heading
+        = "Scheduled Lessons"
+      .grid
+        = @scheduled_lessons.each_slice(3) do |slice|
+          .row
+            - slice.each do |lesson|
+              .col-xs-12.col-sm-6.col-md-4
+                = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}  
+
+  - @pending_reviews_lessons = skill.lessons.where(completed: true)
+  - if not @pending_reviews_lessons.empty?
+    .lessons-pending-reviews
+      %h2.heading
+        = "Lessons to be reviewed"
+
+
 - if @skills.empty? and @pending_skills.empty?
   .row
     .col-md-8.col-md-offset-2

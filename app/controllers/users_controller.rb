@@ -20,8 +20,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.where(approved: true)
+    @lessons = @user.lessons.where(accepted: true)
     if @user == current_user
       @pending_skills = @user.skills.where(approved: false)
+      @pending_lessons = @user.lessons.where(accepted: false)
     end
   end
 

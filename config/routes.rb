@@ -8,7 +8,13 @@ Learnto::Application.routes.draw do
     end
   end
 
-  resources :lessons
+  resources :lessons do
+    collection do
+      get "approve"
+      get "ignore"
+      get "complete"
+    end
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 
