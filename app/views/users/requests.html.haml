@@ -1,0 +1,41 @@
+%ul.nav.nav-tabs.nav-justified
+  %li
+    %a{href: user_path(@user.id)}
+      Teaching
+  %li.active
+    %a{href: requests_users_path(id: @user.id)}
+      Learning
+  %br
+
+- if not @pending_lessons.empty?
+  .pending-lessons
+    %h2.heading
+      ="Lessons you've requested to learn"
+    .grid
+      = @pending_lessons.each_slice(3) do |slice|
+        .row
+          -slice.each do |lesson|
+            .col-xs-12.col-sm-6.col-md-4
+              = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}
+
+- if not @incomplete_lessons.empty?
+  .scheduled-lessons
+  %h2.heading
+    ="Scheduled Lessons"
+  .grid
+    = @incomplete_lessons.each_slice(3) do |slice|
+      .row
+        -slice.each do |lesson|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}        
+
+- if not @lessons.empty?
+  .completed-lessons
+  %h2.heading
+    ="Completed Lessons"
+  .grid
+    = @lessons.each_slice(3) do |slice|
+      .row
+        -slice.each do |lesson|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}  

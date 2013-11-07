@@ -1,6 +1,10 @@
 Learnto::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    collection do
+      get "requests"
+    end
+  end
 
   resources :skills do
     collection do

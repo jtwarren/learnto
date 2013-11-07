@@ -1,8 +1,16 @@
-- @skills.each do |skill|
-  - @requested_lessons = skill.lessons.where("ignored=?  AND approved=?", false, false)
+%ul.nav.nav-tabs.nav-justified
+  %li.active
+    %a{href: user_path(@user.id)}
+      Teaching
+  %li
+    %a{href: requests_users_path(id: @user.id)}
+      Learning
+  %br
+
+- if not @requested_lessons.empty?
   .requested-lessons
     %h2.heading
-      = "Pending Requests"
+      = "Lessons others have requested from you"
     .grid
       = @requested_lessons.each_slice(3) do |slice|
         .row
@@ -10,31 +18,23 @@
             .col-xs-12.col-sm-6.col-md-4
               = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}
 
-  - @scheduled_lessons = skill.lessons.where("ignored=? AND approved=? AND completed=?", false, true, false)
-  - if not @scheduled_lessons.empty?
-    .scheduled-lessons
-      %h2.heading
-        = "Scheduled Lessons"
-      .grid
-        = @scheduled_lessons.each_slice(3) do |slice|
-          .row
-            - slice.each do |lesson|
-              .col-xs-12.col-sm-6.col-md-4
-                = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}  
-
-  - @pending_reviews_lessons = skill.lessons.where(completed: true)
-  - if not @pending_reviews_lessons.empty?
-    .lessons-pending-reviews
-      %h2.heading
-        = "Lessons to be reviewed"
-
+- if not @scheduled_lessons.empty?
+  .scheduled-lessons
+    %h2.heading
+      = "Scheduled Lessons"
+    .grid
+      = @scheduled_lessons.each_slice(3) do |slice|
+        .row
+          - slice.each do |lesson|
+            .col-xs-12.col-sm-6.col-md-4
+              = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}  
 
 - if @skills.empty? and @pending_skills.empty?
   .row
     .col-md-8.col-md-offset-2
       .box
         %h4 LearnTo
-        We're building an awesome community of talented people that allows people to share what they're good at, learn things they've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
+        We're building an awesome community of talented people where you can share what they're good at, learn things you've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
         .teach-button
           = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
 - if not @skills.empty?

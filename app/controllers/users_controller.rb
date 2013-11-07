@@ -20,10 +20,27 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.where(approved: true)
-    @lessons = @user.lessons.where(accepted: true)
     if @user == current_user
       @pending_skills = @user.skills.where(approved: false)
-      @pending_lessons = @user.lessons.where(accepted: false)
+      @requested_lessons=[]
+      @scheduled_lessons=[]
+      @skills.each do |skill|
+        requests = skill.lessons.where("ignored=? AND approved=?", false, false)
+        scheduled = skill.lessons.where("ignored=? AND approved=? AND completed=?", false, true, false)
+        @requested_lessons.push(*requests)
+        @scheduled_lessons.push(*scheduled)
+      end
+      puts "LOOK HERE"
+      puts @requested_lessons.size
+    end
+  end
+
+  def requests
+    @user = User.find(params[:id])
+    @lessons = @user.lessons.where("approved=? AND completed=?", true, true)
+    if @user == current_user
+      @pending_lessons = @user.lessons.where("ignored=? AND approved=?", false, false)
+      @incomplete_lessons = @user.lessons.where("approved=? AND completed=?", true, false)
     end
   end
 

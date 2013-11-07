@@ -1,3 +1,26 @@
 // Place all the styles related to the Lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.lesson{
+  .pending-approval{
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    width: 42%;
+    background-color: #03498D;
+  }
+
+  .denied{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #7A1919; 
+  }
+
+  .accepted{
+    padding: 10px;
+    border-radius: 5px;
+    width: 42%;
+    color: white;
+    background-color: #009933;  
+  }
+}
