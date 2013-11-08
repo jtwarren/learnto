@@ -14,7 +14,7 @@ end
 
 def approve
   @lesson = Lesson.find(params[:id])
-  if current_user = @lesson.skill.user
+  if current_user == @lesson.teacher
     @lesson.approve
   end
   redirect_to user_path(current_user)
@@ -22,7 +22,7 @@ end
 
 def ignore
   @lesson = Lesson.find(params[:id])
-  if current_user = @lesson.skill.user
+  if current_user == @lesson.teacher
     @lesson.ignore
   end
   redirect_to user_path(current_user)
@@ -30,7 +30,7 @@ end
 
 def complete
   @lesson = Lesson.find(params[:id])
-  if current_user = @lesson.skill.user
+  if current_user == @lesson.teacher
     @lesson.complete
   end
   redirect_to user_path(current_user)

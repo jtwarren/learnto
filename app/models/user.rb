@@ -22,8 +22,27 @@ class User < ActiveRecord::Base
     return first_name+" "+last_name
   end
 
-  def mailboxer_email(object)
-    return email
+  def lessons_taught
+    lessons=[]
+    self.skills.each do |skill|
+      skill.lessons.each do |lesson|
+        lessons.push(*lesson)
+      end
+    end
+    return lessons
   end
+
+  def unread
+    unread=0
+    lessons=self.lessons_taught
+    lessons.each do |lesson|
+      if !lesson.conversation.read
+        unread=unread+1
+      end
+    end
+    return unread
+  end
+
+
 
 end

@@ -14,6 +14,9 @@
         - if current_user
           %li
             = link_to current_user.name, user_path(current_user)
+          %li
+            .unread.badge.badge-warning
+              =link_to current_user.unread, inbox_conversations_path
         - else
           %li
             = link_to "Login", login_path
