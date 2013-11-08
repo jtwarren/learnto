@@ -24,6 +24,9 @@ class Lesson < ActiveRecord::Base
     if self.skill
       return self.skill.user
     end
+    else
+      return User.find_by(:first_name=>"Dhruv")
+    end
   end
 
 end
