@@ -22,9 +22,9 @@ class ConversationsController < ApplicationController
 
   def reply
     @conversation = Conversation.find(params[:message][:conversation_id])
-    receiver_id=@conversation.lesson.teacher
+    receiver_id=@conversation.lesson.teacher.id
     if current_user == @conversation.lesson.teacher
-      receiver_id = @conversation.lesson.user
+      receiver_id = @conversation.lesson.users.first.id
     end
     @message = @conversation.messages.create(body: params[:message][:body], sender: current_user.id, receiver: receiver_id)
     redirect_to conversation_path(@conversation.id)
