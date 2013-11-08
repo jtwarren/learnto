@@ -1,10 +1,14 @@
-%ul.nav.nav-tabs.nav-justified
+%ul.nav.nav-tabs.nav-justified.selector
   %li.active
-    %a{href: user_path(@user.id)}
+    %a.option{href: user_path(@user.id)}
       Teaching
   %li
-    %a{href: requests_users_path(id: @user.id)}
+    %a.option{href: requests_users_path(id: @user.id)}
       Learning
+  -if @user==current_user
+    %li
+      %a.option{href: inbox_conversations_path}
+        Inbox
   %br
 
 - if not @requested_lessons.empty?
@@ -31,7 +35,7 @@
 
 - if @skills.empty? and @pending_skills.empty?
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-12.col-md-offset
       .box
         %h4 LearnTo
         We're building an awesome community of talented people where you can share what they're good at, learn things you've always wanted to, and meet amazing people. You're good at something, share that with us and our community!

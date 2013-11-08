@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
 		
 	def inbox
+    @user=current_user
     @conversations=[]
     current_user.skills.each do |skill|
       skill.lessons.each do |lesson|

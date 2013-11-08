@@ -1,10 +1,14 @@
-%ul.nav.nav-tabs.nav-justified
+%ul.nav.nav-tabs.nav-justified.selector
   %li
     %a{href: user_path(@user.id)}
       Teaching
   %li.active
     %a{href: requests_users_path(id: @user.id)}
       Learning
+  -if @user==current_user
+    %li
+      %a{href: inbox_conversations_path}
+        Inbox
   %br
 
 - if not @pending_lessons.empty?

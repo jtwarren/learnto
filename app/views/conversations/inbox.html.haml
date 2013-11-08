@@ -1,3 +1,14 @@
+%ul.nav.nav-tabs.nav-justified.selector
+  %li
+    %a{href: user_path(@user.id)}
+      Teaching
+  %li
+    %a{href: requests_users_path(id: @user.id)}
+      Learning
+  %li.active
+    %a{href: inbox_conversations_path}
+      Inbox
+  %br
 .conversations
   -@conversations.each do |conversation|
     = render partial: "conversation_short", locals: {conversation_short: conversation}
