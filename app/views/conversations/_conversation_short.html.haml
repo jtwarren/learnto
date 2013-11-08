@@ -1,0 +1,20 @@
+-message = conversation_short.messages.first
+.box
+  .row
+    .col-md-1.floatright
+      .circle-overlay
+        =image_tag message.findSender.picture
+    .col-md-1
+      .container.nametime
+        %h5.Name
+          =message.findSender.first_name
+        .Time
+          = conversation_short.updateTime.strftime("%b - %d")
+    .col-md-7
+      .container.blurb
+        .Subject
+          %h5 
+            = conversation_short.lesson.skill.title
+        .Body
+          = link_to message.body, conversation_path(conversation_short)
+  %hr.div-line 

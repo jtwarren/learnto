@@ -57,7 +57,12 @@ class UsersController < ApplicationController
 
   def inquire
     if params[:skill_id]
-      lesson = Skill.find(params[:skill_id]).lessons.new(:learning_request=>params[:request])
+      skill = Skill.find(params[:skill_id])
+      message = Message.create(body: params[:request], sender: current_user.id, receiver:skill.user.id)
+      lesson = skill.lessons.new()
+      c=Conversation.create()
+      c.messages << message
+      lesson.conversation = c
       # mail = Notifier.lesson_request(current_user, current_user, lesson)
     else
       lesson = Lesson.new(:learning_request=>params[:request])

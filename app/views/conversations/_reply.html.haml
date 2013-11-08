@@ -1,0 +1,12 @@
+.reply
+  .row
+    .col-md-1.floatright
+      .circle-overlay
+        =image_tag current_user.picture
+    .col-md-10
+      .body
+        =form_for(@message, url: reply_conversations_path) do |f|
+          .form-group
+            = f.text_area :body, rows: 2, class: "form-control", placeholder: "Add your message here"
+            = f.hidden_field :conversation_id, value: conversation.id
+          = f.submit "Send", class: "btn btn-custom"

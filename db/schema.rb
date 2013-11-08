@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131107040650) do
+ActiveRecord::Schema.define(version: 20131108013426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 20131107040650) do
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
 
   create_table "conversations", force: true do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "lesson_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "conversations", ["lesson_id"], name: "index_conversations_on_lesson_id", using: :btree
 
   create_table "lessons", force: true do |t|
     t.string   "name"
@@ -56,39 +58,18 @@ ActiveRecord::Schema.define(version: 20131107040650) do
     t.integer "user_id"
   end
 
-  create_table "notifications", force: true do |t|
-    t.string   "type"
-    t.text     "body"
-    t.string   "subject",              default: ""
-    t.integer  "sender_id"
-    t.string   "sender_type"
+  create_table "messages", force: true do |t|
+    t.string   "body"
+    t.text     "subject"
+    t.integer  "sender"
+    t.integer  "receiver"
+    t.boolean  "read",            default: false
     t.integer  "conversation_id"
-    t.boolean  "draft",                default: false
-    t.datetime "updated_at",                           null: false
-    t.datetime "created_at",                           null: false
-    t.integer  "notified_object_id"
-    t.string   "notified_object_type"
-    t.string   "notification_code"
-    t.string   "attachment"
-    t.boolean  "global",               default: false
-    t.datetime "expires"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id", using: :btree
-
-  create_table "receipts", force: true do |t|
-    t.integer  "receiver_id"
-    t.string   "receiver_type"
-    t.integer  "notification_id",                            null: false
-    t.boolean  "is_read",                    default: false
-    t.boolean  "trashed",                    default: false
-    t.boolean  "deleted",                    default: false
-    t.string   "mailbox_type",    limit: 25
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-  end
-
-  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id", using: :btree
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
   create_table "reviews", force: true do |t|
     t.text     "message"
@@ -129,9 +110,5 @@ ActiveRecord::Schema.define(version: 20131107040650) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
-  add_foreign_key "notifications", "conversations", name: "notifications_on_conversation_id"
-
-  add_foreign_key "receipts", "notifications", name: "receipts_on_notification_id"
 
 end

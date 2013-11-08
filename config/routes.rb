@@ -20,6 +20,13 @@ Learnto::Application.routes.draw do
     end
   end
 
+  resources :conversations do
+    collection do
+      get "inbox"
+      post "reply"
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
 
   get "logout" => "sessions#destroy", :as => "logout"
@@ -37,10 +44,6 @@ Learnto::Application.routes.draw do
   
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
-
-  get "messaging/inbox", as: 'inbox'
-  post "messaging/reply", as: 'reply'
-  get "messaging/conversation", as: 'conversation'
 
   post "skills/send_request", as: 'send_request'
 

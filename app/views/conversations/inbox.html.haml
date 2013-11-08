@@ -1,0 +1,3 @@
+.conversations
+  -@conversations.each do |conversation|
+    = render partial: "conversation_short", locals: {conversation_short: conversation}

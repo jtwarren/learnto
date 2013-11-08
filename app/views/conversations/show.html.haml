@@ -1,0 +1,7 @@
+.box
+  .conversation
+    %h4.title
+      =@conversation.lesson.skill.title
+    =render "reply", conversation: @conversation
+    -@conversation.messages.each do |message|
+      = render "message", message: message
