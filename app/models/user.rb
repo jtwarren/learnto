@@ -34,12 +34,12 @@ class User < ActiveRecord::Base
 
   def unread
     unread=0
-    lessons=self.lessons_taught
-    lessons.each do |lesson|
-      if !lesson.conversation.read
-        unread=unread+1
-      end
-    end
+    # lessons=self.lessons_taught
+    # lessons.each do |lesson|
+    #   if !lesson.conversation.read
+    #     unread=unread+1
+    #   end
+    # end
     return unread
   end
 
