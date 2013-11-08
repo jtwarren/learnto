@@ -15,7 +15,7 @@
           -if lesson_short.skill
             = lesson_short.skill.title
 
-      -if current_user == lesson_short.skill.user
+      -if current_user == lesson_short.teacher
         -if !lesson_short.approved
           = link_to "Accept", approve_lessons_path(id: lesson_short.id), class: "button btn btn-custom"
           = link_to "Ignore", ignore_lessons_path(id: lesson_short.id), class: "button btn btn-custom"
