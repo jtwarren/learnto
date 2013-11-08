@@ -6,4 +6,7 @@ class Conversation < ActiveRecord::Base
     return self.messages.last.updated_at
   end
 
+  def read
+    return self.messages.last.read
+  end
 end
