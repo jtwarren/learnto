@@ -21,10 +21,11 @@ class Lesson < ActiveRecord::Base
   end
 
   def teacher
-    if self.skill
+    if self.skill!=nil
       return self.skill.user
     else
-      return User.find_by(:first_name=>"Dhruv")
+      u=User.find_by(:first_name=>"Dhruv")
+      return u
     end
   end
 
