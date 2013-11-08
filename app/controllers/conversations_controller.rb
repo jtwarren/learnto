@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
     current_user.lessons.each do |lesson|
       @conversations.push(*lesson.conversation)
     end
-    @conversations.sort_by{ |c| c.updateTime}
+    @conversations.sort_by{ |c| c.updateTime}.reverse!
   end
 
   def show
