@@ -10,6 +10,7 @@ end
 
 def show
 	@lesson = Lesson.find(params[:id])
+  @message = Message.new
 end
 
 def approve

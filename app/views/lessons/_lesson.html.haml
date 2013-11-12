@@ -11,11 +11,20 @@
           %h4.instructor
             = @lesson.users.first.name
         %hr.div-line
-        %h4 Email
-        .email
-          =@lesson.users.first.email
-        %h4 Message
-        .description
+        %h4 Messages
+        .messages
+          =render "/conversations/reply", conversation: @lesson.conversation
+          -@lesson.conversation.messages.reverse.each do |message|
+            =render "/conversations/message", message: message
+
+    .col-md-5
+      .box
+        .skill-picture-full
+          -if @lesson.skill
+            = image_tag @lesson.skill.picture
+      .box
+        %h3 Status
+        %br
         -if current_user == @lesson.teacher
           -if !@lesson.approved
             = link_to "Accept", approve_lessons_path(id: @lesson.id), class: "button btn btn-custom"
@@ -32,9 +41,3 @@
           -elsif @lesson.approved
             .accepted
               Accepted!
-
-    .col-md-5
-      .box
-        .skill-picture-full
-          -if @lesson.skill
-            = image_tag @lesson.skill.picture

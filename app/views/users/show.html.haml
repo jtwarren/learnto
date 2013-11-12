@@ -1,37 +1,12 @@
 %ul.nav.nav-tabs.nav-justified.selector
   %li.active
     %a.option{href: user_path(@user.id)}
-      Teaching
-  %li
-    %a.option{href: requests_users_path(id: @user.id)}
-      Learning
+      Lessons you teach
   -if @user==current_user
     %li
       %a.option{href: inbox_conversations_path}
         Inbox
   %br
-
-- if not @requested_lessons.empty?
-  .requested-lessons
-    %h2.heading
-      = "Lessons others have requested from you"
-    .grid
-      = @requested_lessons.each_slice(3) do |slice|
-        .row
-          - slice.each do |lesson|
-            .col-xs-12.col-sm-6.col-md-4
-              = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}
-
-- if not @scheduled_lessons.empty?
-  .scheduled-lessons
-    %h2.heading
-      = "Scheduled Lessons"
-    .grid
-      = @scheduled_lessons.each_slice(3) do |slice|
-        .row
-          - slice.each do |lesson|
-            .col-xs-12.col-sm-6.col-md-4
-              = render partial: "lessons/lesson_short", locals: {lesson_short: lesson}  
 
 - if @skills.empty? and @pending_skills.empty?
   .row

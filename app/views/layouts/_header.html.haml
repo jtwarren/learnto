@@ -15,7 +15,7 @@
           %li
             = link_to current_user.name, user_path(current_user)
           %li
-            .unread.badge.badge-warning
+            .unread.badge.badge-important.pull-right
               =link_to current_user.unread, inbox_conversations_path
         - else
           %li

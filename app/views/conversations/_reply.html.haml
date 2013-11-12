@@ -4,7 +4,7 @@
       .circle-overlay
         =image_tag current_user.picture
     .col-md-10
-      .body
+      .body.message-text
         =form_for(@message, url: reply_conversations_path) do |f|
           .form-group
             = f.text_area :body, rows: 2, class: "form-control", placeholder: "Add your message here"

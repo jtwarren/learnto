@@ -6,9 +6,10 @@
   .Body{
     width: 75%;
   }
-  .Subject{
-    width: 75%;
-  }
+}
+
+.message-type{
+  padding-top: 5px;
 }
 .message{
   .body{
@@ -21,6 +22,9 @@
   .info{
     margin-top: -25px;
     font-size: 75%;
+  }
+  .circle-overlay{
+    margin-right: 20px;
   }
   padding-bottom: 15px;
 }

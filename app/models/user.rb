@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :skills, :dependent => :destroy
   has_and_belongs_to_many :lessons
   has_many :reviews
+  has_many :receipts
 
   accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 
@@ -33,14 +34,8 @@ class User < ActiveRecord::Base
   end
 
   def unread
-    unread=0
-    lessons=self.lessons_taught
-    lessons.each do |lesson|
-      if !lesson.conversation.read
-        unread=unread+1
-      end
-    end
-    return unread
+    unread=self.receipts.where(read: false)
+    return unread.size
   end
 
 

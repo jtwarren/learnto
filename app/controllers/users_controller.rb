@@ -62,8 +62,9 @@ class UsersController < ApplicationController
       lesson = skill.lessons.new()
       c=Conversation.create()
       c.messages << message
+      c.receipts.create(user_id: current_user.id, read: true)
+      c.receipts.create(user_id: skill.teacher.id, read: false)
       lesson.conversation = c
-      # mail = Notifier.lesson_request(current_user, current_user, lesson)
     else
       lesson = Lesson.new(:learning_request=>params[:request])
     end

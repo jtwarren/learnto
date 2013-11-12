@@ -1,4 +1,4 @@
--message = conversation_short.messages.first
+-message = conversation_short.messages.last
 .box
   .row
     .col-md-1.floatright
@@ -10,11 +10,20 @@
           =message.findSender.first_name
         .Time
           = conversation_short.updateTime.strftime("%b - %d")
-    .col-md-7
+    .col-md-8
       .container.blurb
         .Subject
           %h5 
             = conversation_short.lesson.skill.title
         .Body
-          = link_to message.body, conversation_path(conversation_short)
-  %hr.div-line 
+          = link_to message.body, lesson_path(conversation_short.lesson)
+        -if !conversation_short.read(current_user)
+          %span.badge.pull-right
+            1
+    .col-md-1
+      .message-type
+        %h5
+          -if conversation_short.inquiry(current_user)
+            Inquiry
+          -else
+            Request

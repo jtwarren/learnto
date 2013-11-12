@@ -1,10 +1,7 @@
 %ul.nav.nav-tabs.nav-justified.selector
   %li
     %a{href: user_path(@user.id)}
-      Teaching
-  %li
-    %a{href: requests_users_path(id: @user.id)}
-      Learning
+      Lessons you teach
   %li.active
     %a{href: inbox_conversations_path}
       Inbox

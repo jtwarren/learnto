@@ -7,7 +7,7 @@
         .name 
           =message.findSender.first_name
         .time
-          = message.updated_at.strftime("%b - %d")
+          = message.updated_at.strftime("%b-%d")
     .col-md-10
-      .body
+      .body.message-text
         =message.body

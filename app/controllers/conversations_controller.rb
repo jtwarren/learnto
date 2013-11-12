@@ -11,13 +11,16 @@ class ConversationsController < ApplicationController
     current_user.lessons.each do |lesson|
       @conversations.push(*lesson.conversation)
     end
-    @conversations.sort_by{ |c| c.updateTime}
-    @conversations=@conversations.reverse!
+    @conversations=@conversations.sort_by{ |c| c.messages.last.created_at}.reverse!
   end
 
   def show
     @conversation = Conversation.find(params[:id])
     @message = Message.new
+    receipt = @conversation.receipts.where(user_id: current_user.id).first
+    if receipt
+      receipt.update_attribute(read: true)
+    end
   end
 
   def reply
@@ -27,6 +30,10 @@ class ConversationsController < ApplicationController
       receiver_id = @conversation.lesson.users.first.id
     end
     @message = @conversation.messages.create(body: params[:message][:body], sender: current_user.id, receiver: receiver_id)
+    receipt = @conversation.receipts.where(user_id: current_user.id).first
+    if receipt
+      receipt.update_attribute(read: true)
+    end
     redirect_to conversation_path(@conversation.id)
   end
 
