@@ -16,8 +16,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @messages = Conversation.messages
-    @messages = @messages.reverse!
+
     @message = Message.new
     receipt = @conversation.receipts.where(user_id: current_user.id).first
     if receipt
@@ -36,7 +35,7 @@ class ConversationsController < ApplicationController
     if receipt
       receipt.update_attribute(read: true)
     end
-    redirect_to conversation_path(@conversation.id)
+    redirect_to lesson_path(@conversation.lesson)
   end
 
 end
