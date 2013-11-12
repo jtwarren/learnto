@@ -7,6 +7,7 @@ Learnto::Application.configure do
   config.cache_classes = false
 
   config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.perform_deliveries = false
 
   # Do not eager load code on boot.
   config.eager_load = false
