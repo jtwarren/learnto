@@ -16,6 +16,8 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
+    @messages = Conversation.messages
+    @messages = @messages.reverse!
     @message = Message.new
     receipt = @conversation.receipts.where(user_id: current_user.id).first
     if receipt

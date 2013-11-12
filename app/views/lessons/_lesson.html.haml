@@ -14,7 +14,7 @@
         %h4 Messages
         .messages
           =render "/conversations/reply", conversation: @lesson.conversation
-          -@lesson.conversation.messages.reverse.each do |message|
+          -@lesson.conversation.messages.each do |message|
             =render "/conversations/message", message: message
 
     .col-md-5

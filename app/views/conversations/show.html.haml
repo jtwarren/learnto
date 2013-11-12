@@ -8,5 +8,5 @@
     %h4.title
       =@conversation.lesson.skill.title
     =render "reply", conversation: @conversation
-    -@conversation.messages.reverse.each do |message|
+    -@messages.each do |message|
       = render "message", message: message
