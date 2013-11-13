@@ -31,7 +31,7 @@
             = link_to "Ignore", ignore_lessons_path(id: @lesson.id), class: "button btn btn-custom"
           -elsif !@lesson.completed
             %h4 Accepted!
-            = link_to "Add review", complete_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+            = link_to "Add review", skill_path(@lesson.skill), class: "button btn btn-custom"
         -else
           -if !@lesson.approved && !@lesson.ignored
             .pending-approval
