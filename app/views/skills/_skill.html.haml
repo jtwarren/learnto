@@ -23,10 +23,6 @@
             = @skill.qualifications
         - if @skill.approved
           %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
-      / - if @skill.reviews.size>0
-      /   .box
-      /     %h4 References
-      /     = render partial: "review_short", collection: @skill.reviews
 
     .col-md-5
       .box

@@ -20,7 +20,7 @@ class ConversationsController < ApplicationController
     @message = Message.new
     receipt = @conversation.receipts.where(user_id: current_user.id).first
     if receipt
-      receipt.update_attribute(read: true)
+      receipt.update_attribute(:read, true)
     end
   end
 
@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
     @message = @conversation.messages.create(body: params[:message][:body], sender: current_user.id, receiver: receiver_id)
     receipt = @conversation.receipts.where(user_id: current_user.id).first
     if receipt
-      receipt.update_attribute(read: true)
+      receipt.update_attribute(:read, true)
     end
     redirect_to lesson_path(@conversation.lesson)
   end

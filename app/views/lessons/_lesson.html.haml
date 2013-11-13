@@ -27,10 +27,10 @@
         %br
         -if current_user == @lesson.teacher
           -if !@lesson.approved
-            = link_to "Accept", approve_lessons_path(id: @lesson.id), class: "button btn btn-custom"
-            = link_to "Ignore", ignore_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+            = link_to "Accept", approve_lesson_path(id: @lesson.id), class: "button btn btn-custom"
+            = link_to "Ignore", ignore_lesson_path(id: @lesson.id), class: "button btn btn-custom"
           -elsif !@lesson.completed
-            = link_to "Completed", complete_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+            = link_to "Completed", complete_lesson_path(id: @lesson.id), class: "button btn btn-custom"
         -else
           -if !@lesson.approved && !@lesson.ignored
             .pending-approval
