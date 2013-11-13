@@ -22,13 +22,16 @@
           .qualification-text
             = @skill.qualifications
         - if @skill.approved
-          %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+          - if current_user
+            %button.btn.btn-success.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+          - else
+            = link_to "Sign up or log in", login_path(return_to: @current_path), class: "btn btn-custom contact"
 
     .col-md-5
       .box
         .skill-image-full
           = image_tag @skill.picture
-      -if @skill.lessons.size>0
+      - if @skill.lessons.size > 0
         .box
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @skill.lessons

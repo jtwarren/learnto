@@ -1,4 +1,5 @@
 = form_for(:session, url: sessions_path, role: "form") do |f|
+  = hidden_field_tag :return_to, @return_to
   .form-group
     = f.text_field :email, class: "form-control", placeholder: "Email"
   .form-group

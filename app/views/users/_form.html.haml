@@ -1,4 +1,5 @@
 = form_for @user, :url => (@user.new_record? ? users_path : user_path(@user)) do |f|
+  = hidden_field_tag :return_to, @return_to
   .form-group
     = f.text_field :first_name, class: "form-control", placeholder: "First name"
   .form-group
