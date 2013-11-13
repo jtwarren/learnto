@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @return_to = params[:return_to]
-    @param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
+    @facebook_param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
   end
 
   def create

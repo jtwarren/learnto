@@ -6,7 +6,7 @@
         .social-login
           %h5 Sign up with facebook
           .login-button
-            %a.btn-auth.large{class: "btn-facebook", href: "/auth/facebook"}
+            %a.btn-auth.large{class: "btn-facebook", href: "/auth/facebook" + @facebook_param_string}
               Sign up with
               %b Facebook
         .registered-login
