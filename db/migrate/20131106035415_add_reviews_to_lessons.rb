@@ -1,5 +1,5 @@
 class AddReviewsToLessons < ActiveRecord::Migration
   def change
-    add_reference :lessons, index: true
+    add_reference :reviews, :lesson, index: true
   end
 end
