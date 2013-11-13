@@ -17,9 +17,6 @@
             = link_to conversation_short.lesson.skill.title, lesson_path(conversation_short.lesson)
         .Body
           = truncate(message.body, length:100)
-        -if !conversation_short.read(current_user)
-          %span.badge.pull-right
-            1
     .col-md-2
       .message-type
         %h5
