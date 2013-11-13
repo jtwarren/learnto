@@ -7,7 +7,8 @@
         %a.option{href: inbox_conversations_path}
           Inbox
     %br
-
+-else
+  %h1 @user.name
 - if @skills.empty? and @pending_skills.empty?
 
   .row
@@ -19,7 +20,7 @@
           .teach-button
             = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
         -else
-          .circle_overlay
+          .circle-overlay
             =image_tag @user.picture
           %h4 #{@user.name} is currently not teaching anything
 - if not @skills.empty?
