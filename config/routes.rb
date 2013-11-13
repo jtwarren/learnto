@@ -7,9 +7,7 @@ Learnto::Application.routes.draw do
   end
 
   resources :skills do
-    collection do
-      get "send_request"
-    end
+    resources :lessons
   end
 
   resources :lessons do

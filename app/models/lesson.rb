@@ -1,6 +1,6 @@
 class Lesson < ActiveRecord::Base
   belongs_to :skill
-  has_and_belongs_to_many :users
+  belongs_to :user
   has_one :review
   has_one :conversation
 

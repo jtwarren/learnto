@@ -43,21 +43,20 @@
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
         %h4#myModalLabel.modal-title Sign up for the lesson! 
-      = form_tag(@path, :html => { :class => "form-horizontal" } ) do |f|
-        = hidden_field_tag 'skill_id', @skill.id
+      = form_for([@skill, @skill.lessons.build], :html => { :class => "form-horizontal" }) do |f|
         .modal-body
-          %fieldset
+          .form-group
             .control-group
-              = label_tag :request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
-              .controls
-                = text_area_tag :request, nil, :class=> "request"
+              = f.label :learning_request, "What do you want to learn and why? Tell #{@skill.user.first_name} why you would be fun to teach!", class: "control-label"
+              = f.text_area :learning_request, class: "form-control"
         .modal-footer
-          .login-button
-            - if current_user != nil
-              = submit_tag 'Submit', :class=> "submit btn btn-custom"
-            -else
-              = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
-              %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
+          = f.submit "Submit", class: "btn btn-custom"
+          / .login-button
+          /   - if current_user != nil
+          /     = submit_tag 'Submit', :class=> "submit btn btn-custom"
+          /   -else
+          /     = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
+          /     %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
 
 
 

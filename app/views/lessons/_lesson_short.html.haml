@@ -4,12 +4,12 @@
       - if lesson_short.skill
         = image_tag lesson_short.skill.picture
     .profile-pic.circle-overlay
-      = image_tag lesson_short.users.first.picture
+      = image_tag lesson_short.user.picture
     .skill-short
       .teacher-name
         Request by
         %span
-          = lesson_short.users.first.first_name
+          = lesson_short.user.first_name
       .skill-title
         %span
           -if lesson_short.skill

@@ -43,42 +43,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-
-  def sign_in
-  end
-
   def update
     @user = @current_user
-  end
-
-  def inquire
-    if params[:skill_id]
-      skill = Skill.find(params[:skill_id])
-      message = Message.create(body: params[:request], sender: current_user.id, receiver:skill.user.id)
-      #lesson = skill.lessons.new(:learning_request=>params[:request])
-      lesson= skill.lessons.new
-      c=Conversation.create()
-      c.messages << message
-      c.receipts.create(user_id: current_user.id, read: true)
-      c.receipts.create(user_id: skill.user.id, read: false)
-      lesson.conversation = c
-    else
-      lesson = Lesson.new(:learning_request=>params[:request])
-    end
-    current_user.lessons << lesson
-    if lesson.save
-      if params[:skill_id]
-        #Notifier.lesson_request(skill.user, current_user, lesson)
-        redirect_to skill_url(params[:skill_id], :confirm => true)
-      else
-        redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"
-      end
-    else
-      redirect_to skills_url, error: 'There was an error processing your request.'
-    end
   end
 
   private
