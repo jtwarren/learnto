@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 
   def skill_added(skill)
     @skill = skill
-    mail(to: 'jeff@learnto.com', subject: 'LearnTo: New skill added!' )
+    mail(to: 'founders@learnto.com', subject: 'LearnTo: New skill added!' )
   end
 
   def lesson_request(user, requestor, lesson)
@@ -14,5 +14,5 @@ class Notifier < ActionMailer::Base
     @lesson = lesson
     mail(to: user_email, subject: 'LearnTo: New lesson request from #{requestor.first_name}!' )
   end
-  
+
 end
