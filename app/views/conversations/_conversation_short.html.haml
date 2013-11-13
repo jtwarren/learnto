@@ -20,10 +20,9 @@
         -if !conversation_short.read(current_user)
           %span.badge.pull-right
             1
-    .col-md-1
+    .col-md-2
       .message-type
         %h5
-          -if conversation_short.inquiry(current_user)
-            Inquiry
-          -else
-            Request
+          =conversation_short.lesson.status(current_user)
+
+

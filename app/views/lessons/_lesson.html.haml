@@ -7,7 +7,7 @@
             = @lesson.skill.title
         .container
           %a{href: user_path(@lesson.users.first), class:"circle-overlay"}
-            = image_tag @lesson.users.first.picture
+            = image_tag @lesson.skill.user.picture
           %h4.instructor
             = link_to @lesson.users.first.name, user_path(@lesson.users.first)
         %hr.div-line

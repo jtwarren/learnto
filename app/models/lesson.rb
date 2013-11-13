@@ -29,4 +29,28 @@ class Lesson < ActiveRecord::Base
     end
   end
 
+  def status(user)
+    if user==self.teacher
+      if !self.approved and !self.ignored
+        return "Pending Request"
+      elsif !self.approved and self.ignored
+        return "Ignored Request"
+      elsif self.approved and !self.completed
+        return "Accepted Request"
+      else
+        return "Completed Lesson"
+      end
+    else
+      if !self.approved and !self.ignored
+        return "Inquiry"
+      elsif !self.approved and self.ignored
+        return "Not Accepted"
+      elsif self.approved and !self.completed
+        return "Accepted"
+      else
+        return "Completed Lesson"
+      end
+    end
+  end
 end
+
