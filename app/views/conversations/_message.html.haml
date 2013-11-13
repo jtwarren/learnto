@@ -5,9 +5,9 @@
         =image_tag message.findSender.picture
       .info
         .name 
-          =message.findSender.first_name
+          = message.findSender.first_name
         .time
           = message.updated_at.strftime("%b-%d")
     .col-md-10
       .body.message-text
-        =message.body
+        = message.body

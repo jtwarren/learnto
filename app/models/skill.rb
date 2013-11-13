@@ -6,4 +6,15 @@ class Skill < ActiveRecord::Base
 
   belongs_to :user
   has_many :lessons
+
+
+  def get_reviews()
+    reviews=[]
+    self.lessons.each do |lesson|
+      reviews.push(*lesson.reviews)
+    end
+    return reviews
+  end
+
 end
+

@@ -10,6 +10,10 @@ class SkillsController < ApplicationController
 
   def show
     @skill = Skill.find(params[:id])
+    @reviews = @skill.get_reviews()
+    @completed_lessons = @skill.lessons.where(completed: true)
+    max_index = [0, @completed_lessons.length - 4].max
+    @completed_lessons_truncated = @completed_lessons[max_index..@completed_lessons.length]
     @path = nil
     @confirm = params[:confirm]
     if current_user != nil
