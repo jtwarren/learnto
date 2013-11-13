@@ -5,7 +5,7 @@
   %body
     Hi #{@user.first_name},
 
-    #{@requestor.first_name} has expressed interest in one of your lessons.  
+    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! To reply and find out more about #{@requestor.first_name}, go to #{lesson_url(@lesson)}.  
 
-    Thanks,
+    Thanks!
     LearnTo team
