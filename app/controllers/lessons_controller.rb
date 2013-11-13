@@ -18,7 +18,7 @@ def approve
   if current_user == @lesson.teacher
     @lesson.approve
   end
-  redirect_to user_path(current_user)
+  redirect_to lesson_path(current_user)
 end
 
 def ignore
@@ -26,7 +26,7 @@ def ignore
   if current_user == @lesson.teacher
     @lesson.ignore
   end
-  redirect_to user_path(current_user)
+  redirect_to lesson_path(current_user)
 end
 
 def complete
@@ -34,7 +34,7 @@ def complete
   if current_user == @lesson.teacher
     @lesson.complete
   end
-  redirect_to user_path(current_user)
+  redirect_to lesson_path(current_user)
 end
 
 end
