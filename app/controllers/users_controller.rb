@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     current_user.lessons << lesson
     if lesson.save
       if params[:skill_id]
-        Notifier.lesson_request(skill.user, current_user, lesson)
+        #Notifier.lesson_request(skill.user, current_user, lesson)
         redirect_to skill_url(params[:skill_id], :confirm => true)
       else
         redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"
