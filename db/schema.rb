@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20131113201335) do
   add_index "conversations", ["lesson_id"], name: "index_conversations_on_lesson_id", using: :btree
 
   create_table "lessons", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.integer  "skill_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -49,14 +47,11 @@ ActiveRecord::Schema.define(version: 20131113201335) do
     t.boolean  "approved",          default: false
     t.boolean  "ignored",           default: false
     t.boolean  "completed",         default: false
+    t.integer  "user_id"
   end
 
   add_index "lessons", ["skill_id"], name: "index_lessons_on_skill_id", using: :btree
-
-  create_table "lessons_users", force: true do |t|
-    t.integer "lesson_id"
-    t.integer "user_id"
-  end
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.text     "body"

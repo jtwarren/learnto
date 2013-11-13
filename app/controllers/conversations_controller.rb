@@ -28,7 +28,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:message][:conversation_id])
     receiver_id=@conversation.lesson.teacher.id
     if current_user == @conversation.lesson.teacher
-      receiver_id = @conversation.lesson.users.first.id
+      receiver_id = @conversation.lesson.user.id
     end
     @message = @conversation.messages.create(body: params[:message][:body], sender: current_user.id, receiver: receiver_id)
     receipt = @conversation.receipts.where(user_id: current_user.id).first

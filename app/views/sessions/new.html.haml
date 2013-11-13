@@ -6,7 +6,7 @@
         .social-login
           %h5 Log in with facebook
           .login-button
-            %a.btn-auth.large{class: "btn-facebook", href: "/auth/facebook"}
+            %a.btn-auth.large{class: "btn-facebook", href: "/auth/facebook" + @facebook_param_string}
               Log in with
               %b Facebook
         .registered-login
@@ -14,4 +14,4 @@
         = render 'form'
         .no-account
           Don't have an account yet?
-          = link_to "Register now", new_user_path, class: 'register'
+          = link_to "Register now", new_user_path(return_to: @return_to), class: 'register'

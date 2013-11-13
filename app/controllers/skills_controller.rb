@@ -16,13 +16,9 @@ class SkillsController < ApplicationController
     @completed_lessons = @skill.lessons.where(completed: true)
     max_index = [0, @completed_lessons.length - 4].max
     @completed_lessons_truncated = @completed_lessons[max_index..@completed_lessons.length]
-    @path = nil
+
     @confirm = params[:confirm]
-    if current_user != nil
-      @path = user_inquire_post_url
-    else
-      @path = '/auth/facebook'
-    end
+    @return_to = request.path
     respond_to do |format|
       format.html
       format.json {render json: @skill}
@@ -43,8 +39,7 @@ class SkillsController < ApplicationController
 
   def new
     if not current_user
-      session[:return_to] = request.fullpath
-      redirect_to login_url
+      redirect_to login_url(return_to: request.path)
       return
     end
     @skill = current_user.skills.new

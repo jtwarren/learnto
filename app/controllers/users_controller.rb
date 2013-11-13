@@ -2,15 +2,16 @@ class UsersController < ApplicationController
 
   def new
     @user = RegularUser.new
+    @return_to = params[:return_to]
+    @facebook_param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
   end
 
   def create
     @user = RegularUser.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      url = session[:return_to] || skills_url
-      session[:return_to] = nil
-      url = skills_url if url.eql?('/logout')
+      url = params[:return_to]
+      url ||= skills_url
       redirect_to url
     else
       render action: 'new'
@@ -20,11 +21,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.where(approved: true)
-    @pending_skills=[]
+    @pending_skills = []
     if @user == current_user
       @pending_skills = @user.skills.where(approved: false)
-      @requested_lessons=[]
-      @scheduled_lessons=[]
+      @requested_lessons = []
+      @scheduled_lessons = []
       @skills.each do |skill|
         requests = skill.lessons.where("ignored=? AND approved=?", false, false)
         scheduled = skill.lessons.where("ignored=? AND approved=? AND completed=?", false, true, false)
@@ -43,42 +44,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-
-  def sign_in
-  end
-
   def update
     @user = @current_user
-  end
-
-  def inquire
-    if params[:skill_id]
-      skill = Skill.find(params[:skill_id])
-      message = Message.create(body: params[:request], sender: current_user.id, receiver:skill.user.id)
-      #lesson = skill.lessons.new(:learning_request=>params[:request])
-      lesson= skill.lessons.new
-      c=Conversation.create()
-      c.messages << message
-      c.receipts.create(user_id: current_user.id, read: true)
-      c.receipts.create(user_id: skill.user.id, read: false)
-      lesson.conversation = c
-    else
-      lesson = Lesson.new(:learning_request=>params[:request])
-    end
-    current_user.lessons << lesson
-    if lesson.save
-      if params[:skill_id]
-        #Notifier.lesson_request(skill.user, current_user, lesson)
-        redirect_to skill_url(params[:skill_id], :confirm => true)
-      else
-        redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"
-      end
-    else
-      redirect_to skills_url, error: 'There was an error processing your request.'
-    end
   end
 
   private
