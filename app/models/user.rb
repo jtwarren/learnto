@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
     return first_name+" "+last_name
   end
 
+  def taken_class(skill)
+    lesson = self.lessons.where(skill_id: skill.id).first
+    return lesson
+  end
+
   def lessons_taught
     lessons=[]
     self.skills.each do |skill|

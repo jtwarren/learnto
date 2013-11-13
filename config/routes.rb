@@ -6,6 +6,8 @@ Learnto::Application.routes.draw do
     end
   end
 
+  resources :reviews
+
   resources :skills do
     collection do
       get "send_request"

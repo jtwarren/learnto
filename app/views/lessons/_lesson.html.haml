@@ -26,11 +26,12 @@
         %h3 Status
         %br
         -if current_user == @lesson.teacher
-          -if !@lesson.approved
+          -if !@lesson.approved && !@lesson.ignored
             = link_to "Accept", approve_lessons_path(id: @lesson.id), class: "button btn btn-custom"
             = link_to "Ignore", ignore_lessons_path(id: @lesson.id), class: "button btn btn-custom"
           -elsif !@lesson.completed
-            = link_to "Completed", complete_lessons_path(id: @lesson.id), class: "button btn btn-custom"
+            %h4 Accepted!
+            = link_to "Add review", complete_lessons_path(id: @lesson.id), class: "button btn btn-custom"
         -else
           -if !@lesson.approved && !@lesson.ignored
             .pending-approval
