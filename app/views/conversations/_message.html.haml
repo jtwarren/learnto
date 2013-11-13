@@ -1,7 +1,7 @@
 .message
   .row
     .col-md-1.floatright
-      .circle-overlay
+      %a{href: user_path(message.findSender), class:"circle-overlay"}
         =image_tag message.findSender.picture
       .info
         .name 

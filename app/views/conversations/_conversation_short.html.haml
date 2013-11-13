@@ -2,12 +2,12 @@
 .box
   .row
     .col-md-1.floatright
-      .circle-overlay
+      %a{href: user_path(message.findSender),class:"circle-overlay"}
         =image_tag message.findSender.picture
     .col-md-1
       .container.nametime
         %h5.Name
-          =message.findSender.first_name
+          = link_to message.findSender.first_name, user_path(message.findSender)
         .Time
           = conversation_short.updateTime.strftime("%b - %d")
     .col-md-8

@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.where(approved: true)
+    @pending_skills=[]
     if @user == current_user
       @pending_skills = @user.skills.where(approved: false)
       @requested_lessons=[]
@@ -30,8 +31,6 @@ class UsersController < ApplicationController
         @requested_lessons.push(*requests)
         @scheduled_lessons.push(*scheduled)
       end
-      puts "LOOK HERE"
-      puts @requested_lessons.size
     end
   end
 
@@ -71,9 +70,6 @@ class UsersController < ApplicationController
     current_user.lessons << lesson
     if lesson.save
       if params[:skill_id]
-        # if mail
-        #   mail.deliver
-        # end
         redirect_to skill_url(params[:skill_id], :confirm => true)
       else
         redirect_to skills_url, notice: "Your request has been submitted. Thanks for using Learnto!"

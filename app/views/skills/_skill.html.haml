@@ -8,10 +8,10 @@
         %h2.title
           = @skill.title
         .container
-          .circle-overlay
+          %a{href: user_path(@skill.user), class: "circle-overlay"}
             = image_tag @skill.user.picture
           %h4.instructor
-            = @skill.user.name
+            = link_to @skill.user.name, user_path(@skill.user)
         %hr.div-line
         %h4 Description
         .description
