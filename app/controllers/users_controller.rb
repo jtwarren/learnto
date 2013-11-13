@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     if params[:skill_id]
       skill = Skill.find(params[:skill_id])
       message = Message.create(body: params[:request], sender: current_user.id, receiver:skill.user.id)
-      lesson = skill.lessons.new()
+      lesson = skill.lessons.new(:learning_request=>params[:request])
       # c=Conversation.create()
       # c.messages << message
       # c.receipts.create(user_id: current_user.id, read: true)
