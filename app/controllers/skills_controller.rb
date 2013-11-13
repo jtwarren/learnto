@@ -10,8 +10,14 @@ class SkillsController < ApplicationController
 
   def show
     @skill = Skill.find(params[:id])
+
+    @reviews = @skill.get_reviews()
+    @completed_lessons = @skill.lessons.where(completed: true)
+    max_index = [0, @completed_lessons.length - 4].max
+    @completed_lessons_truncated = @completed_lessons[max_index..@completed_lessons.length]
+
     @confirm = params[:confirm]
-    @current_path = request.path
+    @return_to = request.path
     respond_to do |format|
       format.html
       format.json {render json: @skill}

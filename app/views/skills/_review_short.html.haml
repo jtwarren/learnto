@@ -1,12 +1,16 @@
 .review
-  .container
-    .row
-      .span1
-        .image.profile-pic
-          =image_tag review_short.user.picture
+  .row
+    .col-md-2
+      .circle-overlay
+        =image_tag review_short.user.picture
+      .info
         .name
           = review_short.user.first_name
-      .span6
-        .message
-          .text
-            =review_short.message
+        .time
+          = review_short.updated_at.strftime("%b-%d")
+    .col-md-10
+      -for i in 0..review_short.stars-1
+        %i.glyphicon.glyphicon-star.stars
+
+      .review-text
+        =review_short.message

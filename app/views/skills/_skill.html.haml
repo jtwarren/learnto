@@ -22,19 +22,27 @@
           .qualification-text
             = @skill.qualifications
         - if @skill.approved
+
           - if current_user
             %button.btn.btn-success.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
             = link_to "Sign up or log in", login_path(return_to: @current_path), class: "btn btn-custom contact"
 
+      -if @reviews.length > 0
+        .box
+          %h3 Reviews
+          %br
+          .reviews
+            = render partial: "review_short", collection: @reviews
+
     .col-md-5
       .box
         .skill-image-full
           = image_tag @skill.picture
-      - if @skill.lessons.size > 0
+      - if @completed_lessons_truncated && @completed_lessons_truncated.length
         .box
           %h4 People who have learned with #{@skill.user.first_name}
-          = render partial: "lesson_short", collection: @skill.lessons
+          = render partial: "lesson_short", collection: @completed_lessons_truncated
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
@@ -50,14 +58,6 @@
               = f.text_area :learning_request, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
-          / .login-button
-          /   - if current_user != nil
-          /     = submit_tag 'Submit', :class=> "submit btn btn-custom"
-          /   -else
-          /     = submit_tag 'Submit with facebook', :class=>"submit btn-auth btn-facebook"
-          /     %p.subtext Signing in allows us to give #{@skill.user.first_name} your email to contact you
-
-
 
 #confirmModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
