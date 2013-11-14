@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
     return lesson
   end
 
+  def taken_lesson(lesson)
+    return self.lessons.include? lesson
+  end
+
+  def taught_lesson(lesson)
+    return self.lessons_taught.include? lesson
+  end
+
   def lessons_taught
     lessons=[]
     self.skills.each do |skill|

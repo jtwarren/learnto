@@ -5,7 +5,9 @@
   %body
     Hi #{@user.first_name},
 
-    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! To reply and find out more about #{@requestor.first_name}, go to #{lesson_url(@lesson)}.  
+    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! To reply and find out more about #{@requestor.first_name}, go to 
+
+    %a{href:{lesson_url(@lesson)}} Lesson Request  
 
     Thanks!
     LearnTo team

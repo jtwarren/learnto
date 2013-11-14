@@ -21,17 +21,25 @@ class LessonsController < ApplicationController
     c.receipts.create(user_id: current_user.id, read: true)
     c.receipts.create(user_id: skill.user.id, read: false)
     lesson.conversation = c
+    Notifier.lesson_request(skill.user, current_user, lesson).deliver
   end
 
   def show
     @lesson = Lesson.find(params[:id])
-    receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
-    if receipt
-      puts "HERE HERE HERE -----------------------------"
-      receipt.update_attribute(:read, true)
-      receipt.save!
+    if current_user
+      if  current_user.admin || current_user.taken_lesson(@lesson) || current_user.taught_lesson(@lesson)
+        receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
+        if receipt
+          receipt.update_attribute(:read, true)
+          receipt.save!
+        end
+        @message = Message.new
+      else
+        redirect_to root_url
+      end
+    else
+      redirect_to  login_url(return_to: lesson_path(@lesson))
     end
-    @message = Message.new
   end
 
   def approve
