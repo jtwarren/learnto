@@ -5,9 +5,17 @@
   %body
     Hi #{@user.first_name},
 
-    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! To reply and find out more about #{@requestor.first_name}, go to 
+    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! Here is the request:
+    %br
+    = @lesson.conversation.messages.first.body
+    %br
 
-    %a{href: lesson_url(@lesson)} Lesson Request  
+    To reply and find out more about #{@requestor.first_name}, go to your 
 
+    %a{href: lesson_url(@lesson)} lesson request  
+
+    %br
+    %br
     Thanks!
-    LearnTo team
+    %br
+    LearnTo Team
