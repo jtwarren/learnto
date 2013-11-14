@@ -22,9 +22,8 @@
           .qualification-text
             = @skill.qualifications
         - if @skill.approved
-
           - if current_user
-            %button.btn.btn-success.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+            %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
 
