@@ -12,7 +12,7 @@ class Notifier < ActionMailer::Base
     @requestor = requestor
     requestor_email = "#{@requestor.name} <#{@requestor.email}>"
     @lesson = lesson
-    mail(to: user_email, subject: 'LearnTo: New lesson request from '+ requestor.first_name +'!')
+    mail(to: user_email, subject: 'LearnTo: New lesson request from ' + requestor.first_name + '!')
   end
 
 end
