@@ -20,7 +20,6 @@ class ConversationsController < ApplicationController
     @message = Message.new
     receipt = @conversation.receipts.where(user_id: current_user.id).first
     if receipt
-      puts "HERE HERE"
       receipt.update_attribute(:read, true)
     end
   end
@@ -36,6 +35,7 @@ class ConversationsController < ApplicationController
     if receipt
       receipt.update_attribute(:read, true)
     end
+    Notifier.reply(@message).deliver
     redirect_to lesson_path(@conversation.lesson)
   end
 

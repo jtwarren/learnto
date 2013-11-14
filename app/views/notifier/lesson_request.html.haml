@@ -3,20 +3,27 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
   %body
-    Hi #{@user.first_name},
-
-    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! Here is the request:
-
+    .greeting
+      Hi #{@user.first_name},
     %br
-    %br
-    = @lesson.conversation.messages.first.body
-    %br
-    .request
-      To reply and find out more about #{@requestor.first_name}, go to your 
+    .message
+    #{@requestor.first_name} has expressed interest in learning #{@lesson.skill.title} from you! Here is the request:      
       %br
-      %a{href: lesson_url(@lesson)} lesson request  
-
+      %br
+      = @lesson.conversation.messages.first.body
+      %br
+      %br
+      .request
+        To reply and find out more about #{@requestor.first_name}, go to your 
+        %a{href: lesson_url(@lesson), style: "font-size: 100%"} Request Page 
+        or click the link below.
+        %br
+        %br
+      %a{href: lesson_url(@lesson), style: "font-size: 100%"} Request Page  
+      %br
+      %br
     .closing
       Thanks!
+      %br
       %br
       LearnTo Team
