@@ -21,6 +21,8 @@ Learnto::Application.routes.draw do
     end
   end
 
+  resources :reviews
+
   resources :skills do
     resources :lessons
   end

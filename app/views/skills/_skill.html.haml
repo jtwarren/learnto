@@ -32,6 +32,10 @@
         .box
           %h3 Reviews
           %br
+          - if @lesson
+            .add-review
+              = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user}
+            %br
           .reviews
             = render partial: "review_short", collection: @reviews
 
@@ -39,7 +43,8 @@
       .box
         .skill-image-full
           = image_tag @skill.picture
-      - if @completed_lessons_truncated && @completed_lessons_truncated.length
+
+      - if @completed_lessons_truncated && @completed_lessons_truncated.length>0
         .box
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @completed_lessons_truncated

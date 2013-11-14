@@ -32,7 +32,7 @@
           - elsif !@lesson.completed
             = link_to "Completed", complete_lesson_path(id: @lesson.id), class: "button btn btn-custom"
         - else
-          -i f !@lesson.approved && !@lesson.ignored
+          -if !@lesson.approved && !@lesson.ignored
             .pending-approval
               Pending Response
           - elsif !@lesson.approved && @lesson.ignored
