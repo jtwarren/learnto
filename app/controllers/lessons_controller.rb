@@ -25,6 +25,12 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
+    if receipt
+      puts "HERE HERE HERE -----------------------------"
+      receipt.update_attribute(:read, true)
+      receipt.save!
+    end
     @message = Message.new
   end
 
