@@ -1,4 +1,4 @@
-learnto
+LearnTo
 =======
 
 We are buidling an intellectually vibrant and passionate community that cares about the spreading knowledge, learning new things, and helping each other.  
