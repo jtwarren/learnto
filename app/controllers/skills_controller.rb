@@ -10,10 +10,9 @@ class SkillsController < ApplicationController
 
   def show
     @skill = Skill.find(params[:id])
+    @lesson = nil
     if current_user
       @lesson = current_user.taken_class(@skill)
-    else
-      @lesson = nil
     end
     @review = Review.new
     @reviews = @skill.get_reviews()
