@@ -15,7 +15,7 @@
     %br
     .request
       To reply and find out more about #{@sender.first_name}, go to your 
-      %a{href: lesson_url(@lesson), style: "font-size: 100%"} Conversation  
+      %a{href: lesson_url(@message.conversation.lesson), style: "font-size: 100%"} Conversation  
       or click the link below.
       %br
       %br
