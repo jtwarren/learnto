@@ -13,8 +13,6 @@ class SkillsController < ApplicationController
     @lesson = nil
     if current_user
       @lesson = current_user.taken_class(@skill)
-      puts "WE ARE HERE"
-      puts @lesson
     end
     @review = Review.new
     @reviews = @skill.get_reviews()
