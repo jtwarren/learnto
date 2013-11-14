@@ -27,7 +27,7 @@
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
 
-      -if @reviews.length > 0
+      -if @reviews.length > 0 || @lesson
         .box
           %h3 Reviews
           %br
