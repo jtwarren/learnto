@@ -26,7 +26,7 @@
           - if current_user
             %button.btn.btn-success.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
-            = link_to "Sign up or log in", login_path(return_to: @current_path), class: "btn btn-custom contact"
+            = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
 
       -if @reviews.length > 0
         .box
