@@ -1,6 +1,6 @@
 .message
   .row
-    %a{href: user_path(message.findSender, class:"col-md-1 floatright"}
+    %a{href: user_path(message.findSender), class:"col-md-1 floatright"}
       .circle-overlay
         =image_tag message.findSender.picture
       .info
