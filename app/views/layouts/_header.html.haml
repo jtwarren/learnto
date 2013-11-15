@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default.navbar-static-top{role: "navigation"}
+%nav.navbar.navbar-custom.navbar-static-top{role: "navigation"}
   .container
     .navbar-header
       %button.navbar-toggle{"data-target" => "#collapse_links", "data-toggle" => "collapse", type: "button"}
@@ -6,11 +6,14 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to (image_tag 'learnto-400.png', :class => 'nav-logo'), root_path
-    #collapse_links.collapse.navbar-collapse.right-links
-      %ul.nav.nav-pills.navbar-right
+      = link_to (image_tag 'Learnto-logo-transparent.png', :class => 'nav-logo'), root_path
+    #collapse_links.collapse.navbar-collapse.left-links
+      %ul.nav.nav-pills.navbar-left
         %li
-          = link_to 'Teach', new_skill_path
+          = link_to 'Teach', new_skill_path 
+        %li
+          = link_to 'About', about_path
+      %ul.nav.nav-pills.navbar-right
         - if current_user
           %li
             = link_to current_user.name, user_path(current_user)
@@ -20,3 +23,5 @@
         - else
           %li
             = link_to "Login", login_path
+          %li
+            = link_to "Signup", new_user_path
