@@ -1,7 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @show_banner = true
-    @skills = Skill.where(approved: true).order("RANDOM()")
+    @skills = Skill.where("approved=? AND hidden=?",true,false).order("RANDOM()")
     respond_to do |format|
       format.html
       format.json {render json: @skills}

@@ -16,5 +16,10 @@ class Skill < ActiveRecord::Base
     return reviews
   end
 
+  def hide
+    self.hidden=true
+    self.save!
+  end
+
 end
 
