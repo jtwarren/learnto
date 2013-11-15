@@ -84,33 +84,37 @@
     }
     .tagline {
       .learnTo{
-        font-weight: 600;
+        font-weight: 700;
       }
+      width:65%;
+      border-radius: 100px;
+      margin-left: auto;
+      margin-right: auto;
       position: relative;
-      top: -300px;
+      top: -200px;
       text-align: center;
       font-size: 30px;
       text-shadow: 1px 1px 0px #5c5c5c;
       font-family: 'Open Sans';
-      font-weight: 300;
+      font-weight: 400;
       color: #fff;
     }
     .banner-circle{
       .text{
         text-align: center;
-        font-size: 45px;
+        font-size: 35px;
         font-weight: 100;
         font-family: 'Open Sans';
         color: white;
-        margin-top: 55px;
+        margin-top: 45px;
       }
       margin-left: auto;
       margin-right: auto;
       position: relative;
       top: -125px;
       margin-bottom: -105px;
-      height: 185px;
-      width: 185px;
+      height: 150px;
+      width: 150px;
       background-color: #2980b8;
       border-radius: 185px;
       border: 3px solid #fff;
