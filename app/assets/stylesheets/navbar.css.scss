@@ -37,14 +37,14 @@
     width: 100%;
     position: relative;
     padding-bottom: 20px;
-    top: -130px;
-    margin-bottom: -130px;
+    top: -110px;
+    margin-bottom: -110px;
     .banner-image {
       width: 100%;
-      filter: blur(2px); 
-      -webkit-filter: blur(2px); 
-      -moz-filter: blur(2px);
-      -o-filter: blur(2px); -ms-filter: blur(2px);
+      filter: blur(1px); 
+      -webkit-filter: blur(1px); 
+      -moz-filter: blur(1px);
+      -o-filter: blur(1px); -ms-filter: blur(1px);
       filter: url(blur.svg#blur);
     }
     .right {
@@ -86,7 +86,7 @@
       .learnTo{
         font-weight: 700;
       }
-      width:65%;
+      width:70%;
       border-radius: 100px;
       margin-left: auto;
       margin-right: auto;
