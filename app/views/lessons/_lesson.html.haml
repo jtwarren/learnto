@@ -9,7 +9,7 @@
           %a{href: user_path(@lesson.skill.user), class:"circle-overlay"}
             = image_tag @lesson.skill.user.picture
           %h4.instructor
-            = link_to @lesson.skill.user.name, user_path(@lesson.skill.user)
+            = link_to @lesson.skill.user.name, user_path(@lesson.teacher)
         %hr.div-line
         %h4 Messages
         .messages
