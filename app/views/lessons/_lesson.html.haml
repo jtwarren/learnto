@@ -6,10 +6,10 @@
           -if @lesson.skill
             = @lesson.skill.title
         .container
-          %a{href: user_path(@lesson.skill.user), class:"circle-overlay"}
-            = image_tag @lesson.skill.user.picture
+          %a{href: user_path(@lesson.teacher), class:"circle-overlay"}
+            = image_tag @lesson.teacher.picture
           %h4.instructor
-            = link_to @lesson.skill.user.name, user_path(@lesson.teacher)
+            = link_to @lesson.teacher.name, user_path(@lesson.teacher)
         %hr.div-line
         %h4 Messages
         .messages
