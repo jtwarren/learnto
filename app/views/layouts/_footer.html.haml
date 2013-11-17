@@ -1,9 +1,15 @@
 %footer.footer.navbar-static-bottom
-  %small
-    © 2013 LearnTo, Inc
-  %nav
-    %ul
-      %li
-        = link_to "About", about_path
-      %li
-        = mail_to "founders@learnto.com", "Contact"
+  .container
+    .row
+      .col-md-4
+        .logo
+          = link_to (image_tag 'Learnto-logo-transparent.png', :class => 'footer-logo'), root_path
+      .col-md-4
+        .links
+          = link_to "Home", root_path
+          = link_to "How it works", about_path
+          = link_to "Team", team_path
+          = mail_to "founders@learnto.com", "Contact"
+      .col-md-4
+        .copyright
+          © 2013 LearnTo, Inc

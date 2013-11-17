@@ -1,4 +1,9 @@
+@import 'global';
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
+
+.static {
+  background-color: white;
+}
 
 .landing-wrapper {
   margin-top: 100px;
@@ -21,4 +26,56 @@
 
 .profile{
   text-align: center;
+}
+
+.static-banner {
+  width: 100%;
+  position: relative;
+  top: -130px;
+  margin-bottom: -80px;
+  // margin-bottom: 0px;
+  border-bottom: 1px solid #555;
+  .static-banner-image {
+    height: 350px;
+    width: 100%;
+    // filter: blur(2px); 
+    // -webkit-filter: blur(2px); 
+    // -moz-filter: blur(2px);
+    // -o-filter: blur(2px); -ms-filter: blur(2px);
+    // filter: url(blur.svg#blur);
+  }
+}
+
+.side-nav {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  a {
+    color: black !important;
+    text-decoration: none !important;
+    &:hover {
+      color: $darkBlue !important;
+    }
+  }
+  ul {
+    list-style-type: none;
+    li {
+      margin-top: 20px;
+    }
+  }
+}
+
+.team {
+  font-family: 'Open Sans', sans-serif;
+  > .row {
+    margin-bottom: 60px;
+    padding-right: 30px;
+  }
+  .title {
+    margin-bottom: 20px;
+  }
+  .bio {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
