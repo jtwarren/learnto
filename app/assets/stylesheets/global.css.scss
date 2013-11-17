@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,700);
 @import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
 
 /* mixins, variables, etc. */
@@ -16,31 +16,56 @@ $grayLighter: #eee;
 $white: #fff;
 
 html, body{
+  height: 100%;
   background-image: url('/assets/tweed.png');
 }
 
-/* footer */
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -120px;
+}
 
+.push {
+  height: 120px;
+}
+
+/* footer */
 footer {
+  width: 100%;
+  height: 120px;
+
   margin-top: 25px;
   padding-top: 5px;
-  border-top: 1px solid $grayLight;
-  color: $grayLight;
-  a {
-    color: $grayLighter;
-    &:hover {
-      color: $grayLight;
+  background-image: url('/assets/otis_redding.png');
+  .container {
+    margin-top: 30px;
+  }
+  .footer-logo {
+    height: 50px;
+  }
+
+  .links {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 10px;
+    a {
+      margin: 0 10px;
+      font-size: 18px;
+      color: #fff;
+      &:hover {
+        color: $darkBlue;
+        text-decoration: none;
+      }
     }
   }
-  small {
-    float: left;
-  }
-  ul {
+
+  .copyright {
+    margin-top: 15px;
     float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 10px;
-    }
+    color: white;
+    font-size: .9em;
   }
 }

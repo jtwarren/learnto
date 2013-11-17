@@ -9,6 +9,8 @@ Learnto::Application.routes.draw do
   get 'auth/failure' => redirect('/')
 
   get "about" => 'static_pages#about', :as => "about"
+  get "guidelines" => 'static_pages#guidelines', :as => "guidelines"
+  get "team" => 'static_pages#team', :as => "team"
   
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
