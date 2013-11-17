@@ -1,25 +1,47 @@
 -message = conversation_short.messages.last
-.box
-  .row
-    .col-md-1.floatright
-      %a{href: user_path(message.findSender),class:"circle-overlay"}
-        =image_tag message.findSender.picture
-    .col-md-1
-      .container.nametime
-        %h5.Name
-          = link_to message.findSender.first_name, user_path(message.findSender)
-        .Time
-          = conversation_short.updateTime.strftime("%b - %d")
-    .col-md-8
-      .container.blurb
-        .Subject
-          %h5 
-            = link_to conversation_short.lesson.skill.title, lesson_path(conversation_short.lesson)
-        .Body
-          = truncate(message.body, length:100)
-    .col-md-2
-      .message-type
-        %h5
-          =conversation_short.lesson.status(current_user)
-
-
+-if conversation_short.read(current_user)
+  .box{style: "background-color: lightgray"}
+    .row
+      .col-md-1.floatright
+        %a{href: user_path(message.findSender),class:"circle-overlay"}
+          =image_tag message.findSender.picture
+      .col-md-1
+        .container.nametime
+          %h5.Name
+            = link_to message.findSender.first_name, user_path(message.findSender)
+          .Time
+            = conversation_short.updateTime.strftime("%b - %d")
+      .col-md-8
+        .container.blurb
+          .Subject
+            %h5 
+              = link_to conversation_short.lesson.skill.title, lesson_path(conversation_short.lesson)
+          .Body
+            = truncate(message.body, length:100)
+      .col-md-2
+        .message-type
+          %h5
+            =conversation_short.lesson.status(current_user)
+-else
+  .box
+    .row
+      .col-md-1.floatright
+        %a{href: user_path(message.findSender),class:"circle-overlay"}
+          =image_tag message.findSender.picture
+      .col-md-1
+        .container.nametime
+          %h5.Name
+            = link_to message.findSender.first_name, user_path(message.findSender)
+          .Time
+            = conversation_short.updateTime.strftime("%b - %d")
+      .col-md-8
+        .container.blurb
+          .Subject
+            %h5 
+              = link_to conversation_short.lesson.skill.title, lesson_path(conversation_short.lesson)
+          .Body
+            = truncate(message.body, length:100)
+      .col-md-2
+        .message-type
+          %h5
+            =conversation_short.lesson.status(current_user)

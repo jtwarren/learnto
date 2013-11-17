@@ -8,8 +8,8 @@ class Conversation < ActiveRecord::Base
   end
 
   def read(user)
-    receipt = self.receipts.where(user_id: user.id)
-    if receipt.size>0
+    receipt = self.receipts.where(user_id: user.id).first
+    if receipt
       return receipt.read
     end
     return false
