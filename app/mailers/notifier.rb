@@ -19,7 +19,7 @@ class Notifier < ActionMailer::Base
     @message=message
     @sender = User.find(message.sender)
     @receiver = User.find(message.receiver)
-    receiver_email = "#{@receiver.name} <#{@receiver.email}"
+    receiver_email = "#{@receiver.name} <#{@receiver.email}>"
     mail(to: receiver_email, subject: 'LearnTo: New message from ' + @sender.first_name)
   end
 
