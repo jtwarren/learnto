@@ -7,7 +7,9 @@
       .col-xs-12.col-sm-6.col-md-4
         = render partial: "skill_short", locals: {skill_short: skill}
 
-%a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} Can't find what you're looking for? Make a request!
+%a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} 
+  .req
+    Can't find what you want? Make a request!
 
 #requestModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
