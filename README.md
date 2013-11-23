@@ -19,21 +19,21 @@ In connecting people who want to learn and share, LearnTo recreates the physical
 But beyond learning, LearnTo will also help people meet other bright, talented people in their neighborhood and will thereby create real physical communities. At the end of the day, learning is an inherently social experience through which we've met many of our closest friends in college and school. LearnTo harnesses this to help people continue to meet others in their community through fun, intellectually engaging experiences. Due to these reasons, we believe that LearnTo will take a large step towards helping people learn and explore new things and will, in the process, unlock a whole new world of knowledge waiting to be explored.
 
 
-### Describe your target market and preliminary business model. (1532/500 characters)
+### Describe your target market and preliminary business model. (268/500 words)
 Our initial target market is young adults, living in large metropolitan cities who've just graduated from college and are looking to continue learning and meeting new people. Our typical user loves learning and exploring new things. To her, learning new things is so important to staying intellectually engaged and excited. In fact, she has probably taken her current job because she's seen it as a great way to learn new things that she's interested in. Moreover, now that she is no longer in college and in a new area, she is looking to meet new people and find new communities as well. 
 
 Our preliminary business model is to implement a simple credit system that will charge people who learn without teaching. Every time you teach, you gain a credit to take a class, but if you lack the necessary number of credits, you can buy them from LearnTo at a very low price of $5 or $10 per class that will keep learning affordable. We see this as a great commitment mechanism to ensure learners will complete lessons. Moreover, it will also help us promote teaching in the community. We also hope to earn revenue through driving new users to local businesses. In particular, we hope to create partnerships with local coffeeshops, and advertise them as locations for LearnTo users to go to in order to meet up and complete their lessons. Similarly, we can have rock climbing classes take place at a local Rock Climbing Gym, or Guitar lessons happen at a local music studio. We would be paid per customer sent to each local establishment.
 
 
-### Who are your team members and why are they the right people to be working on this? (286/300 characters)
+### Who are your team members and why are they the right people to be working on this? (43/300 words)
 Dhruv - Passion for teaching, tutored extensively. Believes that the best way to empower people is through education.
 Jeff - Strong technical background and loves designing and building technical systems.
 Crystal - Experienced designer who makes the product beautiful and simple to use.
 
-### The Accelerate Contest is all about creating your Minimum Viable Product. Given that semifinalists will be provided resources (such as mentorship and $1,000), what do you plan to accomplish during IAP and demo in February? (500/500 characters)
+### The Accelerate Contest is all about creating your Minimum Viable Product. Given that semifinalists will be provided resources (such as mentorship and $1,000), what do you plan to accomplish during IAP and demo in February? (86/500 words)
 Our MVP is not just a product but also a community. Through IAP, we plan to establish a thriving community of over 200 people in the Cambridge area with at least 300 lessons exchanged. We would like to enhance the user experience on our website by making it more feature complete - location suggestion, scheduling help, and suggested lessons are some current ideas. In addition, we would to create a mobile app that would allow our young, mobile-oriented audience, to use our product on their phones.
 
-### How do you plan to achieve the goals stated in your previous answer? (509/300 characters)
+### How do you plan to achieve the goals stated in your previous answer? (83/300 words)
 We plan to establish a foothold in Cambridge through growing through the MIT Graduate Student community (young adults, unstructured time, looking to meet new people), and through publicizing at coffeeshops in the area. We already have a partnership with Voltage cafe for free publicity, and want to expand to every cafe in Cambridge. 
 
 For our app, we will work to create an iOS app (we're both CS majors) that extends our websites functionality and makes learning and sharing incredibly intuitive and simple.
