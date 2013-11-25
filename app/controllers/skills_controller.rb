@@ -2,6 +2,11 @@ class SkillsController < ApplicationController
   def index
     @show_banner = true
     @skills = Skill.where("approved=? AND hidden=?",true,false).order("RANDOM()")
+    @is_new_user = params[:is_new_user]
+    @hide_about_me = true
+    if @new_user
+      @hide_about_me = false
+    end
     respond_to do |format|
       format.html
       format.json {render json: @skills}

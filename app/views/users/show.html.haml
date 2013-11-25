@@ -7,14 +7,51 @@
         %a.option{href: inbox_conversations_path}
           Inbox
     %br
--else
 - if @skills.empty? and @pending_skills.empty?
 
   .row
     .col-md-12.col-md-offset
       .box
+        .about
+          %h4 About Me
+          .bio.info
+            .row
+              .col-md-2
+                %h5 Describe Yourself
+              .col-md-3
+                .edit.btn.btn-md.btn-custom
+                  Edit
+            .text
+              = @user.bio
+            .edit-field
+              EDIT HERE
+          .work.info
+            .row
+              .col-md-2
+                %h5 Work
+              .col-md-3
+                .edit.btn.btn-md.btn-custom
+                  Edit
+            .text
+              = @user.work
+            .edit-field
+              %input{type: "text", value:@user.work}
+              %br
+              .save.btn.btn-md.btn-custom
+                Save
+          .school.info
+            .row
+              .col-md-2
+                %h5 School
+              .col-md-3
+                .edit.btn.btn-md.btn-custom
+                  Edit
+            .text
+              = @user.school
+            .edit-field
+              EDIT HERE
         - if @user==current_user
-          %h4 LearnTo
+          %h4 What I can teach
           We're building an awesome community of talented people where you can share what they're good at, learn things you've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
           .teach-button
             = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"

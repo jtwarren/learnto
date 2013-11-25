@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       url = params[:return_to]
-      url ||= skills_url
-      redirect_to url
+      url ||= skills_url(anchor: "skills")
+      redirect_to url + (url.include?('?') ? '&' : '?') + 'is_new_user=true'
     else
       render action: 'new'
     end
@@ -45,11 +45,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = @current_user
+    current_user.update(bio: params["user"]["bio"])
+    redirect_to params["user"][:return_to]
   end
 
   private
     def user_params
-      params.require(:regular_user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation)
+      params.require(:regular_user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :learn, :interest, :return_to)
     end
 end
