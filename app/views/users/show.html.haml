@@ -13,6 +13,7 @@
     .col-md-12.col-md-offset
       .box
         .about
+        -if @user==current_user
           %h4 About Me
           .bio.info
             .row
