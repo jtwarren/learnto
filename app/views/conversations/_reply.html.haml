@@ -1,9 +1,9 @@
 .reply
   .row
-    .col-md-1.floatright
+    .col-md-2.floatright
       %a{href: user_path(current_user),class:"circle-overlay"}
         =image_tag current_user.picture
-    .col-md-10
+    .col-md-9
       .body.message-text
         =form_for(@message, url: reply_conversations_path) do |f|
           .form-group

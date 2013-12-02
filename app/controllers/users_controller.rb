@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       url = params[:return_to]
-      url ||= skills_url(anchor: "skills")
-      redirect_to url + (url.include?('?') ? '&' : '?') + 'is_new_user=true'
+      url ||= user_url(@user)
+      redirect_to url
     else
       render action: 'new'
     end

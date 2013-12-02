@@ -33,8 +33,7 @@
           .teach-button
             = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
         -else
-          .circle-overlay
-            =image_tag @user.picture
+
           %h4 #{@user.name} is currently not teaching anything
 - if not @skills.empty?
   .box

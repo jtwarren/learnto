@@ -1,14 +1,15 @@
 .review
   .row
     .col-md-2
-      .circle-overlay
-        =image_tag review_short.user.picture
-      .info
-        .name
-          = review_short.user.first_name
-        .time
-          = review_short.updated_at.strftime("%b-%d")
-    .col-md-10
+      %a.block{href: user_path(review_short.user)}
+        .circle-overlay
+          =image_tag review_short.user.picture
+        .review-info
+          .name
+            = review_short.user.first_name
+          .time
+            = review_short.updated_at.strftime("%b-%d")
+    .col-md-9
       -for i in 0..review_short.stars-1
         %i.glyphicon.glyphicon-star.stars
 

@@ -1,5 +1,6 @@
 .learner
-  .image.circle-overlay
-    = image_tag lesson_short.user.picture
-  .name
-    = lesson_short.user.first_name
+  %a.block{href: user_path(lesson_short.user)}
+    .image.circle-overlay
+      = image_tag lesson_short.user.picture
+    .name
+      = lesson_short.user.first_name
