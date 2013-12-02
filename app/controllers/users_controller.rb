@@ -45,12 +45,18 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(bio: params["user"]["bio"])
-    redirect_to params["user"][:return_to]
+    puts update_user_params
+    current_user.update(update_user_params)
+    if params["user"][:return_to]
+      redirect_to params["user"][:return_to]
+    end
   end
 
   private
     def user_params
       params.require(:regular_user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :learn, :interest, :return_to)
     end
+    def update_user_params
+      params.require(:user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school, :return_to)
+    end      
 end
