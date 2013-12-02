@@ -10,4 +10,4 @@
           = message.created_at.strftime("%b-%d")
     .col-md-10
       .body.message-text
-        = message.body
+        = simple_format(message.body)
