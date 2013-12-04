@@ -3,15 +3,19 @@ class ConversationsController < ApplicationController
 	def inbox
     @user=current_user
     @conversations=[]
-    current_user.skills.each do |skill|
-      skill.lessons.each do |lesson|
+    if current_user
+      current_user.skills.each do |skill|
+        skill.lessons.each do |lesson|
+          @conversations.push(*lesson.conversation)
+        end
+      end
+      current_user.lessons.each do |lesson|
         @conversations.push(*lesson.conversation)
       end
+      @conversations=@conversations.sort_by{ |c| c.messages.last.created_at}.reverse!
+    else
+      redirect_to login_url(return_to: inbox_conversations_path)
     end
-    current_user.lessons.each do |lesson|
-      @conversations.push(*lesson.conversation)
-    end
-    @conversations=@conversations.sort_by{ |c| c.messages.last.created_at}.reverse!
   end
 
   def show
