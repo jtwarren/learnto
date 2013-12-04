@@ -6,11 +6,11 @@
       .edit.btn.btn-md.btn-custom
         Edit
 .text
-  = field_value
+  = simple_format(field_value)
 - if user == current_user
   .edit-field
     %textarea.form-control
-      = field_value
+      = simple_format(field_value)
     %br
     .save.btn.btn-md.btn-custom
       Save
