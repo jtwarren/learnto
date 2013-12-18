@@ -1,5 +1,10 @@
 ready = ->
+  filepicker.setKey('AwDJHgIufS2WDkFtTMXBAz')
   $('.edit-field').hide()
+  $('.upload').click ->
+    filepicker.pick (InkBlob) ->
+      $('#regular_user_picture')[0].value = InkBlob.url
+
   $('.edit').click -> 
     $(this).hide()
     category = $(this).parents('.info')
@@ -21,5 +26,6 @@ ready = ->
     category.find('.text').show()
     category.find('.edit').show()
     category.find('.edit-field').hide()
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

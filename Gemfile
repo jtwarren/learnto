@@ -14,6 +14,8 @@ gem 'simple_form'
 
 gem 'newrelic_rpm'
 
+gem 'filepicker-rails'
+
 # User HAML for view files
 gem 'haml-rails', '>= 0.3.4'
 

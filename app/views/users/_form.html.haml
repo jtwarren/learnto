@@ -5,11 +5,14 @@
   .form-group
     = f.text_field :last_name, class: "form-control", placeholder: "Last name"
   .form-group
-    = f.text_field :picture, class: "form-control", placeholder: "A link to a picture of yourself", required: true
+    .upload.btn.btn-custom
+      Upload Picture
+    %br
+    = f.hidden_field :picture, class: "form-control"
   .form-group
     = f.text_field :email, class: "form-control", placeholder: "Email"
   .form-group
     = f.password_field :password, class: "form-control", placeholder: "Password"
   .form-group
     = f.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation"
-  = f.submit "Create", class: "btn btn-custom"
+  = f.submit "Create", class: "btn btn-custom submit"

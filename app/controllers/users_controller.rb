@@ -13,6 +13,15 @@ class UsersController < ApplicationController
       url = params[:return_to]
       url ||= user_url(@user)
       redirect_to url
+    elsif @user.errors.any?
+      @user.errors.full_messages.each do |msg|
+        if !flash[:alert]
+          flash[:alert] = msg + '. '
+        else
+          flash[:alert] += msg + '. '
+        end
+      end
+      redirect_to signup_url
     else
       render action: 'new'
     end

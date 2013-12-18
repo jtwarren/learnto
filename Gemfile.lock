@@ -56,6 +56,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    filepicker-rails (1.0.0)
+      rails (>= 3.2)
     foreigner (1.6.0)
       activerecord (>= 3.0.0)
     haml (4.0.3)
@@ -165,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 4.0.0)
+  filepicker-rails
   haml-rails (>= 0.3.4)
   jbuilder (~> 1.2)
   jquery-rails
