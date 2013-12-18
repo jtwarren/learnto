@@ -9,7 +9,7 @@
           Inbox
       %br
   .row  
-    .col-md-3.col-md-offset
+    .col-md-4.col-md-offset
       .box
         %h2.heading #{@user.name}
         .picture-profile
@@ -35,7 +35,7 @@
             %h2.heading Pending Approval
             - @pending_skills.each do |skill|
               = render partial: "skills/skill_short", locals: {skill_short: skill}
-    .col-md-9.col-md-offset
+    .col-md-8.col-md-offset
       .box
         .about
         %h2.heading About #{@user.first_name}
