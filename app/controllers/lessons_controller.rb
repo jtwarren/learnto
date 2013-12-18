@@ -24,6 +24,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @review = Review.new
     if current_user
       if  current_user.admin || current_user.taken_lesson(@lesson) || current_user.taught_lesson(@lesson)
         receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
@@ -32,6 +33,16 @@ class LessonsController < ApplicationController
           receipt.save!
         end
         @message = Message.new
+        @other_user = nil
+        if current_user = @lesson.teacher
+          @other_user = @lesson.user
+        elsif current_user = @lesson.user
+          @other_user = @lesson.teacher
+        end
+      addedReview = current_user.reviewFor(@other_user,@lesson)
+      if addedReview
+        @review = addedReview
+      end
       else
         redirect_to root_url
       end

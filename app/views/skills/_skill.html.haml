@@ -31,12 +31,12 @@
         .box
           %h3 Reviews
           %br
-          - if @lesson
+          - if !@review.user
             .add-review
-              = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user}
+              = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user, target_user: @lesson.teacher}
             %br
           .reviews
-            = render partial: "review_short", collection: @reviews
+            = render partial: "review_short", collection: @reviews.reverse
 
     .col-md-5
       .box

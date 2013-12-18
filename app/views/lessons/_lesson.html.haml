@@ -30,7 +30,9 @@
             = link_to "Accept", approve_lesson_path(id: @lesson.id), class: "button btn btn-custom"
             = link_to "Ignore", ignore_lesson_path(id: @lesson.id), class: "button btn btn-custom"
           - elsif !@lesson.completed
-            = link_to "Completed", complete_lesson_path(id: @lesson.id), class: "button btn btn-custom"
+            .accepted
+              Accepted!
+
         - else
           -if !@lesson.approved && !@lesson.ignored
             .pending-approval
@@ -41,3 +43,14 @@
           - elsif @lesson.approved
             .accepted
               Accepted!
+            .review
+              = link_to "Review Teacher", skill_path(id: @lesson.skill.id), class: "button btn btn-custom"
+      -if @lesson.approved
+        .box
+          %h3 Review for #{@other_user.first_name}
+          %br
+          %Review
+          - if @review.user == current_user
+            = render partial: "skills/review_short", collection: [@review]
+          - else
+            = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @other_user}

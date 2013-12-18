@@ -1,14 +1,73 @@
-.review
+.skill
 {
-  font-size: 70%;
-  .review-info
+  .review
   {
-    text-align: center;
+    font-size: 100%;
+    .review-info
+    {
+      text-align: center;
+    }
+    .stars
+    {
+      color: green;
+      padding-bottom: 10px;
+    }
+    .stars-unselected
+    {
+      padding-bottom: 10px;
+    }
+    padding-bottom: 5px;
+    padding-top: 5px;
   }
-  .stars
+}
+
+.user
+{
+  .review
   {
-    color: green;
-    font-size: 150%;
-    padding-bottom: 10px;
+    .review-info
+    {
+      text-align: center;
+      margin-top: -20px;
+    }
+    .stars
+    {
+      color: green;
+      font-size: 150%;
+      padding-bottom: 10px;
+    }
+    .circle-overlay
+    {
+      text-align: center;
+    }
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+}
+
+.lesson
+{
+  .review
+  {
+    font-size: 100%;
+    .review-info
+    {
+      text-align: center;
+    }
+    .stars
+    {
+      color: green;
+      padding-bottom: 10px;
+    }
+    .stars-unselected
+    {
+      padding-bottom: 10px;
+    }
+    .col-md-9
+    {
+      padding-left: 40px;
+    }
+    padding-bottom: 5px;
+    padding-top: 5px;
   }
 }

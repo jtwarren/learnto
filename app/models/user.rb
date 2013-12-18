@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def lessons_taught
-    lessons=[]
+    lessons = []
     self.skills.each do |skill|
       skill.lessons.each do |lesson|
         lessons.push(*lesson)
@@ -47,11 +47,61 @@ class User < ActiveRecord::Base
     return lessons
   end
 
+  def teaching_reviews
+    reviews = []
+    self.skills.each do |skill|
+      skill.lessons.each do |lesson|
+        lesson.reviews.each do |review|
+          if review.target_user_id == self.id
+            reviews.push(*review)
+          end
+        end
+      end
+    end
+    return reviews
+  end
+
+  def learning_reviews
+    reviews = []
+    self.lessons.each do |lesson|
+      lesson.reviews.each do |review|
+        if review.target_user_id == self.id
+          reviews.push(*review)
+        end
+      end
+    end
+    return reviews
+  end    
+
+  def tookLessonWith (user)
+    self.lessons.each do |lesson|
+      if lesson.teacher == user
+        return true
+      end
+    end
+    self.skills.each do |skill|
+      skill.lessons.each do |lesson|
+        if lesson.user == user
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  def reviewFor(user, lesson)
+    lesson.reviews.each do |review|
+      if review.target_user_id == user.id
+        return review
+      end
+    end
+    return nil
+  end
+
   def unread
     unread=self.receipts.where(read: false)
     return unread.size
   end
-
 
 
 end
