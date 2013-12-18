@@ -39,7 +39,7 @@
         .box
           %h3 Reviews
           %br
-          - if !@review.user
+          - if !@review.user && @lesson
             .add-review
               = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user, target_user: @lesson.teacher}
             %br
