@@ -54,7 +54,8 @@ $lightGray: #999;
 
 .skill-short {
   padding: 10px;
-  margin-top: 20px;
+  margin-top: -60px;
+  margin-left: 20px;
   padding-bottom: 20px;
   height: 100px;
 
@@ -129,8 +130,8 @@ $lightGray: #999;
 }
 
 .profile-pic {
-  position: absolute;
-  top: 160px;
+  position: relative;
+  top: -40px;
   left: 20px;
 }
 
