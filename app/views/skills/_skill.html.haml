@@ -7,11 +7,19 @@
             Pending approval
         %h2.title
           = @skill.title
-        .container
-          %a{href: user_path(@skill.user), class: "circle-overlay"}
-            = image_tag @skill.user.picture
-          %h4.instructor
-            = link_to @skill.user.name, user_path(@skill.user)
+        .row
+          .col-md-3
+            .container
+              %a{href: user_path(@skill.user), class: "circle-overlay"}
+                = image_tag @skill.user.picture
+              %h4.instructor
+                = link_to @skill.user.name, user_path(@skill.user)
+          .col-md-9
+            .row.share-buttons
+              .col-md-5
+                %div{:id => 'facebook',:"data-url" => skill_url(@skill), :'data-text'=> "Learn to #{@skill.title} on LearnTo!", :'data-title'=> 'Share'}
+              .col-md-5
+                %div{:id => 'twitter',:"data-url" => skill_url(@skill), :'data-text'=> "Learn to #{@skill.title} on LearnTo!", :'data-title'=> 'Tweet'}
         %hr.div-line
         %h4 Description
         .description

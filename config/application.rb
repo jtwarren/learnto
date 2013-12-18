@@ -22,5 +22,14 @@ module Learnto
     config.filepicker_rails.api_key = "AwDJHgIufS2WDkFtTMXBAz"
     config.filepicker_rails.secret_key = "IQ5OQFWAIREWLO2QUOXBEZVLQE"
     config.action_mailer.default_url_options = { host: 'learnto.com' }
+
+    def flash_class(level)
+        case level
+            when :notice then "alert alert-info"
+            when :success then "alert alert-success"
+            when :error then "alert alert-error"
+            when :alert then "alert alert-error"
+        end
+    end
   end
 end

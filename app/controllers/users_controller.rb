@@ -15,10 +15,10 @@ class UsersController < ApplicationController
       redirect_to url
     elsif @user.errors.any?
       @user.errors.full_messages.each do |msg|
-        if !flash[:alert]
-          flash[:alert] = msg + '. '
+        if !flash[:warning]
+          flash[:warning] = msg + '. '
         else
-          flash[:alert] += msg + '. '
+          flash[:warning] += msg + '. '
         end
       end
       redirect_to signup_url
