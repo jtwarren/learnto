@@ -35,6 +35,13 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+  .picture-profile{
+  text-align: center;
+  img {
+    max-width: 100%;
+  }
+  margin-top: 10px;
+}
 }
 
 .nav{
@@ -46,11 +53,4 @@
 .info
 {
   padding-left: 30px;
-}
-.picture-profile{
-  text-align: center;
-  img {
-    max-width: 280px;
-  }
-  margin-top: 10px;
 }
