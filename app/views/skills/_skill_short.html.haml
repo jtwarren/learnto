@@ -2,13 +2,14 @@
   .pin
     .skill-image
       = image_tag skill_short.picture
-    .profile-pic.circle-overlay
-      = image_tag skill_short.user.picture
-    .skill-short
-      .teacher-name
-        Taught by
-        %span
-          = skill_short.user.first_name
-      .skill-title
-        %span
-          = skill_short.title
+    .below-fold
+      .profile-pic.circle-overlay
+        = image_tag skill_short.user.picture
+      .skill-short
+        .teacher-name
+          Taught by
+          %span
+            = skill_short.user.first_name
+        .skill-title
+          %span
+            = skill_short.title

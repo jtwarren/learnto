@@ -52,9 +52,15 @@ $lightGray: #999;
   width: 100%;
 }
 
+.grid
+{
+  .below-fold {
+    margin-top: -40px;
+  }
+}
+
 .skill-short {
   padding: 10px;
-  margin-top: -60px;
   margin-left: 20px;
   padding-bottom: 20px;
   height: 100px;
@@ -69,8 +75,28 @@ $lightGray: #999;
     left: 85px;
     margin-bottom: -25px;
   }
+}
+.circle-overlay {
+  img {
+    height: 80px;
+    width: 80px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    border: solid 2px #FEFEFE
+  }
+}
+.profile-pic {
+  position: relative;
+  left: 20px;
+}
 
-  
+.user
+{
+  .below-fold {
+    margin-top: -70px;
+    margin-left: -15px;
+  }
 }
 
 .skill-title {
@@ -129,22 +155,6 @@ $lightGray: #999;
   }
 }
 
-.profile-pic {
-  position: relative;
-  top: -40px;
-  left: 20px;
-}
-
-.circle-overlay {
-  img {
-    height: 80px;
-    width: 80px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
-    -webkit-border-radius: 40px;
-    border: solid 2px #FEFEFE
-  }
-}
 
 .contact {
   width: 100%;
