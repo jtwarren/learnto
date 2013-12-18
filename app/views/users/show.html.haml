@@ -47,6 +47,12 @@
         %h4.div-line
         .reviews
           %h2.heading Reviews
-          = render partial: "skills/review_short", collection: @user.teaching_reviews.reverse
-          %h4 Reviews from teachers
-          = render partial: "skills/review_short", collection: @user.learning_reviews.reverse
+          -if !@user.teaching_reviews.empty? or !@user.teaching_reviews.empty?
+            - if !@user.teaching_reviews.empty?
+              %h4 Reviews from students
+              = render partial: "skills/review_short", collection: @user.teaching_reviews.reverse
+            - if !@user.learning_reviews.empty?
+              %h4 Reviews from teachers
+              = render partial: "skills/review_short", collection: @user.learning_reviews.reverse
+          -else
+            No reviews yet!
