@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :receipts
   has_many :lessons
+  has_many :tokens
 
   accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 

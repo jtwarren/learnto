@@ -18,8 +18,16 @@
           %li
             = link_to current_user.name, user_path(current_user)
           %li
-            .unread.badge.badge-error.pull-right
-              =link_to current_user.unread, inbox_conversations_path
+            %a{href: inbox_conversations_path}
+              %span.unread.badge.pull-right
+                = current_user.unread
+              Inbox
+          %li
+            %a
+              %span.unread.badge.pull-right
+                = current_user.credits
+              Credits
+
         - else
           %li
             = link_to "Login", login_path
