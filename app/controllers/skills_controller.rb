@@ -16,13 +16,16 @@ class SkillsController < ApplicationController
   def show
     @skill = Skill.find(params[:id])
     @lesson = nil
-    @review = Review.new
     if current_user
       @lesson = current_user.taken_class(@skill)
       if @lesson
         @review = current_user.reviewFor(@skill.user, @lesson)
       end
     end
+    if !@review
+      @review = Review.new
+    end
+
     @reviews = @skill.get_reviews()
     @completed_lessons = @skill.lessons.where(completed: true)
     max_index = [0, @completed_lessons.length - 4].max
