@@ -44,7 +44,7 @@
             .accepted
               Accepted!
 
-      -if @lesson.approved
+      -if @lesson.approved && @other_user
         .box
           %h3 Review for #{@other_user.first_name}
           %br
