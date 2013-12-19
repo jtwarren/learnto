@@ -18,27 +18,15 @@ ready = ->
   $('.fb').click ->
       window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436')
       return false
-
-  $("#twitter").sharrre
-    share:
-      twitter: true
-    enableHover: false
-    enableTracking: true
-    buttons:
-      twitter:
-        via: "Learn2"
-    click: (api, options) ->
-      api.simulateClick()
-      api.openPopup "twitter"
-
-  $("#facebook").sharrre
-    share:
-      facebook: true
-    enableHover: false
-    enableTracking: true
-    click: (api, options) ->
-      api.simulateClick()
-      api.openPopup "facebook"
+  # not (d, s, id) ->
+  #   js = undefined
+  #   fjs = d.getElementsByTagName(s)[0]
+  #   unless d.getElementById(id)
+  #     js = d.createElement(s)
+  #     js.id = id
+  #     js.src = "https://platform.twitter.com/widgets.js"
+  #     fjs.parentNode.insertBefore js, fjs
+  # (document, "script", "twitter-wjs")
 
 
 $(document).ready(ready)

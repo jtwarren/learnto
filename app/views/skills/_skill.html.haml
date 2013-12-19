@@ -16,11 +16,11 @@
                 = link_to @skill.user.name, user_path(@skill.user)
           .col-md-9
             .row.share-buttons
-              .col-md-5
-                %div{:id => 'facebook',:"data-url" => skill_url(@skill), :'data-text'=> "Learn to #{@skill.title} on LearnTo!", :'data-title'=> 'Share'}
-              .col-md-5
-                %div{:id => 'twitter',:"data-url" => skill_url(@skill), :'data-text'=> "Learn to #{@skill.title} on LearnTo!", :'data-title'=> 'Tweet'}
-        %hr.div-line
+              %facebook.sharer
+                = link_to (image_tag 'facebook.png'), "http://www.facebook.com/sharer.php?u="+u(skill_url(@skill)), target: "_blank", alt: "facebook"
+              %twitter.sharer
+                = link_to (image_tag 'twitter.png'), "https://twitter.com/share?url="+u(skill_url(@skill))+'&text='+'Learn to '+ @skill.title+'!'+'&via='+'Learn2', target: '_blank'     
+      %hr.div-line
         %h4 Description
         .description
           = @skill.description
