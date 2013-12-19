@@ -5,8 +5,15 @@
         - if @skill.approved == false
           .pending-approval
             Pending approval
-        %h2.title
-          = @skill.title
+        .row
+          .col-md-7
+            %h2.title
+              = @skill.title
+          .col-md-4.edit-buttons
+            - if current_user == @skill.user
+              = link_to 'Edit', edit_skill_path(id: @skill.id), class: 'btn btn-custom edit'
+              = link_to 'Remove', remove_skill_path(@skill), class: 'btn btn-custom edit'
+
         .row
           .col-md-3
             .container
@@ -19,8 +26,8 @@
               %facebook.sharer
                 = link_to (image_tag 'facebook.png'), "http://www.facebook.com/sharer.php?u="+u(skill_url(@skill)), target: "_blank", alt: "facebook"
               %twitter.sharer
-                = link_to (image_tag 'twitter.png'), "https://twitter.com/share?url="+u(skill_url(@skill))+'&text='+'Learn to '+ @skill.title+'!'+'&via='+'Learn2', target: '_blank'     
-        %hr.div-line
+                = link_to (image_tag 'twitter.png'), "https://twitter.com/share?url="+u(skill_url(@skill))+'&text='+'Learn to '+ @skill.title+'&via='+'Learn2', target: '_blank'     
+          %hr.div-line
         %h4 Description
         .description
           = @skill.description

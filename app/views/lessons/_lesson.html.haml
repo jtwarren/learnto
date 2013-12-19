@@ -43,8 +43,7 @@
           - elsif @lesson.approved
             .accepted
               Accepted!
-            .review
-              = link_to "Review Teacher", skill_path(id: @lesson.skill.id), class: "button btn btn-custom"
+
       -if @lesson.approved
         .box
           %h3 Review for #{@other_user.first_name}

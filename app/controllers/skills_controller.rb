@@ -60,6 +60,15 @@ class SkillsController < ApplicationController
     @skill = current_user.skills.find(params[:id])
   end
 
+  def remove
+    @skill = current_user.skills.find(params[:id])
+    @skill.hidden = true
+    @skill.save!
+    flash[:warning] = "Skill removed"
+    redirect_to root_url
+  end
+
+
   def update
     @skill = current_user.skills.find(params[:id])
     if @skill.update(skill_params)
