@@ -4,6 +4,8 @@ ready = ->
   $('.upload').click ->
     filepicker.pick (InkBlob) ->
       $('#regular_user_picture')[0].value = InkBlob.url
+      $('.upload').html("Picture Uploaded!")
+      $('.upload').addClass('success')
 
   $('.edit').click -> 
     $(this).hide()
