@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @facebook_param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
     @user = RegularUser.new(user_params)
     if @user.save
       session[:user_id] = @user.id

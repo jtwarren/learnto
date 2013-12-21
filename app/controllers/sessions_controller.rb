@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @facebook_param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
     if request.env["omniauth.auth"].present?
       oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       oauth.login_or_create
