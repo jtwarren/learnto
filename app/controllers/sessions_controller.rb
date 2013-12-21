@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
         url ||= skills_url
         redirect_to url
       else
-        flash.now[:error] = "Invalid login credentials."
         render action: 'new'
       end
     end
