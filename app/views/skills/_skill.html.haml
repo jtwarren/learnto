@@ -18,8 +18,10 @@
         .row
           .col-md-6
             .social-share
-              .fb-share-button{"data-href" => "#{request.original_url}", "data-type" => "button_count"}
-            %a.twitter-share-button{"data-via" => "comelearnto", href: "https://twitter.com/share"} Tweet
+              .facebook
+                .fb-share-button{"data-href" => "#{request.original_url}", "data-type" => "button_count"}
+              .twitter
+                %a.twitter-share-button{"data-via" => "comelearnto", href: "https://twitter.com/share"} Tweet
           %hr.div-line
         .action-links
           - if current_user == @skill.user
