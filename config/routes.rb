@@ -11,7 +11,8 @@ Learnto::Application.routes.draw do
   get "about" => 'static_pages#about', :as => "about"
   get "guidelines" => 'static_pages#guidelines', :as => "guidelines"
   get "team" => 'static_pages#team', :as => "team"
-  
+  get "credits" => 'static_pages#credits', :as => "credits"
+
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
 

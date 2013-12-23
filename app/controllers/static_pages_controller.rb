@@ -11,4 +11,7 @@ class StaticPagesController < ApplicationController
 
   def team
   end
+
+  def credits
+  end
 end
