@@ -4,20 +4,23 @@
     %p.help-block
       Choose and interesting title to capture people's attention.
     = f.text_field :title, class: "form-control", placeholder: "i.e. 'Cook Italian food' or 'Build a website'"
-  .form-group.skill-form-group
+  %hr.div-line
+  .form-group
     = f.label :description
     %p.help-block
       Describe what you're going to help others learn.
     = f.text_area :description, rows: 5, class: "form-control", placeholder: "i.e. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
-  .form-group.skill-form-group
+  %hr.div-line
+  .form-group
     = f.label :qualifications
     %p.help-block
       Tell others why you're able to teach them.
     = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "i.e. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
-  .form-group.skill-form-group
+  %hr.div-line
+  .form-group
     .upload-skill-picture.btn.btn-custom
       Upload an image that describes your skill
     %br
     = f.hidden_field :picture, class: "form-control"
-  .skill-form-group
+  %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"
