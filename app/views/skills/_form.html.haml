@@ -15,7 +15,9 @@
       Tell others why you're able to teach them.
     = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "i.e. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
   .form-group.skill-form-group
-    = f.label :picture, "Image URL"
-    = f.text_field :picture, class: "form-control", placeholder: "http://www.thenewstribe.com/wp-content/uploads/2012/10/Anonymous-hackers.jpg"
+    .upload-skill-picture.btn.btn-custom
+      Upload an image that describes your skill
+    %br
+    = f.hidden_field :picture, class: "form-control"
   .skill-form-group
     = f.submit "Submit", class: "btn btn-custom"

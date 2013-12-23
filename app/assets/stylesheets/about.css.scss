@@ -10,3 +10,20 @@
 .profile{
   text-align: center;
 }
+
+.fixed{
+  position: fixed;
+  top: -5px;
+  padding-left: 15px;
+}
+
+.about { 
+  img{
+    float: left;
+    max-width: 375px;
+  }
+  .step {
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+}

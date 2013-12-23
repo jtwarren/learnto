@@ -18,6 +18,11 @@ ready = ->
   $('.fb').click ->
       window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436')
       return false
+  $('.upload-skill-picture').click ->
+    filepicker.pick (InkBlob) ->
+      $('#skill_picture')[0].value = InkBlob.url
+      $('.upload-skill-picture').html("Picture Uploaded!")
+      $('.upload-skill-picture').addClass('success')    
 
 
 $(document).ready(ready)

@@ -1,5 +1,5 @@
 .user
-  -if @user==current_user
+  -if @user == current_user
     %ul.nav.nav-tabs.nav-justified.selector
       %li.active
         %a.option{href: user_path(@user.id)}
@@ -14,6 +14,10 @@
         %h2.heading #{@user.name}
         .picture-profile
           =image_tag @user.picture
+        -if @user == current_user
+          %br
+          .btn.btn-md.btn-custom.edit-picture
+            Edit
       .box
         - if @skills.empty? and @pending_skills.empty?
           - if @user==current_user

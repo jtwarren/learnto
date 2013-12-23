@@ -1,6 +1,7 @@
 ready = ->
   filepicker.setKey('AwDJHgIufS2WDkFtTMXBAz')
   $('.edit-field').hide()
+
   $('.upload').click ->
     filepicker.pick 
       services: ["COMPUTER", "FACEBOOK", "IMAGE_SEARCH", "URL"]
@@ -9,11 +10,22 @@ ready = ->
       $('.upload').html("Picture Uploaded!")
       $('.upload').addClass('success')
 
+  $('.edit-picture').click ->
+    filepicker.pick (InkBlob) ->
+      data = {user: {picture: InkBlob.url}}
+      $.ajax({
+        type: "PUT",
+        data: data,
+        url: window.location.pathname
+      });
+      $('.picture-profile').children('img').attr('src', InkBlob.url)
+
   $('.edit').click -> 
     $(this).hide()
     category = $(this).parents('.info')
     category.find('.text').hide()
     category.find('.edit-field').show()
+
   $('.save').click ->
     category = $(this).parents('.info')
     name = category.attr('class').split(' ')[0]
