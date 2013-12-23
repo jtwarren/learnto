@@ -2,7 +2,9 @@ ready = ->
   filepicker.setKey('AwDJHgIufS2WDkFtTMXBAz')
   $('.edit-field').hide()
   $('.upload').click ->
-    filepicker.pick (InkBlob) ->
+    filepicker.pick 
+      services: ["COMPUTER", "FACEBOOK", "IMAGE_SEARCH", "URL"]
+    , (InkBlob) ->
       $('#regular_user_picture')[0].value = InkBlob.url
       $('.upload').html("Picture Uploaded!")
       $('.upload').addClass('success')
