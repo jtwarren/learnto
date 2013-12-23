@@ -1,33 +1,32 @@
 .skill
   .row
-    .col-md-7.floatright
+    .col-md-7
       .box
         - if @skill.approved == false
           .pending-approval
             Pending approval
         .row
-          .col-md-7
+          .col-md-12
             %h2.title
               = @skill.title
-          .col-md-4.edit-buttons
-            - if current_user == @skill.user
-              = link_to 'Edit', edit_skill_path(id: @skill.id), class: 'btn btn-custom edit'
-              = link_to 'Remove', remove_skill_path(@skill), class: 'btn btn-custom edit'
-
         .row
-          .col-md-3
-            .container
-              %a{href: user_path(@skill.user), class: "circle-overlay"}
-                = image_tag @skill.user.picture
-              %h4.instructor
-                = link_to @skill.user.name, user_path(@skill.user)
-          .col-md-9
-            .row.share-buttons
-              %facebook.sharer
-                = link_to (image_tag 'facebook.png'), "http://www.facebook.com/sharer.php?u="+u(skill_url(@skill)), target: "_blank", alt: "facebook"
-              %twitter.sharer
-                = link_to (image_tag 'twitter.png'), "https://twitter.com/share?url="+u(skill_url(@skill))+'&text='+'Learn to '+ @skill.title+'&via='+'Learn2', target: '_blank'     
+          .col-md-6
+            %a{href: user_path(@skill.user), class: "circle-overlay"}
+              = image_tag @skill.user.picture
+            %h4.instructor
+              = link_to @skill.user.name, user_path(@skill.user)
+        .row
+          .col-md-6
+            .social-share
+              .facebook
+                .fb-share-button{"data-href" => "#{request.original_url}", "data-type" => "button_count"}
+              .twitter
+                %a.twitter-share-button{"data-via" => "comelearnto", href: "https://twitter.com/share"} Tweet
           %hr.div-line
+        .action-links
+          - if current_user == @skill.user
+            = link_to 'Edit', edit_skill_path(id: @skill.id)
+            = link_to 'Remove', remove_skill_path(@skill)
         %h4 Description
         .description
           = @skill.description

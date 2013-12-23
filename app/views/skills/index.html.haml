@@ -4,14 +4,14 @@
   Top Lessons in Cambridge
 
 .grid
-  = @skills.each_slice(3) do |slice|
-    - slice.each do |skill|
-      .col-xs-12.col-sm-6.col-md-4
-        = render partial: "skill_short", locals: {skill_short: skill}
+  .row
+    = @skills.each_slice(3) do |slice|
+      - slice.each do |skill|
+        .col-xs-12.col-sm-6.col-md-4
+          = render partial: "skill_short", locals: {skill_short: skill}
 
-%a.btn.btn-primary.contact{"data-toggle" => "modal", href: "#requestModal", role: "button"} 
-  .req
-    Can't find what you want? Make a request!
+.new
+  Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!
 
 - if current_user
   #aboutMeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
@@ -35,20 +35,3 @@
 -if not @hide_about_me
   %script
     $(aboutMeModal).modal()
-    
-#requestModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-        %h4#myModalLabel.modal-title Request a lesson
-      = form_tag('/auth/facebook', :html => { :class => "form-horizontal" } ) do |f|
-        .modal-body
-          %fieldset
-            .control-group
-              = label_tag :request, "What would you like to learn?", class: "control-label"
-              .controls
-                = text_area_tag :request, nil, :class=> "request"
-        .modal-footer
-          .login-button
-            = submit_tag 'Sign in with Facebook to submit request', :class=>"btn-auth btn-facebook"
