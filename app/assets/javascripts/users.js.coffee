@@ -3,13 +3,17 @@ ready = ->
   $('.edit-field').hide()
 
   $('.upload').click ->
-    filepicker.pick (InkBlob) ->
+    filepicker.pick 
+      services: ["COMPUTER", "FACEBOOK", "URL"]
+    , (InkBlob) ->
       $('#regular_user_picture')[0].value = InkBlob.url
       $('.upload').html("Picture Uploaded!")
       $('.upload').addClass('success')
 
   $('.edit-picture').click ->
-    filepicker.pick (InkBlob) ->
+    filepicker.pick 
+      services: ["COMPUTER", "FACEBOOK", "URL"]
+    , (InkBlob) ->
       data = {user: {picture: InkBlob.url}}
       $.ajax({
         type: "PUT",
