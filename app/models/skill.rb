@@ -21,5 +21,9 @@ class Skill < ActiveRecord::Base
     self.save!
   end
 
+  def similar_skills
+    return Skill.order("RANDOM()").first(5)
+  end
+
 end
 

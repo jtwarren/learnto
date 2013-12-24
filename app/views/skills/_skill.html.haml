@@ -57,6 +57,15 @@
         .skill-image-full
           = image_tag @skill.picture
 
+      - unless @skill.similar_skills.empty?
+        .box
+          %h4
+            You might also like these...
+          %ul
+            - @skill.similar_skills.each do |skill|
+              %li
+                = link_to skill.title, skill
+
       - if @completed_lessons_truncated && @completed_lessons_truncated.length>0
         .box
           %h4 People who have learned with #{@skill.user.first_name}
