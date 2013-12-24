@@ -58,7 +58,7 @@
           = image_tag @skill.picture
 
       - unless @skill.similar_skills.empty?
-        .box
+        .box.recommendations
           %h4
             You might also like these lessons...
           %ul
