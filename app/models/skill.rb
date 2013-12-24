@@ -22,7 +22,7 @@ class Skill < ActiveRecord::Base
   end
 
   def similar_skills
-    return Skill.order("RANDOM()").first(5)
+    return Skill.order("RANDOM()").first(3)
   end
 
 end
