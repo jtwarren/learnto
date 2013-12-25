@@ -24,7 +24,6 @@ class Skill < ActiveRecord::Base
 
   def similar_skills
     skills = Skill.where("approved=? AND hidden=?", true, false)
-    
 
     @words = skills.map do |skill| 
       skill.description.split(' ')
