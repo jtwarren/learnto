@@ -17,6 +17,7 @@ $lightGray: #999;
     color: red;
     font-size: .9em;
     font-weight: bold;
+
   }
 
   .title {
@@ -24,9 +25,11 @@ $lightGray: #999;
     margin-bottom: 1em;
   }
 
-  a {
-    color: $darkBlue;
-    text-decoration: none;
+  .recommendations {
+    a {
+      color: $darkBlue;
+      text-decoration: none;
+      }
   }
 
   .social-share {

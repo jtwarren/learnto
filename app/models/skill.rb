@@ -35,7 +35,7 @@ class Skill < ActiveRecord::Base
       end
     end
 
-    number_centers = 10
+    number_centers = Skill.count / 5
 
     @cluster_centers = @vectors.slice(0, number_centers)
 
@@ -60,7 +60,6 @@ class Skill < ActiveRecord::Base
       end
     end
 
-
     c = nil
     @clusters.each do |cluster|
       cluster.each do |vector|
@@ -71,10 +70,13 @@ class Skill < ActiveRecord::Base
     end
 
 
+
     if c != nil
       ret = []
       c.each do |vector|
-        ret << skills[@vectors.index(vector)]
+        if self != skills[@vectors.index(vector)]
+          ret << skills[@vectors.index(vector)]
+        end
       end
       return ret.first(3)
     end
