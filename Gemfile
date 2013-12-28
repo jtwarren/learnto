@@ -16,6 +16,8 @@ gem 'newrelic_rpm'
 
 gem 'filepicker-rails'
 
+gem 'koala'
+
 # User HAML for view files
 gem 'haml-rails', '>= 0.3.4'
 
