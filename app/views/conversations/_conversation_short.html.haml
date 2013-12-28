@@ -30,7 +30,7 @@
           =image_tag message.findSender.picture
       .col-md-1
         .container.nametime
-          %h5.Name
+          %h5.Nameus
             = link_to message.findSender.first_name, user_path(message.findSender)
           .Time
             = conversation_short.updateTime.strftime("%b - %d")

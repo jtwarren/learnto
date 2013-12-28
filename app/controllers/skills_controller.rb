@@ -9,7 +9,7 @@ class SkillsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json {render json: @skills}
+      format.json {render json: custom_json_for(@skills)}
     end
   end
 
@@ -35,8 +35,37 @@ class SkillsController < ApplicationController
     @return_to = request.path
     respond_to do |format|
       format.html
-      format.json {render json: @skill}
+      format.json {render json: custom_json_for_single_skill(@skill)}
     end
+  end
+
+  private
+  def custom_json_for(value)
+    list = value.map do |skill|
+      {
+        teacher: skill.user.name,
+        picture: skill.picture,
+        description: skill.description,
+        qualifications: skill.qualifications,
+        reviews: skill.get_reviews,
+        title: skill.title
+      }
+    end
+    return list.to_json
+  end
+
+  private
+  def custom_json_for_single_skill(skill)
+    value = 
+    {
+      teacher: skill.user.name,
+      picture: skill.picture,
+      description: skill.description,
+      qualifications: skill.qualifications,
+      reviews: skill.get_reviews,
+      title: skill.title    
+    }
+    return value.to_json
   end
 
   def create
