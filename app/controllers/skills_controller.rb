@@ -39,35 +39,6 @@ class SkillsController < ApplicationController
     end
   end
 
-  private
-  def custom_json_for(value)
-    list = value.map do |skill|
-      {
-        teacher: skill.user.name,
-        picture: skill.picture,
-        description: skill.description,
-        qualifications: skill.qualifications,
-        reviews: skill.get_reviews,
-        title: skill.title
-      }
-    end
-    return list.to_json
-  end
-
-  private
-  def custom_json_for_single_skill(skill)
-    value = 
-    {
-      teacher: skill.user.name,
-      picture: skill.picture,
-      description: skill.description,
-      qualifications: skill.qualifications,
-      reviews: skill.get_reviews,
-      title: skill.title    
-    }
-    return value.to_json
-  end
-
   def create
     @skill = current_user.skills.new(skill_params)
 
@@ -113,7 +84,34 @@ class SkillsController < ApplicationController
   end
 
   private
+    def custom_json_for_single_skill(skill)
+      value = 
+      {
+        teacher: skill.user.name,
+        picture: skill.picture,
+        description: skill.description,
+        qualifications: skill.qualifications,
+        reviews: skill.get_reviews,
+        title: skill.title    
+      }
+      return value.to_json
+    end
+
     def skill_params
       params.require(:skill).permit(:title, :description, :qualifications, :picture)
+    end
+    
+    def custom_json_for(value)
+      list = value.map do |skill|
+        {
+          teacher: skill.user.name,
+          picture: skill.picture,
+          description: skill.description,
+          qualifications: skill.qualifications,
+          reviews: skill.get_reviews,
+          title: skill.title
+        }
+      end
+      return list.to_json
     end
 end
