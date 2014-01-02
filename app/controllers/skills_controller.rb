@@ -87,7 +87,7 @@ class SkillsController < ApplicationController
       redirect_to login_url(return_to: request.path)
       return
     end
-    @skill = current_user.skills.new
+    @skill = Skill.new
   end
 
   def edit
