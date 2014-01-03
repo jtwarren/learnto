@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219101930) do
+ActiveRecord::Schema.define(version: 20140103181818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,14 +105,6 @@ ActiveRecord::Schema.define(version: 20131219101930) do
 
   add_index "skills", ["user_id"], name: "index_skills_on_user_id", using: :btree
 
-  create_table "tokens", force: true do |t|
-    t.boolean  "paid",       default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "lesson_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -129,7 +121,6 @@ ActiveRecord::Schema.define(version: 20131219101930) do
     t.string   "school"
     t.string   "work"
     t.string   "filepicker_url"
-    t.integer  "credits",          default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

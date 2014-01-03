@@ -18,8 +18,7 @@ class LessonsController < ApplicationController
     c.receipts.create(user_id: current_user.id, read: true)
     c.receipts.create(user_id: skill.user.id, read: false)
     lesson.conversation = c
-    t = lesson.tokens.create(user_id: current_user.id)
-    current_user.tokens << t
+
     Notifier.lesson_request(skill.user, current_user, lesson).deliver
     redirect_to lesson_url(lesson)
   end
@@ -42,19 +41,6 @@ class LessonsController < ApplicationController
         end
         if current_user == @lesson.user
           responses = @lesson.conversation.messages.where(sender: @other_user.id)
-          token = @lesson.findToken(current_user)
-          if !token.paid && responses.size > 0
-            if current_user.credits > 0
-              token.acceptCredit(current_user)
-            else
-              flash[:warning] = "You don't have enough credits to view the response and reply. Please sign up to teach or approve a pending lesson to earn credits!"
-              if current_user.skills.empty?
-                redirect_to create_skill_url
-              else
-                redirect_to inbox_conversations_path
-              end
-            end
-          end
         end
       else
         redirect_to root_url
@@ -68,9 +54,7 @@ class LessonsController < ApplicationController
     lesson = Lesson.find(params[:id])
     if current_user == lesson.teacher
       lesson.update_attribute(:approved, true)
-      current_user.credits += 1
       current_user.save!
-      flash[:notice] = "Congratulations! You just earned another credit! Use it by signing up for a lesson!"
     end
     redirect_to lesson_path(lesson)
   end

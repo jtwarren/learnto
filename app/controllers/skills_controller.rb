@@ -42,10 +42,9 @@ class SkillsController < ApplicationController
     @skill = current_user.skills.new(skill_params)
 
     if @skill.save
-      current_user.credits += 1
       current_user.save!
       Notifier.skill_added(@skill).deliver
-      redirect_to @skill, notice: 'Skill was successfully created. You also earned another credit! Use it by signing up for a lesson!' 
+      redirect_to @skill
     else
       render action: 'new'
     end

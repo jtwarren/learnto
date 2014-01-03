@@ -3,7 +3,6 @@ class Lesson < ActiveRecord::Base
   belongs_to :user
   has_one :conversation
   has_many :reviews
-  has_many :tokens
 
 
   def approve
@@ -38,15 +37,6 @@ class Lesson < ActiveRecord::Base
       other_user = self.teacher
     end
     return other_user
-  end
-
-  def findToken(user)
-    self.tokens.each do |token|
-      if token.user == user
-        return token
-      end
-    end
-    return nil
   end
 
   def status(user)
