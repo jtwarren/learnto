@@ -5,10 +5,9 @@
 
 .grid
   .row
-    = @skills.each_slice(3) do |slice|
-      - slice.each do |skill|
-        .col-xs-12.col-sm-6.col-md-4
-          = render partial: "skill_short", locals: {skill_short: skill}
+    - @skills.each do |skill|
+      .col-xs-12.col-sm-6.col-md-4
+        = render partial: "skill_short", locals: {skill_short: skill}
 
 .new
   Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!

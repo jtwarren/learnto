@@ -66,10 +66,10 @@
               %li
                 = link_to skill.title, skill
 
-      - if @completed_lessons_truncated && @completed_lessons_truncated.length>0
+      - if @completed_lessons && @completed_lessons.length > 0
         .box
           %h4 People who have learned with #{@skill.user.first_name}
-          = render partial: "lesson_short", collection: @completed_lessons_truncated
+          = render partial: "lesson_short", collection: @completed_lessons
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog

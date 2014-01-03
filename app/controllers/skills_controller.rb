@@ -1,7 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @show_banner = true
-    @skills = Skill.where("approved=? AND hidden=?",true,false).order("RANDOM()")
+    @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
     @is_new_user = params[:is_new_user]
     @hide_about_me = true
     if @new_user
@@ -27,12 +27,11 @@ class SkillsController < ApplicationController
     end
 
     @reviews = @skill.get_reviews()
-    @completed_lessons = @skill.lessons.where(completed: true)
-    max_index = [0, @completed_lessons.length - 4].max
-    @completed_lessons_truncated = @completed_lessons[max_index..@completed_lessons.length]
 
-    @confirm = params[:confirm]
+    @completed_lessons = @skill.lessons.where(completed: true).last(4)
+
     @return_to = request.path
+
     respond_to do |format|
       format.html
       format.json {render json: custom_json_for_single_skill(@skill)}
@@ -100,7 +99,7 @@ class SkillsController < ApplicationController
     def skill_params
       params.require(:skill).permit(:title, :description, :qualifications, :picture)
     end
-    
+
     def custom_json_for(value)
       list = value.map do |skill|
         {
