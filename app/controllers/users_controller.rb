@@ -28,6 +28,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+
+    if not current_user or current_user.id != @user.id
+      redirect_to @user, notice: 'You are not authorized to edit this profile.'
+    end
+    
+  end
+
   def show
     @user = User.find(params[:id])
     @skills = @user.skills.where("approved = ? AND hidden = ?", true, false)
@@ -55,18 +64,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    puts update_user_params
-    current_user.update(update_user_params)
-    if params["user"][:return_to]
-      redirect_to params["user"][:return_to]
+    @user = User.find(params[:id])
+    if @user.update(update_user_params)
+      redirect_to @user, notice: 'Profile was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   private
     def user_params
-      params.require(:regular_user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :learn, :interest, :return_to)
+      params.require(:regular_user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school)
     end
+
     def update_user_params
-      params.require(:user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school, :picture, :return_to)
+      params.require(:user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school)
     end      
 end

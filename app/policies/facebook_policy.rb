@@ -20,6 +20,10 @@ class FacebookPolicy
     @auth.info.nickname
   end
 
+  def location
+    @auth.info.location
+  end
+
   def image_url
     "http://graph.facebook.com/#{@auth.info.nickname}/picture?type=large"
   end
@@ -45,7 +49,8 @@ class FacebookPolicy
   end
 
   def refresh_callback account
-    # Place any methods you want to trigger on subsequent Facebook OAuth logins here.
+    # Update user's location
+    account.user.update(location:location)
   end
 
 end

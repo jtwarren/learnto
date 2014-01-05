@@ -53,9 +53,8 @@
             = render partial: "review_short", collection: @reviews.reverse
 
     .col-md-5
-      .box
-        .skill-image-full
-          = image_tag @skill.picture
+      .skill-image-full
+        = image_tag @skill.picture
 
       - unless @skill.similar_skills.empty?
         .box.recommendations

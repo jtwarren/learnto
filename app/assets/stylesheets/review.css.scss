@@ -1,3 +1,5 @@
+$darkBlue: #03498D;
+
 .skill
 {
   .review
@@ -9,7 +11,7 @@
     }
     .stars
     {
-      color: green;
+      color: $darkBlue;
       padding-bottom: 10px;
     }
     .stars-unselected
@@ -19,6 +21,10 @@
     padding-bottom: 5px;
     padding-top: 5px;
   }
+}
+
+.review-text {
+  font-size: .85em;
 }
 
 .user
@@ -32,7 +38,7 @@
     }
     .stars
     {
-      color: green;
+      color: $darkBlue;
       font-size: 150%;
       padding-bottom: 10px;
     }
@@ -56,7 +62,7 @@
     }
     .stars
     {
-      color: green;
+      color: $darkBlue;
       padding-bottom: 10px;
     }
     .stars-unselected

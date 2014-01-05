@@ -1,1 +1,5 @@
-= render partial: "form", locals: {user: @user}
+- provide(:title, "Profile - LearnTo")
+.row
+  .col-md-8.col-md-offset-2
+    .box
+      = render 'bio_form'

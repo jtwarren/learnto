@@ -34,8 +34,6 @@ class OAuthUser
 
     def account_already_exists?
       @user.accounts.exists?(provider: @provider, uid: @policy.uid)
-      puts @provider
-      puts @policy.uid
     end
 
     def create_new_account
@@ -60,6 +58,7 @@ class OAuthUser
         :first_name => @policy.first_name,
         :last_name  => @policy.last_name,
         :email      => @policy.email,
+        :location   => @policy.location,
         :picture    => image
       )
       self.new_user = true

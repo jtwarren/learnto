@@ -1,0 +1,25 @@
+%h3
+  LearnTo Profile
+%p
+  People love knowing more about you.  What makes you unique to teach or learn from?  What are your passions or interests, where have you worked, and what school did you go to?
+%hr.div-line
+= form_for(@user, {role: "form"}) do |f|
+  .form-group
+    = f.label :bio, "Biography"
+    %p.help-block
+      Tell others a little bit about yourself.  This makes them more likely to learn and teach with you.
+    = f.text_area :bio, class: "form-control"
+  %hr.div-line
+  .form-group
+    = f.label :work, "Work"
+    %p.help-block
+      Where do you, or have you worked?  Others find this information useful.
+    = f.text_field :work, class: "form-control"
+  %hr.div-line
+  .form-group
+    = f.label :school, "School"
+    %p.help-block
+      Where do you, or have you gone to school?
+    = f.text_field :school, class: "form-control"
+  %hr.div-line
+    = f.submit "Submit", class: "btn btn-custom"

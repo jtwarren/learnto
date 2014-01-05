@@ -1,63 +1,104 @@
 .user
-  -if @user == current_user
-    %ul.nav.nav-tabs.nav-justified.selector
-      %li.active
-        %a.option{href: user_path(@user.id)}
-          Profile
-      %li
-        %a.option{href: inbox_conversations_path}
-          Inbox
-      %br
   .row  
-    .col-md-4.col-md-offset
+    .col-md-4
       .box
-        %h2.heading #{@user.name}
-        .picture-profile
-          =image_tag @user.picture
-        -if @user == current_user
-          %br
-          .btn.btn-md.btn-custom.edit-picture
-            Edit
+        %h3.username
+          #{@user.name}
+        .profile-picture
+          = image_tag @user.picture
+        .user-info
+          - if @user.location
+            %span.glyphicon.glyphicon-map-marker
+            = @user.location
+
+      %h3.username
+        #{@user.first_name}'s Lessons
+      - @skills.each do |skill|
+        = render partial: "skills/skill_short", locals: {skill_short: skill}
+
+
+
+    .col-md-8
       .box
-        - if @skills.empty? and @pending_skills.empty?
-          - if @user==current_user
-            %h2.heading Share what you love!
-            .prompt
-              We're building an awesome community of talented people where you can share what you love, learn things you've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
-            .teach-button
-              = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
-          - else
-            %h2.heading #{@user.name} is currently not teaching anything
-        - if not @skills.empty?
-          .approved-lessons
-            %h2.heading 
-              = @user == current_user ? "My Lessons" : "#{@user.first_name}'s Lessons"
-            - @skills.each do |skill|
-              = render partial: "skills/skill_short", locals: {skill_short: skill}
-        - if @pending_skills and not @pending_skills.empty?
-          .pending-lessons
-            %h2.heading Pending Approval
-            - @pending_skills.each do |skill|
-              = render partial: "skills/skill_short", locals: {skill_short: skill}
-    .col-md-8.col-md-offset
-      .box
-        .about
-        %h2.heading About #{@user.first_name}
-        .bio.info
-          = render partial: 'edit_user', locals: {title: "About #{@user.first_name}", field_value: @user.bio, user: @user}
-        .work.info
-          = render partial: 'edit_user', locals: {title: "Work", field_value: @user.work, user: @user}
-        .school.info
-          = render partial: 'edit_user', locals: {title: "School", field_value: @user.school, user: @user}
-        %h4.div-line
-        .reviews
-          %h2.heading Reviews
-          -if !@user.teaching_reviews.empty? or !@user.teaching_reviews.empty?
-            - if !@user.teaching_reviews.empty?
-              %h4 Reviews from students
-              = render partial: "skills/review_short", collection: @user.teaching_reviews.reverse
-            - if !@user.learning_reviews.empty?
-              %h4 Reviews from teachers
-              = render partial: "skills/review_short", collection: @user.learning_reviews.reverse
-          -else
-            No reviews yet!
+        - if @user == current_user
+          = link_to "Edit profile", edit_user_path(@user)
+        .about-section
+          %h3
+            About #{@user.first_name}
+          .bio
+            %h4 Bio
+            %p
+              = @user.bio
+          .work
+            %h4 Work
+            %p
+              = @user.work
+          .school
+            %h4 School
+            %p
+              = @user.school
+
+      - if not (@user.teaching_reviews.empty? and @user.learning_reviews.empty?)
+        .box
+          .review-section
+            %h3
+              Reviews
+            - if not @user.teaching_reviews.empty?
+              %h5 From students
+            = render partial: "skills/review_short", collection: @user.teaching_reviews.reverse
+            - if not @user.learning_reviews.empty?
+              %h5 From teachers
+            = render partial: "skills/review_short", collection: @user.learning_reviews.reverse
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /   .box
+    /     %h2.heading 
+          
+    /     .picture-profile
+    /       =image_tag @user.picture
+    /     -if @user == current_user
+    /       %br
+    /       .btn.btn-md.btn-custom.edit-picture
+    /         Edit
+    /   .box
+    /     - if @skills.empty? and @pending_skills.empty?
+    /       - if @user==current_user
+    /         %h2.heading Share what you love!
+    /         .prompt
+    /           We're building an awesome community of talented people where you can share what you love, learn things you've always wanted to, and meet amazing people. You're good at something, share that with us and our community!
+    /         .teach-button
+    /           = link_to "Teach a lesson", new_skill_path, :class => "btn btn-md btn-custom"
+    /       - else
+    /         %h2.heading #{@user.name} is currently not teaching anything
+    /     - if not @skills.empty?
+    /       .approved-lessons
+    /         %h2.heading 
+    /           = @user == current_user ? "My Lessons" : "#{@user.first_name}'s Lessons"
+    /         - @skills.each do |skill|
+    /           = render partial: "skills/skill_short", locals: {skill_short: skill}
+    /     - if @pending_skills and not @pending_skills.empty?
+    /       .pending-lessons
+    /         %h2.heading Pending Approval
+    /         - @pending_skills.each do |skill|
+    /           = render partial: "skills/skill_short", locals: {skill_short: skill}
+    / .col-md-8.col-md-offset
+    /   .box
+    /     .about
+    /     %h2.heading About #{@user.first_name}
+    /     .bio.info
+    /       = render partial: 'edit_user', locals: {title: "About #{@user.first_name}", field_value: @user.bio, user: @user}
+    /     .work.info
+    /       = render partial: 'edit_user', locals: {title: "Work", field_value: @user.work, user: @user}
+    /     .school.info
+    /       = render partial: 'edit_user', locals: {title: "School", field_value: @user.school, user: @user}

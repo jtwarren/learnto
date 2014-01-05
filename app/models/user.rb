@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
 
   def name
-    return first_name+" "+last_name
+    return first_name + " " + last_name
   end
 
   def taken_class(skill)
