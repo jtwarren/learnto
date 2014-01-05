@@ -49,6 +49,11 @@ class FacebookPolicy
   end
 
   def refresh_callback account
+    puts '--------'
+    puts account.user.id
+    puts account.user.location
+    puts location
+    puts '--------'
     # Update user's location
     account.user.update(location:location)
   end
