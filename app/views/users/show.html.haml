@@ -14,11 +14,11 @@
             .info-item
               %span.glyphicon.glyphicon-map-marker
               = @user.location
-          - if @user.work
+          - if @user.school
             .info-item
               %span.glyphicon.glyphicon-book
               = @user.school
-          - if @user.school
+          - if @user.work
             .info-item
               %span.glyphicon.glyphicon-lock
               = @user.work
