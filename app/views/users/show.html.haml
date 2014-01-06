@@ -1,3 +1,6 @@
+/ Page title should be 'Jeffrey Warren - LearnTo'
+- provide(:title, @user.name + " - LearnTo")
+
 .user
   .row  
     .col-md-4
@@ -8,8 +11,17 @@
           = image_tag @user.picture
         .user-info
           - if @user.location
-            %span.glyphicon.glyphicon-map-marker
-            = @user.location
+            .info-item
+              %span.glyphicon.glyphicon-map-marker
+              = @user.location
+          - if @user.work
+            .info-item
+              %span.glyphicon.glyphicon-book
+              = @user.school
+          - if @user.school
+            .info-item
+              %span.glyphicon.glyphicon-lock
+              = @user.work
 
       %h3.username
         #{@user.first_name}'s Lessons
@@ -29,14 +41,6 @@
             %h4 Bio
             %p
               = @user.bio
-          .work
-            %h4 Work
-            %p
-              = @user.work
-          .school
-            %h4 School
-            %p
-              = @user.school
 
       - if not (@user.teaching_reviews.empty? and @user.learning_reviews.empty?)
         .box

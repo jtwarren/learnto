@@ -15,9 +15,12 @@
     }
   }
   .user-info {
-    text-align: center;
     margin-top: 50px;
+    margin-left: 20px;
     color: #666;
+    .info-item {
+      margin-bottom: 10px;
+    }
   }
 }
 

@@ -11,6 +11,12 @@
     = f.text_area :bio, class: "form-control"
   %hr.div-line
   .form-group
+    = f.label :location, "Location"
+    %p.help-block
+      Where are you currently located?  It helps others find classes near them!
+    = f.text_field :location, class: "form-control"
+  %hr.div-line
+  .form-group
     = f.label :work, "Work"
     %p.help-block
       Where do you, or have you worked?  Others find this information useful.
