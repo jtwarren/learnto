@@ -96,7 +96,7 @@ class SkillsController < ApplicationController
     end
 
     def skill_params
-      params.require(:skill).permit(:title, :description, :qualifications, :picture)
+      params.require(:skill).permit(:title, :description, :qualifications, :picture, :public)
     end
 
     def custom_json_for(value)

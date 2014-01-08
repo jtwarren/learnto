@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104054511) do
+ActiveRecord::Schema.define(version: 20140106061803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,22 @@ ActiveRecord::Schema.define(version: 20140104054511) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
+  create_table "network_users", force: true do |t|
+    t.integer  "network_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "network_users", ["network_id"], name: "index_network_users_on_network_id", using: :btree
+  add_index "network_users", ["user_id"], name: "index_network_users_on_user_id", using: :btree
+
+  create_table "networks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "receipts", force: true do |t|
     t.integer  "user_id"
     t.integer  "conversation_id"
@@ -101,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140104054511) do
     t.string   "picture"
     t.boolean  "approved",       default: false
     t.boolean  "hidden",         default: false
+    t.boolean  "public",         default: true
   end
 
   add_index "skills", ["user_id"], name: "index_skills_on_user_id", using: :btree

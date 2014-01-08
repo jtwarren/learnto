@@ -20,8 +20,12 @@
               = @user.school
           - if @user.work
             .info-item
-              %span.glyphicon.glyphicon-lock
+              %span.glyphicon.glyphicon-briefcase
               = @user.work
+          - if @user.networks
+            .info-item
+              %span.glyphicon.glyphicon-cloud
+              = @user.networks.map(&:name).join(', ')
 
       %h3.username
         #{@user.first_name}'s Lessons

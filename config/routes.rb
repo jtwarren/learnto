@@ -1,5 +1,6 @@
 Learnto::Application.routes.draw do
 
+  get "networks/show"
   resources :sessions, only: [:new, :create, :destroy]
 
   get "logout" => "sessions#destroy", :as => "logout"
@@ -16,6 +17,9 @@ Learnto::Application.routes.draw do
   patch "registration/update", as: 'update_registration'
 
   root 'skills#index'
+
+  get 'networks/:id' => 'networks#show'
+  get 'networks/:id/join' => 'networks#join', as: 'join_network'
 
   resources :users do
     collection do

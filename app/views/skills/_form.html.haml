@@ -31,4 +31,10 @@
     %br
     = f.hidden_field :picture, class: "form-control"
   %hr.div-line
+  .form-group
+    = f.label :public
+    = f.check_box :public
+    %p.help-block
+      Public lessons are visible to anyone.  Private lessons are visible to only those in your networks.
+  %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"

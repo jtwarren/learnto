@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :receipts
   has_many :lessons
 
+  has_many :network_users
+  has_many :networks, :through => :network_users
+
   accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 
   attr_accessor :new_user
