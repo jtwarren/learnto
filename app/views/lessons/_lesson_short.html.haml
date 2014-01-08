@@ -10,10 +10,11 @@
       .teacher-name
         Request by
         %span
-          = lesson_short.user.first_name
+          - if lesson_short.user
+            = lesson_short.user.first_name
       .skill-title
         %span
-          -if lesson_short.skill
+          - if lesson_short.skill
             = lesson_short.skill.title
 
       -if current_user == lesson_short.teacher
