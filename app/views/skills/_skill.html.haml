@@ -40,6 +40,9 @@
             %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
+          - if current_user != @skill.user
+            .also-teach
+              %p Think you can also teach this?  #{link_to 'Sign up to teach', new_skill_path}
 
       -if @reviews.length > 0 || @lesson
         .box
