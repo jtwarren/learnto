@@ -15,14 +15,9 @@ class LessonsController < ApplicationController
 
     conversation = Conversation.create()
     lesson.conversation = conversation
-    # conversation = lesson.build_conversation.save
+    
     message = conversation.messages.create(body: params[:learning_request], user: current_user)
 
-    # conversation = Conversation.create()
-    # conversation
-    # message = Message.create(body: params[:learning_request], sender: current_user.id)
-    
-    # conversation.messages << message
     conversation.receipts.create(user_id: current_user.id, read: true)
     conversation.receipts.create(user_id: skill.user.id, read: false)
 
@@ -42,7 +37,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
-    
+
     if not current_user
       redirect_to  login_url(return_to: lesson_path(@lesson))
     end
@@ -83,29 +78,5 @@ class LessonsController < ApplicationController
     def lesson_params
       params.require(:lesson).permit(:status)
     end
-
-  # def approve
-  #   lesson = Lesson.find(params[:id])
-  #   if current_user == lesson.teacher
-  #     lesson.approve
-  #   end
-  #   redirect_to lesson_path(lesson)
-  # end
-
-  # def ignore
-  #  lesson = Lesson.find(params[:id])
-  #   if current_user == lesson.teacher
-  #     lesson.ignore
-  #   end
-  #   redirect_to lesson_path(lesson)
-  # end
-
-  # def complete
-  #  lesson = Lesson.find(params[:id])
-  #   if current_user == lesson.teacher
-  #    lesson.complete
-  #   end
-  #   redirect_to lesson_path(lesson)
-  # end
 
 end

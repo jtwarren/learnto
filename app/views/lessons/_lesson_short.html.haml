@@ -10,27 +10,9 @@
       .teacher-name
         Request by
         %span
-          - if lesson_short.user
-            = lesson_short.user.first_name
+          - if lesson_short.skill.user
+            = lesson_short.skill.user.first_name
       .skill-title
         %span
           - if lesson_short.skill
             = lesson_short.skill.title
-
-      -if current_user == lesson_short.teacher
-        -if !lesson_short.approved && !lesson_short.ignored
-          = link_to "Accept", approve_lesson_path(id: lesson_short.id), class: "button btn btn-custom"
-          = link_to "Ignore", ignore_lesson_path(id: lesson_short.id), class: "button btn btn-custom"
-        -elsif !lesson_short.completed
-          = link_to "Completed", complete_lesson_path(id: lesson_short.id), class: "button btn btn-custom"
-
-      -else
-        -if !lesson_short.approved && !lesson_short.ignored
-          .pending-approval
-            Pending Response
-        -if !lesson_short.approved && lesson_short.ignored
-          .denied
-            Not Accepted
-        -elsif lesson_short.approved
-          .accepted
-            Accepted!
