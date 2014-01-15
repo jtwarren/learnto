@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
 
     conversation = Conversation.create()
     lesson.conversation = conversation
-    
+
     message = conversation.messages.create(body: params[:learning_request], user: current_user)
 
     conversation.receipts.create(user_id: current_user.id, read: true)
@@ -42,7 +42,7 @@ class LessonsController < ApplicationController
       redirect_to  login_url(return_to: lesson_path(@lesson))
     end
 
-    if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user
+    if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
       redirect_to skills_path, notice: 'You are not authorized to view this page.'
     end
 
