@@ -37,9 +37,9 @@ class ConversationsController < ApplicationController
       receipt.update(read: true)
     end
 
+    Notifier.reply(@message).deliver
+
     redirect_to lesson_path(@conversation.lesson)
-    
-    # Notifier.reply(@message).deliver
   end
 
 end
