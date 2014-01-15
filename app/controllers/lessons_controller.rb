@@ -10,69 +10,93 @@ class LessonsController < ApplicationController
 
   def create
     skill = Skill.find(params[:skill_id])
-    lesson = skill.lessons.create(params[:lesson].permit(:learning_request))
-    lesson.update(user: current_user)
-    message = Message.create(body: params[:lesson][:learning_request], sender: current_user.id, receiver: skill.user.id)
-    c = Conversation.create()
-    c.messages << message
-    c.receipts.create(user_id: current_user.id, read: true)
-    c.receipts.create(user_id: skill.user.id, read: false)
-    lesson.conversation = c
+    lesson = skill.lessons.create(status: "PENDING")
+    lesson.users << current_user
 
-    Notifier.lesson_request(skill.user, current_user, lesson).deliver
+    conversation = Conversation.create()
+    lesson.conversation = conversation
+    # conversation = lesson.build_conversation.save
+    message = conversation.messages.create(body: params[:learning_request], user: current_user)
+
+    # conversation = Conversation.create()
+    # conversation
+    # message = Message.create(body: params[:learning_request], sender: current_user.id)
+    
+    # conversation.messages << message
+    conversation.receipts.create(user_id: current_user.id, read: true)
+    conversation.receipts.create(user_id: skill.user.id, read: false)
+
+    lesson.conversation = conversation
+
+    # Notifier.lesson_request(skill.user, current_user, lesson).deliver
+
     redirect_to lesson_url(lesson)
+  end
+
+  def update
+    @lesson = Lesson.find(params[:id])
+    if @lesson.update(lesson_params)
+      redirect_to @lesson, notice: 'Status was successfully updated.'
+    end
   end
 
   def show
     @lesson = Lesson.find(params[:id])
+    @message = Message.new
+
     @review = Review.new
-    if current_user
-      if  current_user.admin || current_user.taken_lesson(@lesson) || current_user.taught_lesson(@lesson)
-        receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
-        if receipt
-          receipt.update_attribute(:read, true)
-          receipt.save!
-        end
-        @message = Message.new
-        @other_user = @lesson.findOtherUser(current_user)
-        addedReview = current_user.reviewFor(@other_user,@lesson)
-        if addedReview
-          @review = addedReview
-        end
-        if current_user == @lesson.user
-          responses = @lesson.conversation.messages.where(sender: @other_user.id)
-        end
-      else
-        redirect_to root_url
-      end
-    else
-      redirect_to  login_url(return_to: lesson_path(@lesson))
-    end
+
+    # if current_user
+    #   if current_user.admin || current_user.taken_lesson(@lesson) || current_user.taught_lesson(@lesson)
+    #     receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first
+    #     if receipt
+    #       receipt.update_attribute(:read, true)
+    #       receipt.save!
+    #     end
+    
+    #     # @other_user = @lesson.findOtherUser(current_user)
+    #     addedReview = current_user.reviewFor(@other_user,@lesson)
+    #     if addedReview
+    #       @review = addedReview
+    #     end
+    #     if current_user == @lesson.user
+    #       responses = @lesson.conversation.messages.where(sender: @other_user.id)
+    #     end
+    #   else
+    #     redirect_to root_url
+    #   end
+    # else
+    #   redirect_to  login_url(return_to: lesson_path(@lesson))
+    # end
   end
 
-  def approve
-    lesson = Lesson.find(params[:id])
-    if current_user == lesson.teacher
-      lesson.update_attribute(:approved, true)
-      current_user.save!
+  private
+    def lesson_params
+      params.require(:lesson).permit(:status)
     end
-    redirect_to lesson_path(lesson)
-  end
 
-  def ignore
-   lesson = Lesson.find(params[:id])
-    if current_user == lesson.teacher
-     lesson.ignore
-    end
-    redirect_to lesson_path(lesson)
-  end
+  # def approve
+  #   lesson = Lesson.find(params[:id])
+  #   if current_user == lesson.teacher
+  #     lesson.approve
+  #   end
+  #   redirect_to lesson_path(lesson)
+  # end
 
-  def complete
-   lesson = Lesson.find(params[:id])
-    if current_user == lesson.teacher
-     lesson.complete
-    end
-    redirect_to lesson_path(lesson)
-  end
+  # def ignore
+  #  lesson = Lesson.find(params[:id])
+  #   if current_user == lesson.teacher
+  #     lesson.ignore
+  #   end
+  #   redirect_to lesson_path(lesson)
+  # end
+
+  # def complete
+  #  lesson = Lesson.find(params[:id])
+  #   if current_user == lesson.teacher
+  #    lesson.complete
+  #   end
+  #   redirect_to lesson_path(lesson)
+  # end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112202124) do
+ActiveRecord::Schema.define(version: 20140113002113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,16 +38,22 @@ ActiveRecord::Schema.define(version: 20140112202124) do
 
   add_index "conversations", ["lesson_id"], name: "index_conversations_on_lesson_id", using: :btree
 
+  create_table "lesson_users", force: true do |t|
+    t.integer  "lesson_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lesson_users", ["lesson_id"], name: "index_lesson_users_on_lesson_id", using: :btree
+  add_index "lesson_users", ["user_id"], name: "index_lesson_users_on_user_id", using: :btree
+
   create_table "lessons", force: true do |t|
     t.integer  "skill_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "learning_request"
-    t.integer  "{:index=>true}_id"
-    t.boolean  "approved",          default: false
-    t.boolean  "ignored",           default: false
-    t.boolean  "completed",         default: false
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "lessons", ["skill_id"], name: "index_lessons_on_skill_id", using: :btree
@@ -55,16 +61,14 @@ ActiveRecord::Schema.define(version: 20140112202124) do
 
   create_table "messages", force: true do |t|
     t.text     "body"
-    t.text     "subject"
-    t.integer  "sender"
-    t.integer  "receiver"
-    t.boolean  "read",            default: false
     t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "network_users", force: true do |t|
     t.integer  "network_id"

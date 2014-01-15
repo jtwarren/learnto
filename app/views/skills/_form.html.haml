@@ -21,12 +21,12 @@
     %p.help-block
       Tell others why you're able to teach them.
     = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "i.e. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
-  %hr.div-line
-  .form-group
-    = f.label :starts_at, "When? (Optional)"
-    %p.help-block
-      Only enter the date and time below if you have are scheduling this lesson for a specific time, otherwise people will be able to contact you to schedule a time and place to meet.
-    = f.datetime_local_field :starts_at
+  / %hr.div-line
+  / .form-group
+  /   = f.label :starts_at, "When? (Optional)"
+  /   %p.help-block
+  /     Only enter the date and time below if you have are scheduling this lesson for a specific time, otherwise people will be able to contact you to schedule a time and place to meet.
+  /   = f.datetime_local_field :starts_at
   %hr.div-line
   .form-group
     = f.label :image

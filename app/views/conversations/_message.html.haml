@@ -1,11 +1,11 @@
 .message
   .row
-    %a.block{href: user_path(message.findSender), class:"col-md-2 floatright"}
+    %a.block{href: user_path(message.user), class:"col-md-2 floatright"}
       .circle-overlay
-        =image_tag message.findSender.picture
+        =image_tag message.user.picture
       .message-info
         .name 
-          = message.findSender.first_name
+          = message.user.first_name
         .time
           = message.created_at.strftime("%b-%d")
     .col-md-9

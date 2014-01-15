@@ -19,7 +19,7 @@ Learnto::Application.routes.draw do
 
   resources :users do
     collection do
-      get "requests"
+      # get "requests"
     end
   end
 

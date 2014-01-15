@@ -2,13 +2,16 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   acts_as_messageable
+
   # Associations
   has_many :accounts, :dependent => :destroy
   has_many :skills, :dependent => :destroy
-  has_and_belongs_to_many :lessons
   has_many :reviews
   has_many :receipts
-  has_many :lessons
+
+
+  has_many :lesson_users
+  has_many :lessons, :through => :lesson_users
 
   accepts_nested_attributes_for :skills,  :reject_if => lambda { |c| c[:title].blank? }
 
@@ -18,7 +21,6 @@ class User < ActiveRecord::Base
   def has_facebook?
     accounts.where(provider: 'facebook').any?
   end
-
 
   def name
     return first_name + " " + last_name
@@ -99,9 +101,7 @@ class User < ActiveRecord::Base
   end
 
   def unread
-    unread = self.receipts.where(read: false)
-    return unread.size
+    self.receipts.where(read: false).count
   end
-
 
 end

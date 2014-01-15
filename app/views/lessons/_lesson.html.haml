@@ -1,55 +1,53 @@
-.lesson
+.skill
   .row
-    .col-md-7.floatright
+    .col-md-7
       .box
-        %h2.title
-          -if @lesson.skill
-            = @lesson.skill.title
-        .container
-          %a{href: user_path(@lesson.teacher), class:"circle-overlay"}
-            = image_tag @lesson.teacher.picture
-          %h4.instructor
-            = link_to @lesson.teacher.name, user_path(@lesson.teacher)
-        %hr.div-line
-        %h4 Messages
+        .row
+          .col-md-12
+            %h2.title
+              = link_to @lesson.skill.title, @lesson.skill
+        .row
+          .col-md-6
+            %a{href: user_path(@lesson.skill.user), class: "circle-overlay"}
+              = image_tag @lesson.skill.user.picture
+            %h4.instructor
+              = link_to @lesson.skill.user.name, user_path(@lesson.skill.user)
+      .box
+        %h3 Messages
         .messages
-          =render "/conversations/reply", conversation: @lesson.conversation
-          -@lesson.conversation.messages.each do |message|
-            =render "/conversations/message", message: message
+          = render "/conversations/reply", conversation: @lesson.conversation
+          - @lesson.conversation.messages.order('created_at DESC').each do |message|
+            = render "/conversations/message", message: message
 
     .col-md-5
-      .box
-        .skill-image-full
-          -if @lesson.skill
-            = image_tag @lesson.skill.picture
+      .skill-image-full
+        = image_tag @lesson.skill.picture
       .box
         %h3 Status
-        %br
         - if current_user == @lesson.teacher
-          - if !@lesson.approved
-            = link_to "Accept", approve_lesson_path(id: @lesson.id), class: "button btn btn-custom"
-            = link_to "Ignore", ignore_lesson_path(id: @lesson.id), class: "button btn btn-custom"
-          - elsif !@lesson.completed
-            .accepted
-              Accepted!
-
+          = form_for @lesson do |f|
+            - ['PENDING', 'APPROVED', 'COMPLETED', 'IGNORED'].each do |status|
+              .form_row
+                %label
+                  = f.radio_button(:status, status)
+                  = status.humanize
+            = f.submit "Submit", class: "btn btn-custom"
         - else
-          -if !@lesson.approved && !@lesson.ignored
-            .pending-approval
-              Pending Response
-          - elsif !@lesson.approved && @lesson.ignored
-            .denied
-              Not Accepted
-          - elsif @lesson.approved
-            .accepted
-              Accepted!
+          %p Current status: #{@lesson.status.humanize}
+          / TODO: Figure out reviews from multiple students and for multiple students
+          / - if @lesson.status == "COMPLETED"
+          /   %h3 Review for #{@lesson.skill.user.first_name}
+          /   - if @review.user == current_user
+          /     = render partial: "skills/review_short", collection: [@review]
+          /   - else
+          /     = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @lesson.skill.user}
 
-      -if @lesson.approved && @other_user
-        .box
-          %h3 Review for #{@other_user.first_name}
-          %br
-          %Review
-          - if @review.user == current_user
-            = render partial: "skills/review_short", collection: [@review]
-          - else
-            = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @other_user}
+      .box
+        %h3 Students
+        - @lesson.users.each do |user|
+          %p
+            = link_to user.name, user
+
+        / TODO: Invite friends via fb/twitter/email
+        / .invite
+        /   = link_to "Invite a friend", "#"

@@ -3,12 +3,12 @@
   .box{style: "background-color: lightgray"}
     .row
       .col-md-1.floatright
-        %a{href: user_path(message.findSender),class:"circle-overlay"}
-          =image_tag message.findSender.picture
+        %a{href: user_path(message.user),class:"circle-overlay"}
+          =image_tag message.user.picture
       .col-md-1
         .container.nametime
           %h5.Name
-            = link_to message.findSender.first_name, user_path(message.findSender)
+            = link_to message.user.first_name, user_path(message.user)
           .Time
             = conversation_short.updateTime.strftime("%b - %d")
       .col-md-8
@@ -21,17 +21,17 @@
       .col-md-2
         .message-type
           %h5
-            =conversation_short.lesson.status(current_user)
+            = conversation_short.lesson.status
 -else
   .box
     .row
       .col-md-1.floatright
-        %a{href: user_path(message.findSender),class:"circle-overlay"}
-          =image_tag message.findSender.picture
+        %a{href: user_path(message.user),class:"circle-overlay"}
+          = image_tag message.user.picture
       .col-md-1
         .container.nametime
           %h5.Nameus
-            = link_to message.findSender.first_name, user_path(message.findSender)
+            = link_to message.user.first_name, user_path(message.user)
           .Time
             = conversation_short.updateTime.strftime("%b - %d")
       .col-md-8
@@ -44,4 +44,4 @@
       .col-md-2
         .message-type
           %h5
-            =conversation_short.lesson.status(current_user)
+            = conversation_short.lesson.status

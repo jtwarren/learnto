@@ -28,7 +28,7 @@ class SkillsController < ApplicationController
 
     @reviews = @skill.get_reviews()
 
-    @completed_lessons = @skill.lessons.where(completed: true).last(4)
+    @completed_lessons = @skill.lessons.where(status: "COMPLETED").last(4)
 
     @return_to = request.path
 
