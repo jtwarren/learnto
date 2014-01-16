@@ -1,0 +1,40 @@
+%h3
+  Teach on LearnTo
+%p
+  Teaching is a great way to meet new people with similar passions, become an expert in your field, and give back to your community. Fill out the following form and begin teaching soon!
+%hr.div-line
+= form_for(@event, {role: "form"}) do |f|
+  .form-group
+    = f.label :title, "Learn to..."
+    %p.help-block
+      Choose and interesting title to capture people's attention.
+    = f.text_field :title, class: "form-control", placeholder: "i.e. 'Cook Italian food' or 'Build a website'"
+  %hr.div-line
+  .form-group
+    = f.label :description
+    %p.help-block
+      Describe what you're going to help others learn.
+    = f.text_area :description, rows: 5, class: "form-control", placeholder: "i.e. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
+  %hr.div-line
+  .form-group
+    = f.label :starts_at, "When?"
+    %p.help-block
+      Only enter the date and time below if you have are scheduling this lesson for a specific time, otherwise people will be able to contact you to schedule a time and place to meet.
+    = f.datetime_local_field :starts_at
+  %hr.div-line
+  .form-group
+    = f.label :address, "Where?"
+    %p.help-block
+      Enter the address.
+    = f.text_field :address, class: "form-control", placeholder: "i.e. '77 Massachusetts Avenue, Cambridge, MA'"
+  %hr.div-line
+  .form-group
+    = f.label :image
+    %p.help-block
+      Pick an image that describes your lesson.
+    .upload-skill-picture.btn.btn-custom
+      Upload an image that describes your skill
+    %br
+    = f.hidden_field :picture, class: "form-control"
+  %hr.div-line
+    = f.submit "Submit", class: "btn btn-custom"

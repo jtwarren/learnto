@@ -33,6 +33,7 @@ class ConversationsController < ApplicationController
     @message = @conversation.messages.create(body: params[:message][:body], user: current_user)
 
     receipt = @conversation.receipts.where(user_id: current_user.id).first
+    
     if receipt
       receipt.update(read: true)
     end

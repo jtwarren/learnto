@@ -1,0 +1,68 @@
+.skill
+  .row
+    .col-md-7
+      .box
+        - if @event.approved == false
+          .pending-approval
+            Pending approval
+        .row
+          .col-md-12
+            %h2.title
+              = @event.title
+        .row
+          .col-md-6
+            %a{href: user_path(@event.user), class: "circle-overlay"}
+              = image_tag @event.user.picture
+            %h4.instructor
+              = link_to @event.user.name, user_path(@event.user)
+        .row
+          .col-md-6
+            .social-share
+              .facebook
+                .fb-share-button{"data-href" => "#{request.original_url}", "data-type" => "button_count"}
+              .twitter
+                %a.twitter-share-button{"data-via" => "comelearnto", href: "https://twitter.com/share"} Tweet
+          %hr.div-line
+        .action-links
+          - if current_user == @event.user
+            = link_to 'Edit', edit_event_path(id: @event.id)
+            / = link_to 'Remove', remove_skill_path(@event)
+        %h4 Description
+        .description
+          = @event.description
+        - if @event.starts_at
+          .starts_at
+            %h4 When
+          = @event.starts_at
+        - if @event.approved
+          - if current_user
+            %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+          - else
+            = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
+
+
+    .col-md-5
+      .skill-image-full
+        = image_tag @event.picture
+
+      .box.skill-image-full
+        = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}"
+
+        %span.glyphicon.glyphicon-map-marker
+        = @event.address
+
+
+/ #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+/   .modal-dialog
+/     .modal-content
+/       .modal-header
+/         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+/         %h4#myModalLabel.modal-title Sign up for the lesson! 
+/       = form_for([@event, @event.lessons.build], :html => { :class => "form-horizontal" }) do |f|
+/         .modal-body
+/           .form-group
+/             .control-group
+/               = label_tag :learning_request, "Send #{@event.user.first_name} a message.  Tell #{@event.user.first_name} what you want to learn and why!", class: "control-label"
+/               = text_area_tag :learning_request, nil, class: "form-control"
+/         .modal-footer
+/           = f.submit "Submit", class: "btn btn-custom"

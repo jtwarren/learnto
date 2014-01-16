@@ -18,6 +18,8 @@ gem 'filepicker-rails'
 
 gem 'koala'
 
+gem 'geocoder'
+
 # User HAML for view files
 gem 'haml-rails', '>= 0.3.4'
 

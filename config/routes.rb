@@ -24,6 +24,8 @@ Learnto::Application.routes.draw do
   end
 
   resources :reviews
+  
+  resources :events
 
   resources :skills do
     resources :lessons

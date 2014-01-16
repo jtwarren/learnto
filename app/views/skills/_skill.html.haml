@@ -35,10 +35,6 @@
             %h4 Qualifications
           .qualification-text
             = @skill.qualifications
-        - if @skill.starts_at
-          .starts_at
-            %h4 When
-          = @skill.starts_at
         - if @skill.approved
           - if current_user
             %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
@@ -91,15 +87,3 @@
               = text_area_tag :learning_request, nil, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
-
-#confirmModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-        %h3#myModalLabel Your request has been sent!
-      .modal-body
-        Learning is more fun when your friends are there with you! 
-      .modal-footer
-        %a.btn.btn-custom{:href=>"#",:class=>"share"}
-          Invite your friends to learn with you!

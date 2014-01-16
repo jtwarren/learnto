@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113002113) do
+ActiveRecord::Schema.define(version: 20140116180731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,32 @@ ActiveRecord::Schema.define(version: 20140113002113) do
   end
 
   add_index "conversations", ["lesson_id"], name: "index_conversations_on_lesson_id", using: :btree
+
+  create_table "event_users", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_users", ["event_id"], name: "index_event_users_on_event_id", using: :btree
+  add_index "event_users", ["user_id"], name: "index_event_users_on_user_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.string   "picture"
+    t.boolean  "approved",    default: false
+    t.datetime "starts_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "lesson_users", force: true do |t|
     t.integer  "lesson_id"

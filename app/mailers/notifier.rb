@@ -23,4 +23,7 @@ class Notifier < ActionMailer::Base
     mail(to: receiver_email, subject: 'LearnTo: New message from ' + @sender.first_name)
   end
 
+  def event_added(event)
+  end
+
 end

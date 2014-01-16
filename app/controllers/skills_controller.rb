@@ -42,13 +42,11 @@ class SkillsController < ApplicationController
     @skill = current_user.skills.new(skill_params)
 
     if @skill.save
-      current_user.save!
       Notifier.skill_added(@skill).deliver
       redirect_to @skill
     else
       render action: 'new'
     end
-
   end
 
   def new
@@ -77,7 +75,7 @@ class SkillsController < ApplicationController
     if @skill.update(skill_params)
       redirect_to @skill, notice: 'Skill was successfully updated.'
     else
-      render action: 'edit'
+      render 'edit'
     end
   end
 
