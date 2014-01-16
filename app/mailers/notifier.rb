@@ -15,12 +15,13 @@ class Notifier < ActionMailer::Base
     mail(to: user_email, subject: 'LearnTo: New lesson request from ' + requestor.first_name + '!')
   end
 
-  def reply(message)
+  def reply(message, sender, receiver)
     @message = message
-    @sender = message.user
-    @receiver = message.conversation.lesson.skill.user
-    receiver_email = "#{@receiver.name} <#{@receiver.email}>"
-    mail(to: receiver_email, subject: 'LearnTo: New message from ' + @sender.first_name)
+    @sender = sender
+    @receiver = receiver
+
+    receiver_email = "#{receiver.name} <#{receiver.email}>"
+    mail(to: receiver_email, subject: 'LearnTo: New message from ' + sender.first_name)
   end
 
   def event_added(event)

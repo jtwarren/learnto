@@ -23,7 +23,7 @@ class LessonsController < ApplicationController
 
     lesson.conversation = conversation
 
-    # Notifier.lesson_request(skill.user, current_user, lesson).deliver
+    Notifier.lesson_request(skill.user, current_user, lesson).deliver
 
     redirect_to lesson_url(lesson)
   end

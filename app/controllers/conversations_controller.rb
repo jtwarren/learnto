@@ -38,7 +38,11 @@ class ConversationsController < ApplicationController
       receipt.update(read: true)
     end
 
-    Notifier.reply(@message).deliver
+    recipients = @conversation.lesson.users + [@conversation.lesson.skill.user] - [@message.user]
+
+    recipients.each do |recipient|
+      Notifier.reply(@message, @message.user, recipient).deliver
+    end
 
     redirect_to lesson_path(@conversation.lesson)
   end
