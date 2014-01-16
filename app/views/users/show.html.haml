@@ -22,7 +22,7 @@
             .info-item
               %span.glyphicon.glyphicon-briefcase
               = @user.work
-          - if @user.networks
+          - if not @user.networks.empty?
             .info-item
               %span.glyphicon.glyphicon-cloud
               = @user.networks.map(&:name).join(', ')
