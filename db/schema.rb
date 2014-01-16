@@ -112,6 +112,22 @@ ActiveRecord::Schema.define(version: 20140116180731) do
     t.datetime "updated_at"
   end
 
+  create_table "network_users", force: true do |t|
+    t.integer  "network_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "network_users", ["network_id"], name: "index_network_users_on_network_id", using: :btree
+  add_index "network_users", ["user_id"], name: "index_network_users_on_user_id", using: :btree
+
+  create_table "networks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "receipts", force: true do |t|
     t.integer  "user_id"
     t.integer  "conversation_id"
