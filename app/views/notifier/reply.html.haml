@@ -14,16 +14,13 @@
     %br
     %br
     .request
-      To reply and find out more about #{@sender.first_name}, go to your 
-      %a{href: lesson_url(@message.conversation.lesson), style: "font-size: 100%"} Conversation  
-      or click the link below.
+      To reply and find out more about #{@sender.first_name}, click the link below.
       %br
       %br
     %a{href: lesson_url(@message.conversation.lesson), style: "font-size: 100%"} Conversation with #{@sender.first_name} 
     %br
     %br
   .closing
-    Thanks!
-    %br
+    Thanks,
     %br
     LearnTo Team
