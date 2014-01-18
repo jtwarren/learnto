@@ -27,12 +27,14 @@
           - if current_user == @event.user
             = link_to 'Edit', edit_event_path(id: @event.id)
             / = link_to 'Remove', remove_skill_path(@event)
-        %h4 Description
-        .description
-          = @event.description
-        %h4 Qualifications
-        .description
-          = @event.qualifications
+        - if not @event.description.empty?
+          %h4 Description
+          .description
+            = simple_format(@event.description)
+        - if not @event.qualifications.empty?
+          %h4 Qualifications
+          .description
+            = simple_format(@event.qualifications)
         - if @event.approved
           - if current_user
             %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!

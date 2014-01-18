@@ -2,6 +2,8 @@
   Teach on LearnTo
 %p
   Teaching is a great way to meet new people with similar passions, become an expert in your field, and give back to your community. Fill out the following form and begin teaching soon!
+%p
+  Looking to teach a scheduled lesson? Check out our #{link_to "scheduled lesson", new_event_path} form.
 %hr.div-line
 = form_for(@skill, {role: "form"}) do |f|
   .form-group
@@ -36,11 +38,11 @@
       Upload an image that describes your skill
     %br
     = f.hidden_field :picture, class: "form-control"
-  %hr.div-line
-  .form-group
-    = f.label :public
-    = f.check_box :public
-    %p.help-block
-      Public lessons are visible to anyone.  Private lessons are visible to only those in your networks.
+  / %hr.div-line
+  / .form-group
+  /   = f.label :public
+  /   = f.check_box :public
+  /   %p.help-block
+  /     Public lessons are visible to anyone.  Private lessons are visible to only those in your networks.
   %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"
