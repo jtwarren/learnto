@@ -29,7 +29,11 @@ Learnto::Application.routes.draw do
 
   resources :reviews
   
-  resources :events
+  resources :events do
+    member do 
+      post 'attend'
+    end
+  end
 
   resources :skills do
     resources :lessons

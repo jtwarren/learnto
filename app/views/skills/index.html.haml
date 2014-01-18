@@ -1,8 +1,18 @@
 %a.skills
 - provide(:title, "Lessons - LearnTo")
+
+%h2.heading
+  Upcoming Lessons in Cambridge
+.grid
+  .row
+    - @events.each do |event|
+      .col-xs-12.col-sm-6.col-md-4
+        = render partial: "events/event_short", locals: {event_short: event}
+
+
+
 %h2.heading
   Top Lessons in Cambridge
-
 .grid
   .row
     - @skills.each do |skill|

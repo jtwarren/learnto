@@ -2,6 +2,7 @@ class SkillsController < ApplicationController
   def index
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
+    @events = Event.where("approved = ?", true).order("RANDOM()")
     @is_new_user = params[:is_new_user]
     @hide_about_me = true
     if @new_user

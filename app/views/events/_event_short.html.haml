@@ -1,0 +1,15 @@
+%a.block{:href=> event_path(event_short), :style=> "display:block"}
+  .pin
+    .skill-image
+      = image_tag event_short.picture
+    .below-fold
+      .profile-pic.circle-overlay
+        = image_tag event_short.user.picture
+      .skill-short
+        .teacher-name
+          Taught by
+          %span
+            = event_short.user.first_name
+        .skill-title
+          %span
+            = event_short.title

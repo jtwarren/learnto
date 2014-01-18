@@ -36,14 +36,16 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
-
     if not current_user
-      redirect_to  login_url(return_to: lesson_path(@lesson))
+      redirect_to login_url(return_to: lesson_path(@lesson))
+      return
     end
+    
+    @lesson = Lesson.find(params[:id])
 
     if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
       redirect_to skills_path, notice: 'You are not authorized to view this page.'
+      return
     end
 
     @message = Message.new

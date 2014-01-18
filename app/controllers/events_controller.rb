@@ -36,8 +36,12 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:id])
     if current_user
-      @event.students << current_user
-      redirect_to @event, notice: 'You are successfully enrolled.'
+      if @event.students.include? current_user
+        redirect_to @event, notice: 'You are already signed up.'
+      else
+        @event.students << current_user
+        redirect_to @event, notice: 'You are successfully enrolled.'
+      end
     else
       redirect_to @event, notice: 'You must be logged in to attend.'
     end

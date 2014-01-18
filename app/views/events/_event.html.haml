@@ -58,23 +58,19 @@
               %span.glyphicon.glyphicon-user
               #{pluralize(@event.students.count, 'person')} attending 
 
-
-        / = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}"
-
-        
-
-
-/ #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-/   .modal-dialog
-/     .modal-content
-/       .modal-header
-/         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-/         %h4#myModalLabel.modal-title Sign up for the lesson! 
-/       = form_for([@event, @event.lessons.build], :html => { :class => "form-horizontal" }) do |f|
-/         .modal-body
-/           .form-group
-/             .control-group
-/               = label_tag :learning_request, "Send #{@event.user.first_name} a message.  Tell #{@event.user.first_name} what you want to learn and why!", class: "control-label"
-/               = text_area_tag :learning_request, nil, class: "form-control"
-/         .modal-footer
-/           = f.submit "Submit", class: "btn btn-custom"
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Lesson details
+      .modal-body
+        .lesson-info
+          .info-item
+            %span.glyphicon.glyphicon-map-marker
+            = @event.address
+          .info-item
+            %span.glyphicon.glyphicon-calendar
+            = @event.starts_at
+      .modal-footer
+        = link_to "Sign up", attend_event_path, method: 'post', class: "btn btn-custom"
