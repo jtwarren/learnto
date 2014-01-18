@@ -5,6 +5,10 @@ class EventsController < ApplicationController
   end
 
   def new
+    if not current_user
+      redirect_to login_url(return_to: request.path)
+      return
+    end
     @event = Event.new
     @event.starts_at = 7.days.since(Time.now)
   end
@@ -38,12 +42,20 @@ class EventsController < ApplicationController
     if current_user
       if @event.students.include? current_user
         redirect_to @event, notice: 'You are already signed up.'
+        return
       else
         @event.students << current_user
-        redirect_to @event, notice: 'You are successfully enrolled.'
+        if @event.students.count > @event.capacity
+          redirect_to @event, notice: 'You have been added to the waitlist.'
+          return
+        else
+          redirect_to @event, notice: 'You are successfully enrolled.'
+          return
+        end
       end
     else
       redirect_to @event, notice: 'You must be logged in to attend.'
+      return
     end
   end
 
