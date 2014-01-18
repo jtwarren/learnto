@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @networks = Network.all
 
     if not current_user or current_user.id != @user.id
       redirect_to @user, notice: 'You are not authorized to edit this profile.'
@@ -54,15 +55,6 @@ class UsersController < ApplicationController
     # end
   end
 
-  # def requests
-  #   @user = User.find(params[:id])
-  #   @lessons = @user.lessons.where("approved=? AND completed=?", true, true)
-  #   if @user == current_user
-  #     @pending_lessons = @user.lessons.where("ignored=? AND approved=?", false, false)
-  #     @incomplete_lessons = @user.lessons.where("approved=? AND completed=?", true, false)
-  #   end
-  # end
-
   def update
     @user = User.find(params[:id])
     if @user.update(update_user_params)
@@ -78,6 +70,6 @@ class UsersController < ApplicationController
     end
 
     def update_user_params
-      params.require(:user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school, :location)
+      params.require(:user).permit(:first_name, :last_name, :picture, :email, :password, :password_confirmation, :bio, :work, :school, :location, :network_ids => [])
     end      
 end
