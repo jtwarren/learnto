@@ -30,10 +30,9 @@
         %h4 Description
         .description
           = @event.description
-        - if @event.starts_at
-          .starts_at
-            %h4 When
-          = @event.starts_at
+        %h4 Qualifications
+        .description
+          = @event.qualifications
         - if @event.approved
           - if current_user
             %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
@@ -45,11 +44,24 @@
       .skill-image-full
         = image_tag @event.picture
 
-      .box.skill-image-full
-        = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}"
+      .box
+        %h3 Lesson details
+        .lesson-info
+          .info-item
+            %span.glyphicon.glyphicon-map-marker
+            = @event.address
+          .info-item
+            %span.glyphicon.glyphicon-calendar
+            = @event.starts_at
+          - if @event.students.count > 0
+            .info-item
+              %span.glyphicon.glyphicon-user
+              #{pluralize(@event.students.count, 'person')} attending 
 
-        %span.glyphicon.glyphicon-map-marker
-        = @event.address
+
+        / = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@event.latitude}%2C#{@event.longitude}"
+
+        
 
 
 / #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}

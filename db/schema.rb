@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116180731) do
+ActiveRecord::Schema.define(version: 20140117183933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,13 +53,15 @@ ActiveRecord::Schema.define(version: 20140116180731) do
     t.text     "description"
     t.integer  "user_id"
     t.string   "picture"
-    t.boolean  "approved",    default: false
+    t.boolean  "approved",       default: false
     t.datetime "starts_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.text     "qualifications"
+    t.integer  "capacity"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
@@ -95,22 +97,6 @@ ActiveRecord::Schema.define(version: 20140116180731) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "network_users", force: true do |t|
-    t.integer  "network_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "network_users", ["network_id"], name: "index_network_users_on_network_id", using: :btree
-  add_index "network_users", ["user_id"], name: "index_network_users_on_user_id", using: :btree
-
-  create_table "networks", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "network_users", force: true do |t|
     t.integer  "network_id"
