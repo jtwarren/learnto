@@ -22,9 +22,9 @@ class UsersController < ApplicationController
           flash[:warning] += msg + '. '
         end
       end
-      redirect_to signup_url
+      render 'new'
     else
-      render action: 'new'
+      render 'new'
     end
   end
 
