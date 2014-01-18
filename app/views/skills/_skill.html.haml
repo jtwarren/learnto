@@ -29,12 +29,12 @@
             = link_to 'Remove', remove_skill_path(@skill)
         %h4 Description
         .description
-          = simple_format@skill.description)
+          = simple_format(@skill.description)
         .qualifications
           .qualifications-heading
             %h4 Qualifications
           .qualification-text
-            = simple_format@skill.qualifications)
+            = simple_format(@skill.qualifications)
         - if @skill.approved
           - if current_user
             %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
