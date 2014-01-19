@@ -10,6 +10,9 @@ class LessonsController < ApplicationController
 
   def create
     skill = Skill.find(params[:skill_id])
+    if not current_user
+      redirect_to skill, notice: "You must be logged in to sign up for a lesson."
+    end
     lesson = skill.lessons.create(status: "PENDING")
     lesson.users << current_user
 
