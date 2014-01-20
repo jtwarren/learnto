@@ -37,6 +37,9 @@ Learnto::Application.routes.draw do
   end
 
   resources :skills do
+    collection do
+      get 'networks'
+    end
     resources :lessons
     member do
       get "remove"

@@ -4,15 +4,14 @@ class LessonsController < ApplicationController
     if current_user != nil && current_user.admin
       @lessons = Lesson.all.order('updated_at DESC')
     else
-      redirect_to root_path
+      return redirect_to root_path
     end
   end
 
   def create
     skill = Skill.find(params[:skill_id])
     if not current_user
-      redirect_to skill, notice: "You must be logged in to sign up for a lesson."
-      return
+      return redirect_to skill, notice: "You must be logged in to sign up for a lesson."
     end
     lesson = skill.lessons.create(status: "PENDING")
     lesson.users << current_user
@@ -35,25 +34,22 @@ class LessonsController < ApplicationController
   def update
     @lesson = Lesson.find(params[:id])
     if @lesson.update(lesson_params)
-      redirect_to @lesson, notice: 'Status was successfully updated.'
+      return redirect_to @lesson, notice: 'Status was successfully updated.'
     end
   end
 
   def show
     if not current_user
-      redirect_to login_url(return_to: lesson_path(@lesson))
-      return
+      return redirect_to login_url(return_to: lesson_path(@lesson))
     end
     
     @lesson = Lesson.find(params[:id])
 
     if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
-      redirect_to skills_path, notice: 'You are not authorized to view this page.'
-      return
+      return redirect_to skills_path, notice: 'You are not authorized to view this page.'
     end
 
     @message = Message.new
-
     @review = Review.new
 
     # if current_user

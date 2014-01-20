@@ -2,7 +2,7 @@
   LearnTo Profile
 %p
   People love knowing more about you.  What makes you unique to teach or learn from?  What are your passions or interests, where have you worked, and what school did you go to?
-%hr.div-line
+  %hr.div-line
 = form_for(@user, {role: "form"}) do |f|
   .form-group
     = f.label :bio, "Biography"
@@ -11,7 +11,7 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-user
-      = f.text_area :bio, class: "form-control"
+      = f.text_area :bio, rows: 6, class: "form-control"
   %hr.div-line
   .form-group
     = f.label :location, "Location"

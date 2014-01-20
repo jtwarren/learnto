@@ -1,5 +1,13 @@
-%a.skills
 - provide(:title, "Lessons - LearnTo")
+
+/ %ul.nav.nav-pills.nav-justified
+/   %li.active
+/     = link_to 'Public lessons', "#"
+/   %li
+/     = link_to 'Your networks', "#"
+/   %li
+/     = link_to 'Upcoming Events', "#"
+
 
 - if not @events.empty?
   %h2.heading
@@ -21,24 +29,62 @@
 .new
   Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!
 
-- if current_user
-  #aboutMeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-          %h4#myModalLabel.modal-title Last step! Tell us a little about yourself!
+#aboutMeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#myModalLabel.modal-title Last step! Tell us a little about yourself!
+      = form_for @user, {role: 'form'} do |f|
         .modal-body
-          = form_for(current_user, html: { class: "form-horizontal" } ) do |f|
-            .form-group
-              = f.text_area :bio, class: "form-control", rows: "4", columns: "70", required: true, placeholder: "Describe Yourself - LearnTo is a community built on relationships. Help others get to know you! What are 3 things you've always wanted to learn? What are your favorite hobbies, topics, or activites?"
-            .form-group
-              = f.text_field :school, class: "form-control", placeholder: "School"
-            .form-group
-              = f.text_field :work, class: "form-control", placeholder: "Work"
-            = f.hidden_field :return_to, value: skills_url(anchor: "skills")
-            = f.hidden_field :return_to, value: skills_url(anchor: "skills")
-            = f.submit "Submit", class: "btn btn-custom"
+          .form-group
+            = f.label :bio, "Biography"
+            %p.help-block
+              Tell others a little bit about yourself.  This makes them more likely to learn and teach with you.
+            .input-group
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-user
+              = f.text_area :bio, rows: 6, class: "form-control"
+          %hr.div-line
+          .form-group
+            = f.label :location, "Location"
+            %p.help-block
+              Where are you currently located?  It helps others find classes near them!
+            .input-group
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-map-marker
+              = f.text_field :location, class: "form-control"
+          %hr.div-line
+          .form-group
+            = f.label :school, "School"
+            %p.help-block
+              Where do you, or have you gone to school?
+            .input-group
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-book
+              = f.text_field :school, class: "form-control"
+          %hr.div-line
+          .form-group
+            = f.label :work, "Work"
+            %p.help-block
+              Where do you, or have you worked?  Others find this information useful.
+            .input-group
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-briefcase
+              = f.text_field :work, class: "form-control"
+          %hr.div-line
+          .form-group
+            = f.label :network_ids, "Networks"
+            %p.help-block
+              Which networks are you apart of?
+            .input-group
+              %span.input-group-addon
+                %span.glyphicon.glyphicon-cloud
+              = f.select :network_ids, Network.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, class: "form-control"
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-custom"
+          = link_to "Cancel", "#", class: "btn btn-custom", data: {dismiss: "modal"}
+
 
 -if not @hide_about_me
   %script
