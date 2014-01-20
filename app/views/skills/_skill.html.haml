@@ -83,7 +83,7 @@
         .modal-body
           .form-group
             .control-group
-              = label_tag :learning_request, "Send #{@skill.user.first_name} a message.  Tell #{@skill.user.first_name} what you want to learn and why!", class: "control-label"
+              = label_tag :learning_request, "Send #{@skill.user.first_name} a message.  Tell #{@skill.user.first_name} what you want to learn and what you can teach in return!", class: "control-label"
               = text_area_tag :learning_request, nil, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
