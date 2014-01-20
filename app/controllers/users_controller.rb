@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = RegularUser.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      session[:new_user] = true
       url = params[:return_to]
       url ||= user_url(@user)
       redirect_to url

@@ -3,9 +3,20 @@ class SkillsController < ApplicationController
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
     @events = Event.where("approved = ?", true).order("RANDOM()")
-    @is_new_user = params[:is_new_user]
-    @hide_about_me = true
     @user = current_user
+
+    puts '-------------'
+    puts session[:new_user]
+    puts '-------------'
+
+    if session[:new_user]
+      @show_user_bio = true
+      session.delete(:new_user)
+    end
+
+    puts '-------------'
+    puts session[:new_user]
+    puts '-------------'
     # if @new_user
     #   @hide_about_me = false
     # end
