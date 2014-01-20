@@ -1,5 +1,8 @@
 - provide(:title, "Lessons - LearnTo")
 
+
+#skills
+
 - if not @events.empty?
   %h2.heading
     Upcoming Lessons in Cambridge
@@ -28,8 +31,18 @@
         = form_for(@user) do |f|
           .modal-header
             %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-            %h4#myModalLabel.modal-title Last step! Tell us a little about yourself!
+            %h4#myModalLabel.modal-title Last step.  Tell us a little about yourself!
           .modal-body
+            Fill out this information so others can know you better.  You can always edit this information by visiting your user profile.
+            %hr.div-line
+            .form-group
+              = f.label :email
+              %p.help-block
+                We'll use this to send you an email when others contact you. No one can see it except for you.
+              .input-group
+                %span.input-group-addon @
+                = f.text_field :email, class: "form-control"
+            %hr.div-line
             .form-group
               = f.label :bio, "Biography"
               %p.help-block
