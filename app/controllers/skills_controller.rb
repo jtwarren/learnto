@@ -3,13 +3,15 @@ class SkillsController < ApplicationController
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
     @events = Event.where("approved = ?", true).order("RANDOM()")
+
     @user = current_user
+    # @show_user_bio = true
 
     if session[:new_user]
       @show_user_bio = true
       session.delete(:new_user)
     end
-    
+
     respond_to do |format|
       format.html
       format.json {render json: custom_json_for(@skills)}
