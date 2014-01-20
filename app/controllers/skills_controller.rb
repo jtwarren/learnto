@@ -5,21 +5,11 @@ class SkillsController < ApplicationController
     @events = Event.where("approved = ?", true).order("RANDOM()")
     @user = current_user
 
-    puts '-------------'
-    puts session[:new_user]
-    puts '-------------'
-
     if session[:new_user]
       @show_user_bio = true
       session.delete(:new_user)
     end
-
-    puts '-------------'
-    puts session[:new_user]
-    puts '-------------'
-    # if @new_user
-    #   @hide_about_me = false
-    # end
+    
     respond_to do |format|
       format.html
       format.json {render json: custom_json_for(@skills)}
