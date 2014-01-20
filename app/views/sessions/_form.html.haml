@@ -1,7 +1,12 @@
 = form_for(:session, url: sessions_path, role: "form") do |f|
   = hidden_field_tag :return_to, @return_to
   .form-group
-    = f.text_field :email, class: "form-control", placeholder: "Email"
+    .input-group
+      %span.input-group-addon @
+      = f.text_field :email, class: "form-control", placeholder: "Email"
   .form-group
-    = f.password_field :password, class: "form-control", placeholder: "Password"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-lock
+      = f.password_field :password, class: "form-control", placeholder: "Password"
   = f.submit "Sign in", class: "btn btn-custom"

@@ -46,7 +46,7 @@ class SkillsController < ApplicationController
       Notifier.skill_added(@skill).deliver
       redirect_to @skill
     else
-      render action: 'new'
+      render 'new'
     end
   end
 

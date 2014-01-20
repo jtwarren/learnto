@@ -2,43 +2,63 @@
   Teach on LearnTo
 %p
   Teaching is a great way to meet new people with similar passions, become an expert in your field, and give back to your community. Fill out the following form and begin teaching soon!
+%p
+  Don't know when to teach?  Create a lesson and let others contact you to find a time #{link_to "here", new_skill_path}.
 %hr.div-line
 = form_for(@event, {role: "form"}) do |f|
   .form-group
     = f.label :title, "Learn to..."
     %p.help-block
       Choose and interesting title to capture people's attention.
-    = f.text_field :title, class: "form-control", placeholder: "i.e. 'Cook Italian food' or 'Build a website'"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-question-sign
+      = f.text_field :title, class: "form-control", placeholder: "i.e. 'Cook Italian food' or 'Build a website'"
   %hr.div-line
   .form-group
     = f.label :description
     %p.help-block
       Describe what you're going to help others learn.
-    = f.text_area :description, rows: 5, class: "form-control", placeholder: "i.e. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-globe
+      = f.text_area :description, rows: 5, class: "form-control", placeholder: "i.e. I can help you learn to make basic pastas, sauces, and pizzas! We can even work on making Italian deserts such as gelato!"
   %hr.div-line
   .form-group
     = f.label :qualifications
     %p.help-block
       Tell others why you're able to teach them.
-    = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "i.e. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-ok
+      = f.text_area :qualifications, rows: 5, class: "form-control", placeholder: "i.e. I've been cooking for myself for many years and learned how to cook from my Italian mother. I absolutely love cooking (mainly because I like eating!) and would love to help someone pick it up."
   %hr.div-line
   .form-group
     = f.label :starts_at, "When?"
     %p.help-block
       Only enter the date and time below if you have are scheduling this lesson for a specific time, otherwise people will be able to contact you to schedule a time and place to meet.
-    = f.datetime_local_field :starts_at
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-calendar
+      = f.datetime_local_field :starts_at, class: "form-control"
   %hr.div-line
   .form-group
     = f.label :address, "Where?"
     %p.help-block
       Enter the address.
-    = f.text_field :address, class: "form-control", placeholder: "i.e. '77 Massachusetts Avenue, Cambridge, MA'"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-map-marker
+      = f.text_field :address, class: "form-control", placeholder: "i.e. '77 Massachusetts Avenue, Cambridge, MA'"
   %hr.div-line
   .form-group
     = f.label :capacity, "Capacity"
     %p.help-block
       Enter the capacity. Leave blank for no limit on the number of students.
-    = f.number_field :capacity
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-map-marker
+      = f.number_field :capacity, class: "form-control"
   %hr.div-line
   .form-group
     = f.label :image

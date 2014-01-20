@@ -8,24 +8,45 @@
     = f.label :bio, "Biography"
     %p.help-block
       Tell others a little bit about yourself.  This makes them more likely to learn and teach with you.
-    = f.text_area :bio, class: "form-control"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-user
+      = f.text_area :bio, class: "form-control"
   %hr.div-line
   .form-group
     = f.label :location, "Location"
     %p.help-block
       Where are you currently located?  It helps others find classes near them!
-    = f.text_field :location, class: "form-control"
-  %hr.div-line
-  .form-group
-    = f.label :work, "Work"
-    %p.help-block
-      Where do you, or have you worked?  Others find this information useful.
-    = f.text_field :work, class: "form-control"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-map-marker
+      = f.text_field :location, class: "form-control"
   %hr.div-line
   .form-group
     = f.label :school, "School"
     %p.help-block
       Where do you, or have you gone to school?
-    = f.text_field :school, class: "form-control"
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-book
+      = f.text_field :school, class: "form-control"
+  %hr.div-line
+  .form-group
+    = f.label :work, "Work"
+    %p.help-block
+      Where do you, or have you worked?  Others find this information useful.
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-briefcase
+      = f.text_field :work, class: "form-control"
+  %hr.div-line
+  .form-group
+    = f.label :network_ids, "Networks"
+    %p.help-block
+      Which networks are you apart of?
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-cloud
+      = f.select :network_ids, Network.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, class: "form-control"
   %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"
