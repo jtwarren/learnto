@@ -1,14 +1,6 @@
 - provide(:title, "Lessons - LearnTo")
 
-/ %ul.nav.nav-pills.nav-justified
-/   %li.active
-/     = link_to 'Public lessons', "#"
-/   %li
-/     = link_to 'Your networks', "#"
-/   %li
-/     = link_to 'Upcoming Events', "#"
-
-
+#skills
 - if not @events.empty?
   %h2.heading
     Upcoming Lessons in Cambridge
@@ -18,7 +10,6 @@
         .col-xs-12.col-sm-6.col-md-4
           = render partial: "events/event_short", locals: {event_short: event}
 
-%a#skills
 %h2.heading
   Top Lessons in Cambridge
 .grid
@@ -28,16 +19,17 @@
         = render partial: "skill_short", locals: {skill_short: skill}
 
 .new
-  Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!
+  %p
+    Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!
 
 - if current_user
   #aboutMeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog
       .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-          %h4#myModalLabel.modal-title Last step! Tell us a little about yourself!
         = form_for(@user) do |f|
+          .modal-header
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            %h4#myModalLabel.modal-title Last step! Tell us a little about yourself!
           .modal-body
             .form-group
               = f.label :bio, "Biography"

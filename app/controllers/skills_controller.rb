@@ -5,7 +5,6 @@ class SkillsController < ApplicationController
     @events = Event.where("approved = ?", true).order("RANDOM()")
 
     @user = current_user
-    # @show_user_bio = true
 
     if session[:new_user]
       @show_user_bio = true
