@@ -37,7 +37,7 @@
             = simple_format(@skill.qualifications)
         - if @skill.approved
           - if current_user
-            %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+            %button.btn.btn-custom.contact{"data-target" => "#editBioModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
           - if current_user != @skill.user
@@ -73,7 +73,7 @@
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @completed_lessons
 
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+#editBioModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
       .modal-header

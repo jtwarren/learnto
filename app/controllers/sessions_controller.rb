@@ -11,6 +11,9 @@ class SessionsController < ApplicationController
       oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       oauth.login_or_create
       session[:user_id] = oauth.user.id
+      # if oauth.new_user = true
+      #   session[:new_user] = true
+      # end
 
       url = env["omniauth.params"]["return_to"]
       url ||= skills_url

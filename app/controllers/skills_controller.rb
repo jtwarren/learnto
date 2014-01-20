@@ -3,15 +3,28 @@ class SkillsController < ApplicationController
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
     @events = Event.where("approved = ?", true).order("RANDOM()")
-    @is_new_user = params[:is_new_user]
-    @hide_about_me = true
-    if @new_user
-      @hide_about_me = false
+    @user = current_user
+
+    if session[:new_user]
+      @show_user_bio = true
+      session.delete(:new_user)
     end
+    
     respond_to do |format|
       format.html
       format.json {render json: custom_json_for(@skills)}
     end
+  end
+
+  def networks
+    if not current_user
+      redirect_to skills_url, notice: "Please log in to view lessons within your networks."
+    end
+    @show_banner = true
+    @hide_about_me = true
+    @skills = current_user.networks.map(&:skills).flatten.uniq
+    @events = []
+    render 'index'
   end
 
   def show
