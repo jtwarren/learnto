@@ -41,6 +41,18 @@ class SkillsController < ApplicationController
       @review = Review.new
     end
 
+    if current_user and session[:show_modal] and session[:skill_id] == @skill.id
+      @show_modal = true
+      session.delete(:show_modal)
+    end
+
+    if not current_user
+      session[:show_modal] = true
+      session[:skill_id] = @skill.id
+    end
+
+
+
     @reviews = @skill.get_reviews()
 
     @completed_lessons = @skill.lessons.where(status: "COMPLETED").last(4)

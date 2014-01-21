@@ -2,6 +2,16 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @return_to = request.path
+
+    if current_user and session[:show_modal] and session[:event_id] == @event.id
+      @show_modal = true
+      session.delete(:show_modal)
+    end
+
+    if not current_user
+      session[:show_modal] = true
+      session[:event_id] = @event.id
+    end
   end
 
   def new

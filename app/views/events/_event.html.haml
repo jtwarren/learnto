@@ -37,7 +37,7 @@
             = simple_format(@event.qualifications)
         - if @event.approved
           - if current_user
-            %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Sign up!
+            %button.btn.btn-custom.contact{"data-target" => "#eventModal", "data-toggle" => "modal"} Sign up!
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
 
@@ -60,7 +60,7 @@
               %span.glyphicon.glyphicon-user
               #{pluralize(@event.students.count, 'person')} attending 
 
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+#eventModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
       .modal-header
@@ -76,3 +76,7 @@
             = @event.starts_at
       .modal-footer
         = link_to "Sign up", attend_event_path, method: 'post', class: "btn btn-custom"
+
+- if @show_modal
+  %script
+    $(eventModal).modal()
