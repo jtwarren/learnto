@@ -1,7 +1,10 @@
 %h3
   Teach on LearnTo
 %p
-  Teaching is a great way to meet new people with similar passions, become an expert in your field, and give back to your community. If you're not sure what to teach, just think of something you love be it a sport, an instrument, or a technical skill!
+  Teaching is a great way to meet new people and learn from them! Here are 
+  = link_to "three great reasons why you should teach today.", whyteach_path
+%p
+  If you're not sure what to teach, just think of something you love be it a sport, an instrument, or a technical skill!
 %p
   Looking to teach a one time, scheduled lesson? Check out our #{link_to "scheduled lesson", new_event_path} form.
 %hr.div-line
@@ -9,7 +12,7 @@
   .form-group
     = f.label :title, "Learn to..."
     %p.help-block
-      Choose and interesting title to capture people's attention.
+      Choose an interesting title to capture people's attention.
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-question-sign
