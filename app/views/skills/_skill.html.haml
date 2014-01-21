@@ -37,7 +37,7 @@
             = simple_format(@skill.qualifications)
         - if @skill.approved
           - if current_user
-            %button.btn.btn-custom.contact{"data-target" => "#myModal", "data-toggle" => "modal"} Contact to find a time and place!
+            %button.btn.btn-custom.contact{"data-target" => "#lessonModal", "data-toggle" => "modal"} Contact to find a time and place!
           - else
             = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
           - if current_user != @skill.user
@@ -73,13 +73,13 @@
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @completed_lessons
 
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+#lessonModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
         %h4#myModalLabel.modal-title Sign up for the lesson! 
-      = form_for([@skill, @skill.lessons.build], :html => { :class => "form-horizontal" }) do |f|
+      = form_for([@skill, @skill.lessons.build]) do |f|
         .modal-body
           .form-group
             = f.label :signup, "Sign up"
@@ -88,3 +88,7 @@
             = text_area_tag :learning_request, nil, rows: 2, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
+
+- if @show_modal
+  %script
+    $(lessonModal).modal()

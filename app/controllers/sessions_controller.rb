@@ -11,21 +11,23 @@ class SessionsController < ApplicationController
       oauth = OAuthUser.new(request.env["omniauth.auth"], current_user)
       oauth.login_or_create
       session[:user_id] = oauth.user.id
-      # if oauth.new_user = true
-      #   session[:new_user] = true
-      # end
+
+      if oauth.new_user == true
+        session[:new_user] = true
+      end
 
       url = env["omniauth.params"]["return_to"]
       url ||= skills_url
-      redirect_to url
+      return redirect_to url
     else
       user = RegularUser.find_by_email(params[:session][:email])
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
 
         url = params[:return_to]
+        
         url ||= skills_url
-        redirect_to url
+        return redirect_to url
       else
         render action: 'new'
       end

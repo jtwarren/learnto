@@ -57,8 +57,8 @@
       Enter the capacity. Leave blank for no limit on the number of students.
     .input-group
       %span.input-group-addon
-        %span.glyphicon.glyphicon-map-marker
-      = f.number_field :capacity, class: "form-control"
+        %span.glyphicon.glyphicon-warning-sign
+      = f.number_field :capacity, class: "form-control", placeholder: "i.e. '20'"
   %hr.div-line
   .form-group
     = f.label :image

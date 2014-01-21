@@ -5,7 +5,6 @@ class SkillsController < ApplicationController
     @events = Event.where("approved = ?", true).order("RANDOM()")
 
     @user = current_user
-    # @show_user_bio = true
 
     if session[:new_user]
       @show_user_bio = true
@@ -41,6 +40,18 @@ class SkillsController < ApplicationController
     if !@review
       @review = Review.new
     end
+
+    if current_user and session[:show_modal] and session[:skill_id] == @skill.id
+      @show_modal = true
+      session.delete(:show_modal)
+    end
+
+    if not current_user
+      session[:show_modal] = true
+      session[:skill_id] = @skill.id
+    end
+
+
 
     @reviews = @skill.get_reviews()
 
