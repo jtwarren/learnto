@@ -55,7 +55,7 @@ class EventsController < ApplicationController
         return
       else
         @event.students << current_user
-        if @event.students.count > @event.capacity
+        if @event.capacity && (@event.students.count > @event.capacity)
           redirect_to @event, notice: 'You have been added to the waitlist.'
           return
         else
