@@ -1,7 +1,7 @@
 class SkillsController < ApplicationController
   def index
     @show_banner = true
-    @skills = Skill.where("approved = ? AND hidden = ?", true, false).order("RANDOM()")
+    @skills = Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()")
     @events = Event.where("approved = ?", true).order("RANDOM()")
 
     @user = current_user
@@ -19,11 +19,14 @@ class SkillsController < ApplicationController
 
   def networks
     if not current_user
-      redirect_to skills_url, notice: "Please log in to view lessons within your networks."
+      return redirect_to skills_url, notice: "Please log in to view lessons within your networks."
     end
+    @title = "your networks"
+    @user = current_user
     @show_banner = true
     @hide_about_me = true
-    @skills = current_user.networks.map(&:skills).flatten.uniq
+    # @skills = current_user.networks.map(&:skills).flatten.uniq
+    @show_networks = true
     @events = []
     render 'index'
   end
