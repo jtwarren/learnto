@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
       = link_to (image_tag 'Learnto-logo-transparent.png', :class => 'nav-logo'), root_path
-    #collapse_links.collapse.navbar-collapse.left-links
+    #collapse_links
       %ul.nav.nav-pills.navbar-left
         %li
           = link_to 'Lessons', skills_path(anchor: "skills")
@@ -17,14 +17,27 @@
           = link_to 'Why Teach?', whyteach_path
       %ul.nav.nav-pills.navbar-right
         - if current_user
-          %li
-            = link_to current_user.name, user_path(current_user)
-          %li
-            %a{href: inbox_conversations_path}
-              %span.unread.badge.pull-right
-                = current_user.unread
-              Inbox
-
+          %li.dropdown
+            %a.dropdownMenu1.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+              - if current_user.unread > 0
+                = current_user.name + " (#{current_user.unread})"
+              - else
+                = current_user.name
+              %span.caret
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", role: "menu"}
+              %li{role: "presentation"}
+                = link_to "Your profile", user_path(current_user)
+              %li{role: "presentation"}
+                = link_to "Inbox (#{current_user.unread})", inbox_conversations_path
+              %li.divider{role: "presentation"}
+              - if current_user.networks.count > 0
+                %li.dropdown-header{role: "presentation"} Your Networks
+                - current_user.networks.each do |network|
+                  %li{role: "presentation"}
+                    = link_to network.name, network_path(network, anchor: "skills")
+                %li.divider{role: "presentation"}
+              %li{role: "presentation"}
+                = link_to "Logout", logout_path
         - else
           %li
             = link_to "Login", login_path

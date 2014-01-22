@@ -29,6 +29,8 @@ Learnto::Application.routes.draw do
   end
 
   resources :reviews
+
+  get "networks/:id" => "networks#show", :as => "network"
   
   resources :events do
     member do 

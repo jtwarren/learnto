@@ -17,20 +17,6 @@ class SkillsController < ApplicationController
     end
   end
 
-  def networks
-    if not current_user
-      return redirect_to skills_url, notice: "Please log in to view lessons within your networks."
-    end
-    @title = "your networks"
-    @user = current_user
-    @show_banner = true
-    @hide_about_me = true
-    # @skills = current_user.networks.map(&:skills).flatten.uniq
-    @show_networks = true
-    @events = []
-    render 'index'
-  end
-
   def show
     @skill = Skill.find(params[:id])
     @lesson = nil
