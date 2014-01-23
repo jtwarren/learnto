@@ -27,20 +27,26 @@
               %span.caret
             %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", role: "menu"}
               %li{role: "presentation"}
-                = link_to "Your profile", user_path(current_user)
+                = link_to user_path(current_user) do
+                  %span.glyphicon.glyphicon-user
+                  Your profile
               %li{role: "presentation"}
-                = link_to "Inbox (#{current_user.unread})", inbox_conversations_path
+                = link_to inbox_conversations_path do
+                  %span.glyphicon.glyphicon-envelope
+                  Inbox (#{current_user.unread})
               %li.divider{role: "presentation"}
               - if current_user.networks.count > 0
                 %li.dropdown-header{role: "presentation"} Your Networks
                 - current_user.networks.each do |network|
                   %li{role: "presentation"}
-                    = link_to network.name, network_path(network, anchor: "skills")
+                    = link_to network_path(network, anchor: "skills") do
+                      %span.glyphicon.glyphicon-cloud
+                      network.name
                 %li.divider{role: "presentation"}
               %li{role: "presentation"}
-                = link_to "Logout", logout_path
+                = link_to logout_path do
+                  %span.glyphicon.glyphicon-log-out
+                  Logout
         - else
           %li
             = link_to "Login", login_path
-          %li
-            = link_to "Signup", new_user_path
