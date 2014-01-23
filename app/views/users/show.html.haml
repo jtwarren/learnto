@@ -9,27 +9,29 @@
         .profile-picture
           = image_tag @user.picture
         .user-info
-          - if @user.location
+          - if not @user.location.to_s.strip.length == 0
             .info-item
               %span.glyphicon.glyphicon-map-marker
-              = @user.location
-          - if @user.school
+              = @user.location.to_s.strip
+          - if not @user.school.to_s.strip.length == 0
             .info-item
               %span.glyphicon.glyphicon-book
-              = @user.school
-          - if @user.work
+              = @user.school.to_s.strip
+          - if not @user.work.to_s.strip.length == 0
             .info-item
               %span.glyphicon.glyphicon-briefcase
-              = @user.work
+              = @user.work.to_s.strip
           - if not @user.networks.empty?
             .info-item
               %span.glyphicon.glyphicon-cloud
               = @user.networks.map(&:name).join(', ')
 
-      %h3.username
-        #{@user.first_name}'s Lessons
-      - @skills.where("public = ?", true).each do |skill|
-        = render partial: "skills/skill_short", locals: {skill_short: skill}
+      - if @skills.length > 0
+        %h3.username
+          #{@user.first_name}'s Lessons
+
+        - @skills.each do |skill|
+          = render partial: "skills/skill_short", locals: {skill_short: skill}
 
 
 
@@ -40,10 +42,12 @@
         .about-section
           %h3
             About #{@user.first_name}
-          .bio
-            %h4 Bio
-            %p
-              = @user.bio
+          - if @user.bio.to_s.strip.length == 0
+            #{@user.first_name} has not yet provided information.
+          - else
+            .bio
+              %p
+                = @user.bio
 
       - if not (@user.teaching_reviews.empty? and @user.learning_reviews.empty?)
         .box
