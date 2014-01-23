@@ -28,7 +28,7 @@
 
       %h3.username
         #{@user.first_name}'s Lessons
-      - @skills.each do |skill|
+      - @skills.where("public = ?", true).each do |skill|
         = render partial: "skills/skill_short", locals: {skill_short: skill}
 
 
