@@ -2,7 +2,7 @@ class SkillsController < ApplicationController
   def index
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()")
-    @events = Event.where("approved = ?", true).order("RANDOM()")
+    @events = Event.where("approved = ?", true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
 
     @user = current_user
 
@@ -33,6 +33,7 @@ class SkillsController < ApplicationController
     if current_user and session[:show_modal] and session[:skill_id] == @skill.id
       @show_modal = true
       session.delete(:show_modal)
+      session.delete(:skill_id)
     end
 
     if not current_user
