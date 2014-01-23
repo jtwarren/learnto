@@ -84,7 +84,7 @@
           .form-group
             = f.label :signup, "Sign up"
             %p.help-block
-              Tell #{@skill.user.first_name} what you want to learn and what you can teach in return!
+              Tell #{@skill.user.first_name} a little about what you want to learn
             = text_area_tag :learning_request, nil, rows: 2, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
