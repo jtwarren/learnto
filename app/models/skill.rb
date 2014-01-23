@@ -9,8 +9,10 @@ class Skill < ActiveRecord::Base
   has_many :lessons
 
 
+
+
   def get_reviews()
-    reviews=[]
+    reviews = []
     self.lessons.each do |lesson|
       reviews.push(*lesson.reviews)
     end
@@ -18,12 +20,12 @@ class Skill < ActiveRecord::Base
   end
 
   def hide
-    self.hidden=true
+    self.hidden = true
     self.save!
   end
 
   def similar_skills
-    return Skill.where("approved=? AND hidden=?", true, false).order("RANDOM()").first(3)
+    return Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()").first(3)
   end
 
 
