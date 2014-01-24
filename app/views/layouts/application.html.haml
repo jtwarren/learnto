@@ -15,7 +15,8 @@
     = render 'layouts/shim'
   .special-alert
     %br
-    Limited Time Promotion - MIT Grad Students, teach someone on LearnTo and earn $10! Only valid for first 20 teachers.
+    .row
+      MIT Grad Students, teach someone on LearnTo and earn $10! Only valid for first 20 teachers.
   %body
     -flash.each do |name, msg| 
       = content_tag :div, msg, class: flash_class(name)
