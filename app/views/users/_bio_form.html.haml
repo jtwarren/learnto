@@ -11,7 +11,7 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-user
-      = f.text_area :bio, rows: 6, class: "form-control"
+      = f.text_area :bio, rows: 6, class: "form-control", placeholder: 'i.e. "I\'m a first year graduate student at MIT studying Mechanical Engineering.  I find teaching to be a great way of giving back, and meeting new people who are as passionate about learning as I am.  In my free time, I spend time hacking computer system (together and apart) and drink obscene amounts of coffee."'
   %hr.div-line
   .form-group
     = f.label :location, "Location"
@@ -20,7 +20,7 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-map-marker
-      = f.text_field :location, class: "form-control"
+      = f.text_field :location, class: "form-control", placeholder: "i.e. 'Cambridge, Massachusetts'"
   %hr.div-line
   .form-group
     = f.label :school, "School"
@@ -29,7 +29,7 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-book
-      = f.text_field :school, class: "form-control"
+      = f.text_field :school, class: "form-control", placeholder: "i.e. 'Massachusetts Institute of Technology'"
   %hr.div-line
   .form-group
     = f.label :work, "Work"
@@ -38,7 +38,7 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-briefcase
-      = f.text_field :work, class: "form-control"
+      = f.text_field :work, class: "form-control", placeholder: "i.e. 'Google, J.P. Morgan'"
   %hr.div-line
   .form-group
     = f.label :network_ids, "Networks"
