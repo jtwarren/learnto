@@ -27,8 +27,9 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
 
     if @event.save
-      Notifier.event_added(@event).deliver
-      redirect_to @event
+      # TODO: Build event confirmation email
+      # Notifier.event_added(@event).deliver
+      return redirect_to @event
     else
       render 'new'
     end
@@ -51,21 +52,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if current_user
       if @event.students.include? current_user
-        redirect_to @event, notice: 'You are already signed up.'
-        return
+        return redirect_to @event, notice: 'You are already signed up.'
       else
         @event.students << current_user
         if @event.capacity && (@event.students.count > @event.capacity)
-          redirect_to @event, notice: 'You have been added to the waitlist.'
-          return
+          return redirect_to @event, notice: 'You have been added to the waitlist.'
         else
-          redirect_to @event, notice: 'You are successfully enrolled.'
-          return
+          Notifier.event_attend(current_user, @event).deliver
+          return redirect_to @event, notice: 'You are successfully enrolled.'
         end
       end
     else
-      redirect_to @event, notice: 'You must be logged in to attend.'
-      return
+      return redirect_to @event, notice: 'You must be logged in to attend.'
     end
   end
 
