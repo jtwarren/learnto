@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @skills = @user.skills.where("approved = ? AND hidden = ?", true, false)
+    @skills = @user.skills.where("approved = ? AND hidden = ? AND public = ?", true, false, true)
     # @pending_skills = []
     # if @user == current_user
     #   @pending_skills = @user.skills.where(approved: false)

@@ -2,13 +2,13 @@
 %nav.navbar.navbar-custom.navbar-static-top{role: "navigation"}
   .container
     .navbar-header
-      %button.navbar-toggle{"data-target" => "#collapse_links", "data-toggle" => "collapse", type: "button"}
+      %button.nav-pills.navbar-toggle{"data-target" => "#collapse_links", "data-toggle" => "collapse", type: "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
       = link_to (image_tag 'Learnto-logo-transparent.png', :class => 'nav-logo'), root_path
-    .nav.navbar-collapse.collapse
+    #collapse_links.nav.navbar-collapse.collapse
       %ul.nav.nav-pills.navbar-left
         %li
           = link_to 'Lessons', skills_path(anchor: "skills")

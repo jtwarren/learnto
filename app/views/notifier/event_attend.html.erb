@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Hi <%= @user.first_name %>,
+    </p>
+    <p>
+      Thank you for signing up to learn <em><%= @event.title %></em> with <%= @event.user.first_name %>.  Please do not hesitate to reply if you have any questions concerning the lesson.  Please share the lesson on Facebook from http://www.learnto.com/events/<%= @event.id %> so your friends can take it too!
+    </p>
+    <strong>What</strong>: <%= @event.title %>
+    <br>
+    <strong>Where</strong>: <%= @event.address %>
+    <br>
+    <strong>When:</strong> <%= @event.starts_at %>
+    <br>
+    <br>
+      Thanks!
+      <br>
+      The LearnTo team
+    </p>
+  </body>
+</html>
