@@ -13,10 +13,10 @@
     = javascript_include_tag "//api.filepicker.io/v1/filepicker.js"
     = csrf_meta_tags
     = render 'layouts/shim'
-  .special-alert
-    %br
-    .row
-      MIT Grad Students, teach someone on LearnTo and earn $10! Only valid for first 20 teachers.
+  / .special-alert
+  /   %br
+  /   .row
+  /     MIT Grad Students, teach someone on LearnTo and earn $10! Only valid for first 20 teachers.
   %body
     -flash.each do |name, msg| 
       = content_tag :div, msg, class: flash_class(name)
