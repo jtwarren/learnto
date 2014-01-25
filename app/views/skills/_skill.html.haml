@@ -44,6 +44,7 @@
             .also-teach
               %p Think you can also teach this?  #{link_to 'Sign up to teach', new_skill_path}
 
+      - if @reviews.length > 0 || @show_review_form
       .box
         %h3 Reviews
         - if @show_review_form
