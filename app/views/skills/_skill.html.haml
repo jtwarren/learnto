@@ -44,14 +44,14 @@
             .also-teach
               %p Think you can also teach this?  #{link_to 'Sign up to teach', new_skill_path}
 
-      - if @reviews.length > 0 || @show_review_form
-      .box
-        %h3 Reviews
-        - if @show_review_form
-          .add-review
-            = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user, target_user: @skill.user}
-        .reviews
-          = render partial: "review_short", collection: @reviews.reverse
+      - if @reviews.length > 0 or @show_review_form
+        .box
+          %h3 Reviews
+          - if @show_review_form
+            .add-review
+              = render partial: "add_review", locals: {lesson: @lesson, review: @review, user: current_user, target_user: @skill.user}
+          .reviews
+            = render partial: "review_short", collection: @reviews.reverse
 
     .col-md-5
       .skill-image-full
