@@ -52,6 +52,8 @@ class LessonsController < ApplicationController
     @message = Message.new
     @review = Review.new
 
+    @show_review_form = ! @lesson.reviews.map(&:user).include?(current_user)
+
     # if current_user
     #   if current_user.admin || current_user.taken_lesson(@lesson) || current_user.taught_lesson(@lesson)
     #     receipt = @lesson.conversation.receipts.where(user_id: current_user.id).first

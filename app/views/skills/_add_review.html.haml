@@ -1,14 +1,14 @@
 .review
   .row
-    .col-md-2
+    .col-md-3
       .circle-overlay
-        =image_tag user.picture
+        = image_tag user.picture
     .col-md-9
       .stargroup
-        -for i in 0..4
+        - for i in 0..4
           %i.glyphicon.glyphicon-star-empty.stars-unselected
       .body.message-text
-        =form_for(review) do |f|
+        = form_for(review) do |f|
           .form-group
             = f.text_area :message, rows: 2, class: "form-control", placeholder: "Write your review here"
             = f.hidden_field :lesson_id, value: lesson.id

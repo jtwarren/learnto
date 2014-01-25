@@ -34,13 +34,11 @@
             = f.submit "Submit", class: "btn btn-custom"
         - else
           %p Current status: #{@lesson.status.humanize}
-          / TODO: Figure out reviews from multiple students and for multiple students
-          / - if @lesson.status == "COMPLETED"
-          /   %h3 Review for #{@lesson.skill.user.first_name}
-          /   - if @review.user == current_user
-          /     = render partial: "skills/review_short", collection: [@review]
-          /   - else
-          /     = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @lesson.skill.user}
+      - if not current_user == @lesson.teacher
+        - if @lesson.status == "COMPLETED" and @show_review_form
+          .box
+            %h3 Review for #{@lesson.skill.user.first_name}
+            = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @lesson.skill.user}
 
       .box
         %h3 Students

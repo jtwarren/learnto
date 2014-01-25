@@ -1,9 +1,9 @@
 .review
   .row
-    .col-md-2
+    .col-md-3
       %a.block{href: user_path(review_short.user)}
         .circle-overlay
-          =image_tag review_short.user.picture
+          = image_tag review_short.user.picture
         .review-info
           .name
             = review_short.user.first_name
@@ -13,4 +13,4 @@
       -for i in 0..review_short.stars-1
         %i.glyphicon.glyphicon-star.stars
       .review-text
-        =review_short.message
+        = review_short.message
