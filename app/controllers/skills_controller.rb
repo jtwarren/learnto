@@ -41,11 +41,11 @@ class SkillsController < ApplicationController
       session[:skill_id] = @skill.id
     end
 
-    @show_review_form = current_user.lessons.where(status:"COMPLETED").map(&:skill).include?(@skill) && !@skill.reviews.map(&:user).include?(current_user)
-    if @show_review_form
-      @review = Review.new
-      @lesson = current_user.lessons.where(skill_id: @skill.id).first
-    end
+    # @show_review_form = current_user.lessons.where(status:"COMPLETED").map(&:skill).include?(@skill) && !@skill.reviews.map(&:user).include?(current_user)
+    # if @show_review_form
+    #   @review = Review.new
+    #   @lesson = current_user.lessons.where(skill_id: @skill.id).first
+    # end
 
 
     @reviews = @skill.reviews
