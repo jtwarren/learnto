@@ -2,7 +2,7 @@ class SkillsController < ApplicationController
   def index
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()")
-    @events = Event.where("approved = ?", true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
+    @events = [Event.find(1)]#Event.where("approved = ?", true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
 
     @user = current_user
 
@@ -19,16 +19,16 @@ class SkillsController < ApplicationController
 
   def show
     @skill = Skill.find(params[:id])
-    @lesson = nil
-    if current_user
-      @lesson = current_user.taken_class(@skill)
-      if @lesson
-        @review = current_user.reviewFor(@skill.user, @lesson)
-      end
-    end
-    if !@review
-      @review = Review.new
-    end
+    # @lesson = nil
+    # if current_user
+    #   @lesson = current_user.taken_class(@skill)
+    #   if @lesson
+    #     @review = current_user.reviewFor(@skill.user, @lesson)
+    #   end
+    # end
+    # if !@review
+    #   @review = Review.new
+    # end
 
     if current_user and session[:show_modal] and session[:skill_id] == @skill.id
       @show_modal = true
@@ -41,9 +41,16 @@ class SkillsController < ApplicationController
       session[:skill_id] = @skill.id
     end
 
+    if current_user
+      @show_review_form = current_user.lessons.where(status:"COMPLETED").map(&:skill).include?(@skill) && !@skill.reviews.map(&:user).include?(current_user)
+      if @show_review_form
+        @review = Review.new
+        @lesson = current_user.lessons.where(skill_id: @skill.id).first
+      end
+    end
 
 
-    @reviews = @skill.get_reviews()
+    @reviews = @skill.reviews
 
     @completed_lessons = @skill.lessons.where(status: "COMPLETED").last(4)
 
@@ -104,7 +111,7 @@ class SkillsController < ApplicationController
         picture: skill.picture,
         description: skill.description,
         qualifications: skill.qualifications,
-        reviews: skill.get_reviews,
+        reviews: skill.reviews,
         title: skill.title    
       }
       return value.to_json
@@ -121,7 +128,7 @@ class SkillsController < ApplicationController
           picture: skill.picture,
           description: skill.description,
           qualifications: skill.qualifications,
-          reviews: skill.get_reviews,
+          reviews: skill.reviews,
           title: skill.title
         }
       end

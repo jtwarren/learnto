@@ -1,7 +1,9 @@
-.learner
-  - lesson_short.users.each do |user|
+- lesson_short.users.each do |user|
+  .row
     %a.block{href: user_path(lesson_short.user)}
-      .image.circle-overlay
-        = image_tag user.picture
-      .name
-        = user.first_name
+      .col-md-3
+        .image.circle-overlay
+          = image_tag user.picture
+      .col-md-9
+        .name
+          = user.first_name
