@@ -9,6 +9,7 @@ Learnto::Application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#create', :as => "social_sign_in"
   get 'auth/failure' => redirect('/')
 
+  get "healthbox" => "networks#show", defaults: {id: 5}
   get "about" => 'static_pages#about', :as => "about"
   get "guidelines" => 'static_pages#guidelines', :as => "guidelines"
   get "team" => 'static_pages#team', :as => "team"
