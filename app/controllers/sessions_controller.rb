@@ -17,7 +17,11 @@ class SessionsController < ApplicationController
       end
 
       url = env["omniauth.params"]["return_to"]
-      url ||= skills_url
+      if current_user.networks.size > 0
+        url ||= networks_url(id:current_user.networks.first.id)
+      else
+        url ||= skills_url
+      end
       return redirect_to url
     else
       user = RegularUser.find_by_email(params[:session][:email])
@@ -26,7 +30,12 @@ class SessionsController < ApplicationController
 
         url = params[:return_to]
         
-        url ||= skills_url
+        if user.networks.size > 0
+          puts "-------------------------------------"
+          url ||= networks_url(id: user.networks.first.id)
+        else
+          url ||= skills_url
+        end
         return redirect_to url
       else
         render action: 'new'

@@ -11,7 +11,11 @@
     #collapse_links.nav.navbar-collapse.collapse
       %ul.nav.nav-pills.navbar-left
         %li
-          = link_to 'Lessons', skills_path(anchor: "skills")
+          = link_to 'Public Lessons', skills_path(anchor: "skills")
+        - if current_user
+          - current_user.networks.each do |network|
+            %li
+              = link_to network.name + " Lessons",  network_path(network, anchor: "skills")
         %li
           = link_to 'Teach', new_skill_path 
         %li
@@ -49,4 +53,4 @@
                   Logout
         - else
           %li
-            = link_to "Login", login_path
+            = link_to "Login", login_path(return_to: request.original_url)

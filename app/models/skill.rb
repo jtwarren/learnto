@@ -8,6 +8,7 @@ class Skill < ActiveRecord::Base
   belongs_to :user
   has_many :lessons
 
+  has_many :networks, :through => :user
   has_many :reviews, :through => :lessons
 
 
@@ -17,7 +18,11 @@ class Skill < ActiveRecord::Base
   end
 
   def similar_skills
-    return Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()").first(3)
+    if self.networks.size == 0
+      return Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()").first(3)
+    else
+      return self.networks.first.skills.where("approved = ? AND hidden = ?", true, false).order("RANDOM()").first(3)
+    end
   end
 
 end

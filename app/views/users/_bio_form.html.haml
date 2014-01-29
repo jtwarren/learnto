@@ -47,6 +47,9 @@
     .input-group
       %span.input-group-addon
         %span.glyphicon.glyphicon-cloud
-      = f.select :network_ids, Network.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, class: "form-control"
+        -if @network
+          = f.select :network_ids, options_for_select([[@network.name, @network.id]], [@network.name, @network.id]), {}, :multiple => true, class: "form-control"
+        -else
+          = f.select :network_ids, Network.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, class: "form-control"
   %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"

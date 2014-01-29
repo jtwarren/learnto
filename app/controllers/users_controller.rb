@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @networks = Network.all
-
+    @network = Network.find(session[:default_network])
     if not current_user or current_user.id != @user.id
       redirect_to @user, notice: 'You are not authorized to edit this profile.'
     end

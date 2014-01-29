@@ -4,7 +4,7 @@
   Teaching is a great way to meet new people and learn from them! Here are 
   = link_to "three great reasons why you should teach today.", whyteach_path
 %p
-  If you're not sure what to teach, just think of something you love be it a sport, an instrument, or a technical skill!
+  If you're not sure what to teach, just think of something you love be it a sport, an instrument, or a technical skill.
 %p
   Looking to teach a one time, scheduled lesson? Check out our #{link_to "scheduled lesson", new_event_path} form.
 %hr.div-line
@@ -47,8 +47,8 @@
   %hr.div-line
   .form-group
     = f.label :public
-    = f.check_box :public
+    = f.check_box :public, {checked: false}
     %p.help-block
-      Public lessons are visible to anyone.  Private lessons are visible to only those in your networks.
+      Public lessons are visible to anyone.  Private lessons are visible to only those in your network.
   %hr.div-line
     = f.submit "Submit", class: "btn btn-custom"
