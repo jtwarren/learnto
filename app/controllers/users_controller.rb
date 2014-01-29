@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       session[:new_user] = true
+      if session[:default_network]
+        network = Network.find(session[:default_network])
+        network.users << @user
+        network.save!
+      end
       url = params[:return_to]
       url ||= user_url(@user)
       redirect_to url
