@@ -6,7 +6,7 @@
 - if @network
   - if not @events.empty?
     %h2.heading
-      Upcoming Lessons at #{network.name}
+      Upcoming Lessons at #{@network.name}
     .grid
       .row
         - @events.each do |event|
