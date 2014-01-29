@@ -13,7 +13,7 @@
         %li
           = link_to 'Public Lessons', skills_path(anchor: "skills")
         - if current_user
-          - current_user.networks.each do |network|
+          - current_user.networks.first(1).each do |network|
             %li
               = link_to network.name + " Lessons",  network_path(network, anchor: "skills")
         %li
