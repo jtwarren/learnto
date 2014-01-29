@@ -7,7 +7,7 @@ class NetworksController < ApplicationController
     session[:default_network] = @network.id
     @user = current_user
     @show_banner = true
-    @events = []
+    @events = @network.events
     if session[:new_user]
       @show_user_bio = true
       session.delete(:new_user)

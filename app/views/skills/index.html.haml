@@ -3,15 +3,15 @@
 
 #skills
 
-- if not @events.empty?
-  %h2.heading
-    Upcoming Lessons at MIT
-  .grid
-    .row
-      - @events.each do |event|
-        .col-xs-12.col-sm-6.col-md-4
-          = render partial: "events/event_short", locals: {event_short: event}
 - if @network
+  - if not @events.empty?
+    %h2.heading
+      Upcoming Lessons at #{network.name}
+    .grid
+      .row
+        - @events.each do |event|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "events/event_short", locals: {event_short: event}
   %h2.heading Top lessons at #{@network.name}
   .grid
     .row
@@ -19,6 +19,14 @@
         .col-xs-12.col-sm-6.col-md-4
           = render partial: "skills/skill_short", locals: {skill_short: skill}
 - else
+  - if not @events.empty?
+    %h2.heading
+      Upcoming Lessons at MIT
+    .grid
+      .row
+        - @events.each do |event|
+          .col-xs-12.col-sm-6.col-md-4
+            = render partial: "events/event_short", locals: {event_short: event}
   %h2.heading
     Public lessons at MIT
   .grid

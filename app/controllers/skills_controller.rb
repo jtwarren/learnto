@@ -2,7 +2,7 @@ class SkillsController < ApplicationController
   def index
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()")
-    @events = Event.where("approved = ?", true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
+    @events = Event.where("approved = ? AND public = ?", true, true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
 
     @user = current_user
 
