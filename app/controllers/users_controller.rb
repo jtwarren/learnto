@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     @facebook_param_string = params[:return_to] ? "?return_to=" + params[:return_to] : ""
     @user = RegularUser.new(user_params)
+    @return_to = params[:return_to]
     if @user.save
       session[:user_id] = @user.id
       session[:new_user] = true
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
       url ||= user_url(@user)
       redirect_to url
     elsif @user.errors.any?
+      # break
       @user.errors.full_messages.each do |msg|
         if !flash[:warning]
           flash[:warning] = msg + '. '
