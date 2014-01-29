@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
     if @event.save
       # TODO: Build event confirmation email
-      # Notifier.event_added(@event).deliver
+      Notifier.event_added(@event).deliver
       return redirect_to @event
     else
       render 'new'
