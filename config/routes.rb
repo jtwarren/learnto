@@ -11,7 +11,7 @@ Learnto::Application.routes.draw do
 
   get "healthbox" => "networks#show", defaults: {id: 5}
   get "bgsa" => "networks#bgsa", defaults: {id: 2}
-  get "startlabs" => "networks#startlabs", defaults: {id:}
+  get "startlabs" => "networks#startlabs", defaults: {id: 3}
   get "healthbox" => "networks#show", defaults: {id: 5}
   get "startiap" => "networks#show", defaults: {id: 7}
 
