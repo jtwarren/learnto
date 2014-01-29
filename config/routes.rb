@@ -10,9 +10,8 @@ Learnto::Application.routes.draw do
   get 'auth/failure' => redirect('/')
 
   get "healthbox" => "networks#show", defaults: {id: 5}
-  get "bgsa" => "networks#bgsa", defaults: {id: 2}
-  get "startlabs" => "networks#startlabs", defaults: {id: 3}
-  get "healthbox" => "networks#show", defaults: {id: 5}
+  get "bgsa" => "networks#show", defaults: {id: 2}
+  get "startlabs" => "networks#show", defaults: {id: 3}
   get "startiap" => "networks#show", defaults: {id: 7}
 
 
