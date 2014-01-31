@@ -1,0 +1,25 @@
+- provide(:title, "Requests - LearnTo")
+
+
+#requests
+
+- if @network
+  %h2.heading Top requests at #{@network.name}
+  .grid
+    .row
+      - @network.requests.where("approved = ? AND hidden = ?", true, false).each do |request|
+        .col-xs-12.col-sm-6.col-md-4
+          = render partial: "requests/request_short", locals: {request_short: request}
+- else
+  %h2.heading
+    Public lessons at MIT
+  .grid
+    .row
+      - @requests.each do |skill|
+        .col-xs-12.col-sm-6.col-md-4
+          = render partial: "requests/request_short", locals: {request_short: request}
+
+.new
+  %p
+    Want to teach something else? Sign up to teach  
+    = link_to 'here', new_request_path

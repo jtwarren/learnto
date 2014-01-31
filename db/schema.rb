@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129162744) do
+ActiveRecord::Schema.define(version: 20140131032805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,18 @@ ActiveRecord::Schema.define(version: 20140129162744) do
 
   add_index "receipts", ["conversation_id"], name: "index_receipts_on_conversation_id", using: :btree
   add_index "receipts", ["user_id"], name: "index_receipts_on_user_id", using: :btree
+
+  create_table "requests", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "picture"
+    t.boolean  "approved"
+    t.boolean  "hidden"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "public",      default: false
+  end
 
   create_table "reviews", force: true do |t|
     t.text     "message"

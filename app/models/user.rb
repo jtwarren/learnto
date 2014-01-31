@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :accounts, :dependent => :destroy
   has_many :skills, :dependent => :destroy
+  has_many :requests, :dependent => :destroy
   has_many :events, :dependent => :destroy
   has_many :reviews
   has_many :receipts

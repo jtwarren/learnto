@@ -1,0 +1,41 @@
+%h3
+  Request to learn on LearnTo
+%p
+  Always wanted to learn something? Make a request so that others around you can see it!
+
+%hr.div-line
+= form_for(@request, {role: "form"}) do |f|
+  .form-group
+    = f.label :title, "Learn to..."
+    %p.help-block
+      Choose an interesting title to capture people's attention.
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-question-sign
+      = f.text_field :title, class: "form-control", placeholder: "i.e. 'Cook Italian food' or 'Build a website'"
+  %hr.div-line
+  .form-group
+    = f.label :description
+    %p.help-block
+      Describe what you want to learn and why.
+    .input-group
+      %span.input-group-addon
+        %span.glyphicon.glyphicon-globe
+      = f.text_area :description, rows: 5, class: "form-control", placeholder: "i.e. I want to learn how to make basic pastas, sauces, and pizzas! I've always wanted to get better at cooking and any help would be much appreciated!"
+  %hr.div-line
+  .form-group
+    = f.label :image
+    %p.help-block
+      Pick an image that describes your request.
+    .upload-skill-picture.btn.btn-custom
+      Upload an image that describes your request
+    %br
+    = f.hidden_field :picture, class: "form-control"
+  %hr.div-line
+  .form-group
+    = f.label :public
+    = f.check_box :public, {checked: false}
+    %p.help-block
+      Public requests are visible to anyone.  Private requests are visible to only those in your network.
+  %hr.div-line
+    = f.submit "Submit", class: "btn btn-custom"

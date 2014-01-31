@@ -34,7 +34,15 @@ Learnto::Application.routes.draw do
     end
   end
 
-  resources :reviews
+  resources :reviews do
+    member do 
+    end
+  end
+
+  resources :requests do
+    collection do
+    end
+  end
 
   get "networks/:id" => "networks#show", :as => "network"
   

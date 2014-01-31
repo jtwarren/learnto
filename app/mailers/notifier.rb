@@ -29,6 +29,10 @@ class Notifier < ActionMailer::Base
     mail(to: 'founders@learnto.com', subject: 'LearnTo: New event added!' )
   end
 
+  def request_added(request)
+    @request = request
+    mail(to: 'founders@learnto.com', subject: 'LearnTo: New request added!' )
+
   def event_attend(user, event)
     @user = user
     @event = event

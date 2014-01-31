@@ -1,0 +1,15 @@
+%a.block{:href=> request_path(request_short), :style=> "display:block"}
+  .pin
+    .skill-image
+      = image_tag request_short.picture
+    .below-fold
+      .profile-pic.circle-overlay
+        = image_tag request_short.user.picture
+      .skill-short
+        .teacher-name
+          Taught by
+          %span
+            = request_short.user.first_name
+        .skill-title
+          %span
+            = request_short.title

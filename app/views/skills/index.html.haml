@@ -13,6 +13,11 @@
           .col-xs-12.col-sm-6.col-md-4
             = render partial: "events/event_short", locals: {event_short: event}
   %h2.heading Top lessons at #{@network.name}
+
+  .teachcall
+    = link_to "Teach your own lesson at #{@network.name}!", new_skill_path, class: "btn btn-custom teachbutton"
+  %br
+
   .grid
     .row
       - @network.skills.where("approved = ? AND hidden = ?", true, false).each do |skill|
