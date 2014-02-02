@@ -42,8 +42,17 @@ class RequestsController < ApplicationController
     if @request.save
       Notifier.request_added(@request).deliver
       redirect_to @request
+    elsif @request.errors.any?
+      # break
+      @request.errors.full_messages.each do |msg|
+        if !flash[:warning]
+          flash[:warning] = msg + '. '
+        else
+          flash[:warning] += msg + '. '
+        end
+      end
+      render 'new'
     else
-      puts request_params
       render 'new'
     end
   end

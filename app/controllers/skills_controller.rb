@@ -68,7 +68,17 @@ class SkillsController < ApplicationController
     if @skill.save
       Notifier.skill_added(@skill).deliver
       redirect_to @skill
-    else
+    elsif @skill.errors.any?
+      # break
+      @skill.errors.full_messages.each do |msg|
+        if !flash[:warning]
+          flash[:warning] = msg + '. '
+        else
+          flash[:warning] += msg + '. '
+        end
+      end
+      render 'new'
+    else      
       render 'new'
     end
   end
