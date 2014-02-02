@@ -3,7 +3,7 @@ class SkillsController < ApplicationController
     @show_banner = true
     @skills = Skill.where("approved = ? AND hidden = ? AND public = ?", true, false, true).order("RANDOM()")
     @events = Event.where("approved = ? AND public = ?", true, true).where("starts_at >= ?", DateTime.now).order("RANDOM()")
-
+    @requests = Request.all
     @user = current_user
 
     if session[:new_user]

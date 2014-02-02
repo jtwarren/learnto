@@ -3,6 +3,8 @@
 
 #skills
 
+%hr.div-line
+
 - if @network
   - if not @events.empty?
     %h2.heading
@@ -14,15 +16,28 @@
             = render partial: "events/event_short", locals: {event_short: event}
   %h2.heading Top lessons at #{@network.name}
 
-  .teachcall
-    = link_to "Teach your own lesson at #{@network.name}!", new_skill_path, class: "btn btn-custom teachbutton"
-  %br
-
   .grid
     .row
       - @network.skills.where("approved = ? AND hidden = ?", true, false).each do |skill|
         .col-xs-12.col-sm-6.col-md-4
           = render partial: "skills/skill_short", locals: {skill_short: skill}
+
+  .new
+    %p
+      Can't find what you're looking to learn? Make a request   
+      = link_to 'here', new_request_path
+  / - if @network.id == 2
+  %br
+  #requests
+  %h2.heading
+    Open Lesson Requests at #{@network.name}
+
+  %br
+  .grid
+    .row
+      - @network.requests.each do |request|
+        .col-xs-12.col-sm-6.col-md-4
+          = render partial: "requests/request_short", locals: {request_short: request}
 - else
   - if not @events.empty?
     %h2.heading
@@ -40,9 +55,12 @@
         .col-xs-12.col-sm-6.col-md-4
           = render partial: "skills/skill_short", locals: {skill_short: skill}
 
+
 .new
   %p
-    Can't find what you're looking for?  #{mail_to "founders@learnto.com", "Let us know", subject: "LearnTo Lesson Request"}, and we'll find you a teacher!
+    Can't find what you're looking to teach? Create a lesson    
+    = link_to 'here', new_skill_path
+
 
 - if current_user
   #aboutMeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}

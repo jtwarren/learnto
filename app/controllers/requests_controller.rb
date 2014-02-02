@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def index
-    @requests = Request.where("approved = ? AND hidden = ?", true, false)
+    @requests = Request.all
     respond_to do |format|
       format.html
     end
@@ -8,6 +8,30 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    # @lesson = nil
+    # if current_user
+    #   @lesson = current_user.taken_class(@skill)
+    #   if @lesson
+    #     @review = current_user.reviewFor(@skill.user, @lesson)
+    #   end
+    # end
+    # if !@review
+    #   @review = Review.new
+    # end
+
+    if current_user and session[:show_modal] and session[:request_id] == @request.id
+      @show_modal = true
+      session.delete(:show_modal)
+      session.delete(:request_id)
+    end
+
+    if not current_user
+      session[:show_modal] = true
+      session[:request_id] = @request.id
+    end
+
+    @return_to = request.path
+
     respond_to do |format|
       format.html
     end
@@ -19,7 +43,6 @@ class RequestsController < ApplicationController
       Notifier.request_added(@request).deliver
       redirect_to @request
     else
-      puts '----------------------------------'
       puts request_params
       render 'new'
     end

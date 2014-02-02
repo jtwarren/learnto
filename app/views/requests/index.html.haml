@@ -12,10 +12,10 @@
           = render partial: "requests/request_short", locals: {request_short: request}
 - else
   %h2.heading
-    Public lessons at MIT
+    Open Lesson Requests
   .grid
     .row
-      - @requests.each do |skill|
+      - @requests.each do |request|
         .col-xs-12.col-sm-6.col-md-4
           = render partial: "requests/request_short", locals: {request_short: request}
 

@@ -40,7 +40,9 @@ Learnto::Application.routes.draw do
   end
 
   resources :requests do
-    collection do
+    resources :lessons
+    member do
+      get "remove"
     end
   end
 
