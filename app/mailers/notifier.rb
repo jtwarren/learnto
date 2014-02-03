@@ -3,7 +3,14 @@ class Notifier < ActionMailer::Base
 
   def skill_added(skill)
     @skill = skill
-    mail(to: 'founders@learnto.com', subject: 'LearnTo: New skill added!' )
+    emails = ['founders@learnto.com']
+    if @skill.network
+      if @skill.network.admin
+        admin = User.find(@skill.network.admin)
+        emails << admin.email
+      end
+    end
+    mail(to: emails, subject: 'LearnTo: New skill added!' )
   end
 
   def lesson_request(user, requestor, lesson)
@@ -26,12 +33,27 @@ class Notifier < ActionMailer::Base
 
   def event_added(event)
     @event = event
-    mail(to: 'founders@learnto.com', subject: 'LearnTo: New event added!' )
+    emails = ['founders@learnto.com']
+    if @event.network
+      if @event.network.admin
+        admin = User.find(@event.network.admin)
+        emails << admin.email
+      end
+    end
+    mail(to: emails, subject: 'LearnTo: New event added!' )
   end
 
   def request_added(request)
     @request = request
-    mail(to: 'founders@learnto.com', subject: 'LearnTo: New request added!' )
+    emails = ['founders@learnto.com']
+    if @request.network
+      if @request.network.admin
+        admin = User.find(@request.network.admin)
+        emails << admin.email
+      end
+    end
+
+    mail(to: emails, subject: 'LearnTo: New request added!' )
   end
   
   def event_attend(user, event)
