@@ -4,9 +4,9 @@ class Notifier < ActionMailer::Base
   def skill_added(skill)
     @skill = skill
     emails = ['founders@learnto.com']
-    if @skill.network
-      if @skill.network.admin
-        admin = User.find(@skill.network.admin)
+    if @skill.networks.first
+      if @skill.networks.first.admin
+        admin = User.find(@skill.networks.first.admin)
         emails << admin.email
       end
     end
@@ -34,9 +34,9 @@ class Notifier < ActionMailer::Base
   def event_added(event)
     @event = event
     emails = ['founders@learnto.com']
-    if @event.network
-      if @event.network.admin
-        admin = User.find(@event.network.admin)
+    if @event.networks.first
+      if @event.networks.first.admin
+        admin = User.find(@event.networks.first.admin)
         emails << admin.email
       end
     end
@@ -46,9 +46,9 @@ class Notifier < ActionMailer::Base
   def request_added(request)
     @request = request
     emails = ['founders@learnto.com']
-    if @request.network
-      if @request.network.admin
-        admin = User.find(@request.network.admin)
+    if @request.networks.first
+      if @request.networks.first.admin
+        admin = User.find(@request.networks.first.admin)
         emails << admin.email
       end
     end
