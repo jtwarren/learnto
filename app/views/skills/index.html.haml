@@ -6,6 +6,8 @@
 %hr.div-line
 
 - if @network
+  .logo
+    = image_tag @network.logo
   - if not @events.empty?
     %h2.heading
       Upcoming Lessons at #{@network.name}

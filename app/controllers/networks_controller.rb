@@ -9,7 +9,7 @@ class NetworksController < ApplicationController
     end
     session[:default_network] = @network.id
     @user = current_user
-    @show_banner = true
+    @show_banner = false
     @events = @network.events
     if session[:new_user]
       @show_user_bio = true
