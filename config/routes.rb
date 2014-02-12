@@ -13,6 +13,7 @@ Learnto::Application.routes.draw do
   get "bgsa" => "networks#show", defaults: {id: 2}
   get "startlabs" => "networks#show", defaults: {id: 3}
   get "startiap" => "networks#show", defaults: {id: 7}
+  get "gsd" => "networks#show", defaults: {id: 8}
 
 
   get "about" => 'static_pages#about', :as => "about"
