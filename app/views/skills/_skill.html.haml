@@ -71,6 +71,11 @@
           %h4 People who have learned with #{@skill.user.first_name}
           = render partial: "lesson_short", collection: @completed_lessons
 
+      - if @skill.openLessons.size > 0
+        .box
+          %h4 Open Lessons that you can join
+          - @skill.openLessons.each do |lesson|
+            = link_to "Student " + lesson.user.first_name, lesson_url(lesson)
 #lessonModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
   .modal-dialog
     .modal-content

@@ -25,5 +25,15 @@ class Skill < ActiveRecord::Base
     end
   end
 
+  def openLessons
+    lessons = []
+    self.lessons.each do |lesson|
+      if lesson.status == "APPROVED"
+        lessons << lesson
+      end
+    end
+    return lessons
+  end
+
 end
 

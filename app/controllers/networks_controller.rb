@@ -4,7 +4,7 @@ class NetworksController < ApplicationController
     #   return redirect_to skills_url, notice: "Please log in to view lessons within your networks."
     # end
     @network = Network.find_by(subdomain: request.subdomain)
-    if !@network
+    if !@network and params[:id]
       @network = Network.find(params[:id])
     end
     session[:default_network] = @network.id

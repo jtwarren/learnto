@@ -38,6 +38,18 @@ class LessonsController < ApplicationController
     end
   end
 
+  def add_student
+    @lesson = Lesson.find(params[:id])
+    if current_user
+      if !current_user.lessons.include? @lesson
+        current_user.lessons << @lesson
+      end
+      return redirect_to @lesson, notice: 'You are now a part of this lesson'
+    else
+      redirect_to @lesson
+    end
+  end
+
   def show
     if not current_user
       return redirect_to login_url(return_to: lesson_path(@lesson))
@@ -45,9 +57,9 @@ class LessonsController < ApplicationController
     
     @lesson = Lesson.find(params[:id])
 
-    if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
-      return redirect_to skills_path, notice: 'You are not authorized to view this page.'
-    end
+    # if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
+    #   return redirect_to skills_path, notice: 'You are not authorized to view this page.'
+    # end
 
     @message = Message.new
     @review = Review.new

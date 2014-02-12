@@ -45,6 +45,9 @@
         - @lesson.users.each do |user|
           %p
             = link_to user.name, user
+        - if current_user and !@lesson.users.include? current_user
+          .join
+            = link_to "Join Lesson", add_student_lesson_path(@lesson), class: "btn btn-custom contact"
 
         / TODO: Invite friends via fb/twitter/email
         / .invite

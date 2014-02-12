@@ -25,7 +25,8 @@ Learnto::Application.routes.draw do
   patch "registration/update", as: 'update_registration'
 
 
-  get '/' => 'networks#show', :constraints => { :subdomain => /^(?!www).*/ }
+  get '/' => 'networks#show', :constraints => { :subdomain => /^(?!www).+/ }
+
   root 'skills#index'
 
   get 'networks/:id' => 'networks#show'
@@ -72,6 +73,7 @@ Learnto::Application.routes.draw do
       get "approve"
       get "ignore"
       get "complete"
+      get "add_student"
     end
   end
 
