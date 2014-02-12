@@ -24,6 +24,8 @@ Learnto::Application.routes.draw do
   get "registration/register", as: 'register'
   patch "registration/update", as: 'update_registration'
 
+
+  get '/' => 'networks#show', :constraints => { :subdomain => /^(?!www).*/ }
   root 'skills#index'
 
   get 'networks/:id' => 'networks#show'
