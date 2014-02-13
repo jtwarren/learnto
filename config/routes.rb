@@ -14,7 +14,7 @@ Learnto::Application.routes.draw do
   get "startlabs" => "networks#show", defaults: {id: 3}
   get "startiap" => "networks#show", defaults: {id: 7}
   get "gsd" => "networks#show", defaults: {id: 8}
-  get "intrepidlabs" => "networks#show", defaults: {id: 9}
+  get "cic" => "networks#show", defaults: {id: 9}
 
   get "about" => 'static_pages#about', :as => "about"
   get "guidelines" => 'static_pages#guidelines', :as => "guidelines"
