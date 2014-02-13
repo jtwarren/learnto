@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212205719) do
+ActiveRecord::Schema.define(version: 20140213045250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,16 @@ ActiveRecord::Schema.define(version: 20140212205719) do
   add_index "receipts", ["conversation_id"], name: "index_receipts_on_conversation_id", using: :btree
   add_index "receipts", ["user_id"], name: "index_receipts_on_user_id", using: :btree
 
+  create_table "request_users", force: true do |t|
+    t.integer  "request_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "request_users", ["request_id"], name: "index_request_users_on_request_id", using: :btree
+  add_index "request_users", ["user_id"], name: "index_request_users_on_user_id", using: :btree
+
   create_table "requests", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -141,6 +151,7 @@ ActiveRecord::Schema.define(version: 20140212205719) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "public",      default: false
+    t.integer  "teacher"
   end
 
   create_table "reviews", force: true do |t|
@@ -182,7 +193,7 @@ ActiveRecord::Schema.define(version: 20140212205719) do
     t.datetime "updated_at"
     t.text     "learning_request"
     t.string   "picture"
-    t.boolean  "admin",            default: false
+    t.boolean  "admin",             default: false
     t.text     "bio"
     t.text     "learn"
     t.text     "interest"
@@ -190,6 +201,7 @@ ActiveRecord::Schema.define(version: 20140212205719) do
     t.string   "work"
     t.string   "filepicker_url"
     t.string   "location"
+    t.integer  "{:index=>true}_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

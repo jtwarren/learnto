@@ -4,6 +4,8 @@ class Request < ActiveRecord::Base
   validates :picture, presence: true
 
   belongs_to :user
+  has_many :request_users
+  has_many :users, :through => :request_users
   has_many :lessons
 
   has_many :networks, :through => :user

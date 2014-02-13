@@ -22,6 +22,16 @@ class Notifier < ActionMailer::Base
     mail(to: user_email, subject: 'LearnTo: New lesson request from ' + requestor.first_name + '!')
   end
 
+  def lesson_offer(receivers, teacher, lesson)
+    @teacher = teacher
+    emails = []
+    receivers.each do |receiver|
+      emails << receiver.email
+    end
+    @lesson = lesson
+    mail(to: emails, subject: 'LearnTo: #{@teacher.first_name} has offered to help you learn!')
+  end
+
   def reply(message, sender, receiver)
     @message = message
     @sender = sender

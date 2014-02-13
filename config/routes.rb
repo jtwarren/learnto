@@ -50,6 +50,12 @@ Learnto::Application.routes.draw do
     end
   end
 
+  resources :requests do
+    member do
+      get "add_user"
+    end
+  end
+
   get "networks/:id" => "networks#show", :as => "network"
   
   resources :events do

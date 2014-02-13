@@ -5,13 +5,13 @@
         .row
           .col-md-12
             %h2.title
-              = link_to @lesson.skill.title, @lesson.skill
+              = link_to @parent.title, @parent
         .row
           .col-md-6
-            %a{href: user_path(@lesson.skill.user), class: "circle-overlay"}
-              = image_tag @lesson.skill.user.picture
+            %a{href: user_path(@lesson.teacher), class: "circle-overlay"}
+              = image_tag @lesson.teacher.picture
             %h4.instructor
-              = link_to @lesson.skill.user.name, user_path(@lesson.skill.user)
+              = link_to @lesson.teacher.name, user_path(@lesson.teacher)
       .box
         %h3 Messages
         .messages
@@ -21,7 +21,7 @@
 
     .col-md-5
       .skill-image-full
-        = image_tag @lesson.skill.picture
+        = image_tag @parent.picture
       .box
         %h3 Status
         - if current_user == @lesson.teacher
@@ -34,11 +34,11 @@
             = f.submit "Submit", class: "btn btn-custom"
         - else
           %p Current status: #{@lesson.status.humanize}
-      - if not current_user == @lesson.teacher
-        - if @lesson.status == "COMPLETED" and @show_review_form
-          .box
-            %h3 Review for #{@lesson.skill.user.first_name}
-            = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @lesson.skill.user}
+      / - if not current_user == @lesson.teacher
+      /   - if @lesson.status == "COMPLETED" and @show_review_form
+      /     .box
+      /       %h3 Review for #{@parent.user.first_name}
+      /       = render partial: "skills/add_review", locals: { lesson: @lesson, review: @review, user: current_user, target_user: @parent.user}
 
       .box
         %h3 Students

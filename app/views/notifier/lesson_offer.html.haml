@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    .greeting
+      Hi,
+    %br
+    .message
+    #{@teacher.first_name} has offered to help you learn to #{@lesson.request.title}! Here's the message:      
+    %br
+    %br
+    = @lesson.conversation.messages.first.body
+    %br
+    %br
+    .request
+      To reply and find out more about #{@teacher.first_name}, go to your 
+      %a{href: lesson_url(@lesson), style: "font-size: 100%"} Lesson Page 
+      or click the link below.
+      %br
+      %br
+    %a{href: lesson_url(@lesson), style: "font-size: 100%"} Lesson Page  
+    %br
+    %br
+  .closing
+    Thank you!
+    %br
+    %br
+    LearnTo Team

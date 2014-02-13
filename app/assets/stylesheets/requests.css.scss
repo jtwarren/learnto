@@ -1,3 +1,29 @@
 // Place all the styles related to the Requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.votes{
+  font-size: 20px !important;
+  padding: 10px;
+}
+
+.success{
+  background-color: green !important;
+}
+
+.neutral{
+  background-color: #2980b8 !important;  
+}
+
+.arrow{
+  margin-left: 80px;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.right{
+  position: absolute;
+  right: 30px;
+}

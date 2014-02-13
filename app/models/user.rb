@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :lesson_users
   has_many :lessons, :through => :lesson_users
 
+  has_many :request_users
+  has_many :requests, :through => :request_users
+
   has_many :network_users
   has_many :networks, :through => :network_users
 

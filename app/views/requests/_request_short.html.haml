@@ -1,15 +1,18 @@
-%a.block{:href=> request_path(request_short), :style=> "display:block"}
-  .pin
-    .skill-image
+.pin
+  .skill-image
+    %a.block{:href=> request_path(request_short), :style=> "display:block"}
       = image_tag request_short.picture
-    .below-fold
-      .profile-pic.circle-overlay
-        = image_tag request_short.user.picture
-      .skill-short
-        .teacher-name
-          Requested by
-          %span
-            = request_short.user.first_name
-        .skill-title
-          %span
-            = request_short.title
+  .below-fold
+    .profile-pic.circle-overlay
+      = image_tag request_short.users.first.picture
+    .skill-short
+      .teacher-name
+        Requested by
+        %span
+          = request_short.users.first.first_name
+      .skill-title
+        %span
+          = link_to request_short.title, request_path(request_short)
+          %span.glyphicon.glyphicon-arrow-up.arrow.clickable{link: add_user_request_url(request_short)}
+          .badge.votes.right.neutral
+            = request_short.users.size

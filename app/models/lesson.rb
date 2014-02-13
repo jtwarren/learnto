@@ -25,9 +25,11 @@ class Lesson < ActiveRecord::Base
 
   def teacher
     if self.skill != nil and self.skill.user
-      self.skill.user
+      return self.skill.user
+    elsif self.request != nil and self.request.teacher
+      return User.find(self.request.teacher)
     else
-      User.find_by(:first_name => "Dhruv")
+      return User.find_by(:first_name => "Dhruv")
     end
   end
 end

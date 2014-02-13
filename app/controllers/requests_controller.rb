@@ -37,9 +37,19 @@ class RequestsController < ApplicationController
     end
   end
 
+  def add_user
+    @request = Request.find(params[:id])
+    if current_user and !(@request.users.include? current_user)
+      @request.users << current_user
+      return redirect_to @request, notice: "Request added"
+    end
+    redirect_to @request
+  end
+
   def create
-    @request = current_user.requests.new(request_params)
+    @request = Request.new(request_params)
     if @request.save
+      @request.users << current_user
       Notifier.request_added(@request).deliver
       redirect_to @request
     elsif @request.errors.any?

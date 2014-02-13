@@ -9,12 +9,35 @@ class LessonsController < ApplicationController
   end
 
   def create
-    skill = Skill.find(params[:skill_id])
+    return_to = request
+    lesson = nil
+    receivers = []
+    type = nil
     if not current_user
-      return redirect_to skill, notice: "You must be logged in to sign up for a lesson."
+      return redirect_to return_to, notice: "You must be logged in."
     end
-    lesson = skill.lessons.create(status: "PENDING")
-    lesson.users << current_user
+
+    if (params[:skill_id])
+      skill = Skill.find(params[:skill_id])
+      return_to = skill
+      lesson = skill.lessons.create(status: "PENDING")
+      receivers = [skill.user]
+      type = 'REQUEST'
+    elsif (params[:request_id])
+      request = Request.find(params[:request_id])
+      request.teacher = current_user.id
+      request.save!
+      return_to = request
+      lesson = request.lessons.create(status: "APPROVED")
+
+      lesson.users << request.users
+      receivers = request.users
+      type = 'OFFER'
+    end
+
+    if !lesson.users.include? current_user
+      lesson.users << current_user
+    end
 
     conversation = Conversation.create()
     lesson.conversation = conversation
@@ -22,11 +45,19 @@ class LessonsController < ApplicationController
     message = conversation.messages.create(body: params[:learning_request], user: current_user)
 
     conversation.receipts.create(user_id: current_user.id, read: true)
-    conversation.receipts.create(user_id: skill.user.id, read: false)
+
+    receivers.each do |receiver|
+      conversation.receipts.create(user_id: receiver.id, read: false)
+    end
 
     lesson.conversation = conversation
 
-    Notifier.lesson_request(skill.user, current_user, lesson).deliver
+    if type == 'REQUEST'
+      Notifier.lesson_request(receivers.first, current_user, lesson).deliver
+    
+    elsif type =='OFFER'
+      Notifier.lesson_offer(receivers, current_user, lesson).deliver
+    end
 
     redirect_to lesson_url(lesson)
   end
@@ -60,7 +91,16 @@ class LessonsController < ApplicationController
     # if not @lesson.users.include?(current_user) and not @lesson.skill.user == current_user and not current_user.admin
     #   return redirect_to skills_path, notice: 'You are not authorized to view this page.'
     # end
-
+    @parent = nil
+    @teacher = nil
+    if @lesson.skill
+      @parent = @lesson.skill
+      @teacher = @lesson.skill.user
+    end
+    if @lesson.request
+      @parent = @lesson.request
+      @teacher = User.find(@lesson.request.teacher)
+    end
     @message = Message.new
     @review = Review.new
 

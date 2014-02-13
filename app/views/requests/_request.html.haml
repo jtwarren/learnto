@@ -11,10 +11,10 @@
               = @request.title
         .row
           .col-md-6
-            %a{href: user_path(@request.user), class: "circle-overlay"}
-              = image_tag @request.user.picture
+            %a{href: user_path(@request.users.first), class: "circle-overlay"}
+              = image_tag @request.users.first.picture
             %h4.instructor
-              = link_to @request.user.name, user_path(@request.user)
+              = link_to @request.users.first.name, user_path(@request.users.first)
         .row
           .col-md-6
             .social-share
@@ -24,14 +24,14 @@
                 %a.twitter-share-button{"data-via" => "comelearnto", href: "https://twitter.com/share"} Tweet
           %hr.div-line
         .action-links
-          - if current_user == @request.user
+          - if current_user == @request.users.first
             = link_to 'Edit', edit_request_path(id: @request.id)
             = link_to 'Remove', remove_request_path(@request)
         %h4 Description
         .description
           = simple_format(@request.description)
         - if current_user
-          %button.btn.btn-custom.contact{"data-target" => "#lessonModal", "data-toggle" => "modal"} Can you help #{@request.user.first_name} learn this? Contact to find a time and place!
+          %button.btn.btn-custom.contact{"data-target" => "#lessonModal", "data-toggle" => "modal"} Can you help #{@request.users.first.first_name} learn this? Contact to find a time and place!
         - else
           = link_to "Sign up or log in", login_path(return_to: @return_to), class: "btn btn-custom contact"
 
@@ -51,7 +51,7 @@
           .form-group
             = f.label :signup, "Sign up"
             %p.help-block
-              Tell #{@request.user.first_name} how you would like to help and when/where you would like to meet.
+              Say how you can help and when/where you would like to meet.
             = text_area_tag :learning_request, nil, rows: 2, class: "form-control"
         .modal-footer
           = f.submit "Submit", class: "btn btn-custom"
