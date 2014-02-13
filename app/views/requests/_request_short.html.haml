@@ -11,8 +11,11 @@
         %span
           = request_short.users.first.first_name
       .skill-title
-        %span
-          = link_to request_short.title, request_path(request_short)
-          %span.glyphicon.glyphicon-arrow-up.arrow.clickable{link: add_user_request_url(request_short)}
-          .badge.votes.right.neutral
-            = request_short.users.size
+        .row
+          .col-md-9
+            = link_to request_short.title, request_path(request_short)
+          .col-md-1
+            %span.glyphicon.glyphicon-arrow-up.arrow.clickable{link: add_user_request_url(request_short)}
+          .col-md-1
+            .badge.votes.neutral
+              = request_short.users.size
