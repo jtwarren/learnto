@@ -10,13 +10,14 @@ ready = ->
   $('.arrow').click ->
     thing = $(this)
     link = thing.attr('link')
+    votes = thing.parent().parent().find('.votes')
     $.ajax({
       url: link
     }).done(() ->
       num = parseInt($('.votes').text())
-      $('.votes').text(num+1)
-      $('.votes').removeClass('neutral')
-      $('.votes').addClass('success')
+      votes.text(num+1)
+      votes.removeClass('neutral')
+      votes.addClass('success')
       thing.removeClass('clickable')
       );
 
