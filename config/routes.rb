@@ -15,6 +15,7 @@ Learnto::Application.routes.draw do
   get "startiap" => "networks#show", defaults: {id: 7}
   get "gsd" => "networks#show", defaults: {id: 8}
   get "cic" => "networks#show", defaults: {id: 9}
+  get "sase" => "networks#sase", defaults: {id: 10}
 
   get "about" => 'static_pages#about', :as => "about"
   get "guidelines" => 'static_pages#guidelines', :as => "guidelines"
