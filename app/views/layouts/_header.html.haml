@@ -11,12 +11,6 @@
     #collapse_links.nav.navbar-collapse.collapse
       %ul.nav.nav-pills.navbar-left
         %li
-          = link_to 'Public Lessons', skills_path(anchor: "skills")
-        - if current_user
-          - current_user.networks.first(1).each do |network|
-            %li
-              = link_to network.name + " Lessons",  network_path(network, anchor: "skills")
-        %li
           = link_to 'Teach', new_skill_path 
         %li
           = link_to 'Why Teach?', whyteach_path
